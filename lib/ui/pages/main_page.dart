@@ -10,6 +10,7 @@ class _MainPageState extends State<MainPage> {
   List<Widget> _widgetOptions = <Widget>[
     HomePage(),
     SchedulePage(),
+    NotificationPage(),
     ProfilePage(),
   ];
 
@@ -36,11 +37,16 @@ class _MainPageState extends State<MainPage> {
             label: 'Jadwal',
           ),
           BottomNavigationBarItem(
+            icon: Icon(Icons.notifications),
+            label: 'Informasi',
+          ),
+          BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: 'Akun',
           ),
         ],
         currentIndex: _selectedIndex,
+        unselectedItemColor: Colors.grey,
         selectedItemColor: Colors.amber[800],
         onTap: _onItemTapped,
       ),
