@@ -1,6 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
+import 'package:transparent_image/transparent_image.dart';
+import 'package:yessles/core/models/models.dart';
 import 'package:yessles/ui/pages/constants/strings.dart';
 import 'package:yessles/ui/pages/constants/theme.dart';
 
@@ -9,3 +12,9 @@ part 'dialog/loading_dialog.dart';
 part 'dialog/info_dialog.dart';
 part 'loading_widget.dart';
 part 'poster_baner.dart';
+part 'review/review_widget.dart';
+part 'review/star_rating.dart';
+part 'review/teacher_widget.dart';
+part 'mapel/mapel_images.dart';
+part 'divider.dart';
+part 'html_widget.dart';

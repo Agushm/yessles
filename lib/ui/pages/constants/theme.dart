@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 class ColorBase {
   static final primary = Color(0xFFFF7600);
   static final blue = Color(0xFF0176E8);
+  static final grey = Color(0xffFAF9F9);
 }
 
 String iconsPath = 'assets/icons/';

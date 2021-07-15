@@ -12,8 +12,14 @@ class _NotificationPageState extends State<NotificationPage> {
         appBar: AppBar(
             automaticallyImplyLeading: false,
             elevation: 1,
-            title: Text('Informasi', style: fontWhite.copyWith(fontSize: 18))),
+            backgroundColor: Colors.white,
+            title: Text('Informasi',
+                style: fontBlack.copyWith(
+                    fontSize: 20,
+                    color: ColorBase.primary,
+                    fontWeight: FontWeight.bold))),
         body: ListView.builder(
+            padding: EdgeInsets.only(top: 20),
             itemCount: listNotif.length,
             itemBuilder: (c, i) {
               var d = listNotif[i];
@@ -21,12 +27,21 @@ class _NotificationPageState extends State<NotificationPage> {
                 children: [
                   Container(
                     width: deviceWidth(context),
-                    margin: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                    margin: d['isRead']
+                        ? EdgeInsets.fromLTRB(20, 5, 0, 5)
+                        : EdgeInsets.fromLTRB(0, 5, 20, 5),
                     padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                     decoration: BoxDecoration(
-                        color:
-                            d['isRead'] ? Colors.grey[200] : ColorBase.primary,
-                        borderRadius: BorderRadius.circular(10)),
+                      color: d['isRead'] ? Colors.grey[200] : ColorBase.primary,
+                      borderRadius: d['isRead']
+                          ? BorderRadius.only(
+                              topLeft: Radius.circular(10),
+                              bottomLeft: Radius.circular(10))
+                          : BorderRadius.only(
+                              topRight: Radius.circular(10),
+                              bottomRight: Radius.circular(10),
+                            ),
+                    ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -57,11 +72,10 @@ class _NotificationPageState extends State<NotificationPage> {
                         if (d['isRead']) {
                           return SizedBox();
                         } else {
-                          return Container(
-                            width: 10,
-                            height: 10,
-                            decoration: BoxDecoration(
-                                color: Colors.blue, shape: BoxShape.circle),
+                          return Icon(
+                            Icons.star,
+                            color: Colors.blue,
+                            size: 15,
                           );
                         }
                       },

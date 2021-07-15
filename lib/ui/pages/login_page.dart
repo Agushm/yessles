@@ -105,7 +105,7 @@ class _LoginPageState extends State<LoginPage> {
                   padding: EdgeInsets.symmetric(vertical: 10),
                   onPressed: () {
                     if (isAgreeRules!) {
-                      Get.to(MainPage());
+                      Get.offAll(MainPage());
                     } else {
                       DialogUtils.instance.showInfo(context,
                           title: 'Syarat & Ketentuan',
