@@ -16,5 +16,6 @@ part 'review/review_widget.dart';
 part 'review/star_rating.dart';
 part 'review/teacher_widget.dart';
 part 'mapel/mapel_images.dart';
+part 'mapel/mapel_bottomsheet.dart';
 part 'divider.dart';
 part 'html_widget.dart';

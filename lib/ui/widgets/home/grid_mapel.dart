@@ -28,12 +28,17 @@ class GridMapel extends StatelessWidget {
                   child: Icon(Icons.more_horiz_rounded,
                       color: Colors.white.withOpacity(0.1), size: 65),
                 ),
-                Container(
-                  alignment: Alignment.center,
-                  child: Text(
-                    "Lainnya",
-                    style: fontWhite.copyWith(
-                        fontSize: 18, fontWeight: FontWeight.bold),
+                InkWell(
+                  onTap: () {
+                    mapelBottomSheet(context);
+                  },
+                  child: Container(
+                    alignment: Alignment.center,
+                    child: Text(
+                      "Lainnya",
+                      style: fontWhite.copyWith(
+                          fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
               ],
