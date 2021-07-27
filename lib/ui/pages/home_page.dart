@@ -14,6 +14,7 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              SizedBox(height: 30),
               // Stack(
               //   children: [
               //     Container(
@@ -106,16 +107,13 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                     SizedBox(height: 10),
-                    GridView.builder(
+                    GridView.count(
+                      crossAxisCount: 4,
                       shrinkWrap: true,
                       padding: EdgeInsets.symmetric(horizontal: 10),
-                      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                          maxCrossAxisExtent: 200,
-                          childAspectRatio: 4 / 3,
-                          crossAxisSpacing: 10,
-                          mainAxisSpacing: 10),
-                      itemCount: mapel.length,
-                      itemBuilder: (BuildContext ctx, index) {
+                      physics: NeverScrollableScrollPhysics(),
+                      children: mapel.map((e) {
+                        var index = mapel.indexOf(e);
                         return Container(
                             width: deviceWidth(context) / 4,
                             child: Column(
@@ -123,6 +121,9 @@ class _HomePageState extends State<HomePage> {
                               children: [
                                 CircleAvatar(
                                   radius: 40,
+                                  backgroundImage: NetworkImage(index % 2 != 0
+                                      ? 'https://image.flaticon.com/icons/png/512/2232/2232688.png'
+                                      : 'https://image.flaticon.com/icons/png/512/501/501405.png'),
                                 ),
                                 SizedBox(height: 5),
                                 Text('Menu $index',
@@ -131,7 +132,7 @@ class _HomePageState extends State<HomePage> {
                                     )),
                               ],
                             ));
-                      },
+                      }).toList(),
                     ),
                   ],
                 ),
