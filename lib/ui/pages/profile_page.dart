@@ -30,7 +30,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           blurRadius: 6.0,
                         ),
                       ],
-                      borderRadius: BorderRadius.circular(100),
+                      shape: BoxShape.circle,
                       image: DecorationImage(
                         fit: BoxFit.cover,
                         image: NetworkImage(
