@@ -10,83 +10,22 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: ColorBase.grey,
+        appBar: AppBar(
+            automaticallyImplyLeading: false,
+            elevation: 1,
+            backgroundColor: Colors.white,
+            title: Text('Yessles',
+                style: fontBlack.copyWith(
+                    fontSize: 20,
+                    color: ColorBase.primary,
+                    fontWeight: FontWeight.bold))),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 30),
-              // Stack(
-              //   children: [
-              //     Container(
-              //       width: deviceWidth(context),
-              //       height: 150,
-              //     ),
-              //     Container(
-              //       width: deviceWidth(context),
-              //       height: 140,
-              //       padding: EdgeInsets.symmetric(horizontal: 20),
-              //       decoration: BoxDecoration(
-              //           color: ColorBase.primary,
-              //           borderRadius: BorderRadius.only(
-              //             bottomLeft: Radius.circular(60),
-              //             bottomRight: Radius.circular(60),
-              //           )),
-              //       child: Row(
-              //         children: [
-              //           Container(
-              //             width: 60,
-              //             height: 60,
-              //             decoration: BoxDecoration(
-              //                 border: Border.all(
-              //                   color: Colors.white,
-              //                   width: 3,
-              //                 ),
-              //                 boxShadow: [
-              //                   BoxShadow(
-              //                     color: Colors.grey,
-              //                     offset: Offset(0.0, 1.0), //(x,y)
-              //                     blurRadius: 6.0,
-              //                   ),
-              //                 ],
-              //                 shape: BoxShape.circle,
-              //                 image: DecorationImage(
-              //                   fit: BoxFit.cover,
-              //                   image: NetworkImage(
-              //                       'https://images.pexels.com/photos/4350057/pexels-photo-4350057.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'),
-              //                 )),
-              //           ),
-              //         ],
-              //       ),
-              //     ),
-              //     Positioned(
-              //       top: 110,
-              //       child: Container(
-              //         width: deviceWidth(context) - 40,
-              //         margin: EdgeInsets.symmetric(horizontal: 20),
-              //         padding:
-              //             EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-              //         decoration: BoxDecoration(
-              //           borderRadius: BorderRadius.circular(20),
-              //           color: Colors.white,
-              //           boxShadow: [
-              //             BoxShadow(
-              //               color: Colors.grey,
-              //               offset: Offset(0.0, 1.0), //(x,y)
-              //               blurRadius: 6.0,
-              //             ),
-              //           ],
-              //         ),
-              //         child: Row(
-              //           children: [
-              //             Icon(Icons.search),
-              //             Text('Coba cari materi belajarmu di sini')
-              //           ],
-              //         ),
-              //       ),
-              //     ),
-              //   ],
-              // ),
+              SizedBox(height: 10),
               PosterBaner(),
+              SizedBox(height: 10),
               Container(
                 width: deviceWidth(context),
                 padding: EdgeInsets.all(20),
@@ -107,33 +46,7 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                     SizedBox(height: 10),
-                    GridView.count(
-                      crossAxisCount: 4,
-                      shrinkWrap: true,
-                      padding: EdgeInsets.symmetric(horizontal: 10),
-                      physics: NeverScrollableScrollPhysics(),
-                      children: mapel.map((e) {
-                        var index = mapel.indexOf(e);
-                        return Container(
-                            width: deviceWidth(context) / 4,
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                CircleAvatar(
-                                  radius: 40,
-                                  backgroundImage: NetworkImage(index % 2 != 0
-                                      ? 'https://image.flaticon.com/icons/png/512/2232/2232688.png'
-                                      : 'https://image.flaticon.com/icons/png/512/501/501405.png'),
-                                ),
-                                SizedBox(height: 5),
-                                Text('Menu $index',
-                                    style: fontBlack.copyWith(
-                                      fontSize: 10,
-                                    )),
-                              ],
-                            ));
-                      }).toList(),
-                    ),
+                    GridMapel()
                   ],
                 ),
               ),
@@ -231,11 +144,6 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
-              Container(
-                  margin: EdgeInsets.fromLTRB(10, 20, 10, 10),
-                  child: Text('Mata Pelajaran',
-                      style: fontBlack.copyWith(fontSize: 18))),
-              GridMapel()
             ],
           ),
         ));

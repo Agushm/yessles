@@ -3,67 +3,32 @@ part of '../widgets.dart';
 class GridMapel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-        shrinkWrap: true,
-        padding: EdgeInsets.symmetric(horizontal: 10),
-        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-            maxCrossAxisExtent: 200,
-            childAspectRatio: 3 / 2,
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10),
-        itemCount: mapel.length,
-        itemBuilder: (BuildContext ctx, index) {
-          if (index == 5) {
-            return Stack(
+    return GridView.count(
+      crossAxisCount: 4,
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
+      children: mapel.map((e) {
+        var index = mapel.indexOf(e);
+        return Container(
+            width: deviceWidth(context) / 4,
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
               children: [
-                Container(
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                      color: ColorBase.primary,
-                      borderRadius: BorderRadius.circular(15)),
+                CircleAvatar(
+                  radius: 26,
+                  backgroundImage: NetworkImage(index % 2 != 0
+                      ? 'https://image.flaticon.com/icons/png/512/2232/2232688.png'
+                      : 'https://image.flaticon.com/icons/png/512/501/501405.png'),
                 ),
-                Positioned(
-                  top: 0,
-                  right: 5,
-                  child: Icon(Icons.more_horiz_rounded,
-                      color: Colors.white.withOpacity(0.1), size: 65),
-                ),
-                InkWell(
-                  onTap: () {
-                    mapelBottomSheet(context);
-                  },
-                  child: Container(
-                    alignment: Alignment.center,
-                    child: Text(
-                      "Lainnya",
-                      style: fontWhite.copyWith(
-                          fontSize: 18, fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                ),
+                SizedBox(height: 3),
+                Text('${e['nama_mapel']}',
+                    textAlign: TextAlign.center,
+                    style: fontBlack.copyWith(
+                      fontSize: 10,
+                    )),
               ],
-            );
-          }
-          return Stack(
-            children: [
-              Container(
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                    color: ColorBase.primary,
-                    borderRadius: BorderRadius.circular(15)),
-              ),
-              Icon(Icons.book_outlined,
-                  color: Colors.white.withOpacity(0.1), size: 80),
-              Container(
-                alignment: Alignment.center,
-                child: Text(
-                  mapel[index]["nama_mapel"],
-                  style: fontWhite.copyWith(
-                      fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-              ),
-            ],
-          );
-        });
+            ));
+      }).toList(),
+    );
   }
 }

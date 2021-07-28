@@ -31,118 +31,155 @@ class _LoginPageState extends State<LoginPage> {
                 colorFilter: new ColorFilter.mode(
                     Colors.black.withOpacity(0.9), BlendMode.dstATop),
                 image: NetworkImage(
-                    'https://images.pexels.com/photos/5428011/pexels-photo-5428011.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'),
-              ),
-            ),
-          ),
-          Positioned(
-            top: 40,
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
-                'Yessles',
-                style: fontWhite.copyWith(fontSize: 20),
+                    'https://image.freepik.com/free-photo/school-office-tools-white-background_1249-663.jpg'),
               ),
             ),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Theme(
-                data: ThemeData(
-                    unselectedWidgetColor: Colors.white,
-                    toggleableActiveColor: ColorBase.primary),
-                child: Container(
-                  margin: EdgeInsets.symmetric(horizontal: 10),
-                  child: Row(
-                    children: [
-                      Checkbox(
-                        checkColor: Colors.white,
-                        value: isAgreeRules,
-                        onChanged: (newValue) {
-                          setState(() {
-                            isAgreeRules = newValue;
-                          });
-                        }, //  <-- leading Checkbox
-                      ),
-                      Expanded(
-                        //width: deviceWidth(context) - 100,
-                        child: RichText(
-                          text: TextSpan(
-                            text:
-                                "Dengan melakukan pendaftaran anda menyetujui ",
-                            style: fontWhite.copyWith(
-                                fontSize: 14, fontWeight: FontWeight.w400),
-                            children: [
-                              TextSpan(
-                                // recognizer: new TapGestureRecognizer()
-                                //   ..onTap = () => Get.to(TermPage('term')),
-                                text: "Syarat & Ketentuan",
-                                style: fontWhite.copyWith(
-                                    color: ColorBase.primary,
-                                    fontWeight: FontWeight.w600),
-                              ),
-                              TextSpan(
-                                text: " kami",
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+              SizedBox(
+                height: 150,
               ),
-              SizedBox(height: 10),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 20),
-                child: MaterialButton(
-                  elevation: 0,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                  color: ColorBase.primary,
-                  padding: EdgeInsets.symmetric(vertical: 10),
-                  onPressed: () {
-                    if (isAgreeRules!) {
-                      Get.offAll(MainPage());
-                    } else {
-                      DialogUtils.instance.showInfo(context,
-                          title: 'Syarat & Ketentuan',
-                          message:
-                              "Anda harus menyetujui syarat dan ketentuan kami",
-                          btnText: 'Setuju', onPressed: () {
-                        setState(() {
-                          isAgreeRules = true;
-                        });
-                        Get.back();
-                      });
-                    }
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        padding: EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(180)),
-                        child: SvgPicture.asset(
-                          'assets/icons/google.svg',
-                          width: 25,
-                          height: 25,
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Selamat Datang di Yessles!',
+                      style: fontBlack.copyWith(
+                          fontSize: 28, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      margin: EdgeInsets.symmetric(vertical: 5),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Email atau Nomor WhatsApp',
+                              style: fontBlack.copyWith(
+                                  fontSize: 16, fontWeight: FontWeight.w500)),
+                          SizedBox(height: 5),
+                          TextFormField(
+                            decoration: InputDecoration(
+                                fillColor: Colors.white,
+                                filled: true,
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5),
+                                  borderSide: BorderSide(width: 1.5),
+                                ),
+                                hintStyle: fontBlack.copyWith(
+                                    fontSize: 12, color: Colors.black54),
+                                hintText: 'Masukkan email atau nomor WhatsApp'),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.symmetric(vertical: 5),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Password',
+                              style: fontBlack.copyWith(
+                                  fontSize: 16, fontWeight: FontWeight.w500)),
+                          SizedBox(height: 5),
+                          TextFormField(
+                            obscureText: true,
+                            decoration: InputDecoration(
+                                fillColor: Colors.white,
+                                filled: true,
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5),
+                                  borderSide: BorderSide(width: 1.5),
+                                ),
+                                hintStyle: fontBlack.copyWith(
+                                    fontSize: 12, color: Colors.black54),
+                                hintText: 'Masukkan password'),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    Container(
+                      width: double.infinity,
+                      child: MaterialButton(
+                        height: 50,
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(60)),
+                        color: ColorBase.primary,
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                        onPressed: () {
+                          Get.offAll(MainPage());
+                        },
+                        child: Text('Login',
+                            style: fontWhite.copyWith(
+                                fontSize: 14, fontWeight: FontWeight.w500)),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.symmetric(vertical: 15),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Container(height: 1, color: Colors.black54),
+                          ),
+                          Container(
+                              padding: EdgeInsets.symmetric(horizontal: 10),
+                              child: Text('Atau', style: fontBlack)),
+                          Expanded(
+                            child: Container(height: 1, color: Colors.black54),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      child: MaterialButton(
+                        elevation: 0,
+                        height: 50,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(60)),
+                        color: Colors.blue,
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                        onPressed: () {
+                          Get.offAll(MainPage());
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            SizedBox(width: 20),
+                            Container(
+                              padding: EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(180)),
+                              child: SvgPicture.asset(
+                                'assets/icons/google.svg',
+                                width: 25,
+                                height: 25,
+                              ),
+                            ),
+                            Expanded(
+                              child: Container(
+                                alignment: Alignment.center,
+                                child: Text('Login Dengan Google',
+                                    style: fontWhite.copyWith(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500)),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      SizedBox(width: 5),
-                      Text('Masuk dengan Google',
-                          style: fontWhite.copyWith(
-                              fontSize: 18, fontWeight: FontWeight.w500)),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
-              SizedBox(height: 20),
-              SizedBox(height: 60),
             ],
           ),
         ],

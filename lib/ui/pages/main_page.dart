@@ -45,6 +45,7 @@ class _MainPageState extends State<MainPage> {
             label: 'Akun',
           ),
         ],
+        type: BottomNavigationBarType.fixed,
         currentIndex: _selectedIndex,
         unselectedItemColor: Colors.grey,
         selectedItemColor: Colors.amber[800],
