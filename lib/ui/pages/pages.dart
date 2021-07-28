@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:yessles/core/models/models.dart';
 import 'package:yessles/ui/widgets/widgets.dart';
 import 'package:yessles/utils/dialog_utils.dart';
+import 'package:yessles/utils/string_converter.dart';
 import 'constants/theme.dart';
 import 'constants/strings.dart';
 
@@ -16,3 +17,4 @@ part 'profile_page.dart';
 part 'schedule_page.dart';
 part 'notification_page.dart';
 part 'detail_mapel_page.dart';
+part 'article_page.dart';

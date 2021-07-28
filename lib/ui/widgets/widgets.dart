@@ -6,6 +6,7 @@ import 'package:transparent_image/transparent_image.dart';
 import 'package:yessles/core/models/models.dart';
 import 'package:yessles/ui/pages/constants/strings.dart';
 import 'package:yessles/ui/pages/constants/theme.dart';
+import 'package:yessles/ui/pages/pages.dart';
 
 part 'home/grid_mapel.dart';
 part 'dialog/loading_dialog.dart';

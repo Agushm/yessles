@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
                                 fontSize: 12, color: Colors.blue))
                       ],
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(height: 20),
                     GridMapel()
                   ],
                 ),
@@ -76,68 +76,72 @@ class _HomePageState extends State<HomePage> {
                         itemCount: listBerita.length,
                         itemBuilder: (BuildContext context, int index) {
                           var data = listBerita[index];
-                          return Container(
-                            margin: EdgeInsets.all(5),
-                            width: 300,
-                            height: 200,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(15),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.5),
-                                  spreadRadius: 2,
-                                  blurRadius: 2,
-                                  offset: Offset(
-                                      0, 1), // changes position of shadow
-                                ),
-                              ],
-                            ),
-                            child: Column(
-                              children: [
-                                Expanded(
-                                    child: Container(
-                                  width: 320,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(15),
-                                        topRight: Radius.circular(15),
-                                      ),
-                                      image: DecorationImage(
-                                          fit: BoxFit.cover,
-                                          image: NetworkImage(data['gambar']))),
-                                )),
-                                Container(
-                                    alignment: Alignment.centerLeft,
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 10, vertical: 5),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          '${data['judul']}',
-                                          style: fontBlack.copyWith(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w500),
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
+                          return InkWell(
+                            onTap: () => Get.to(ArticlePage(data)),
+                            child: Container(
+                              margin: EdgeInsets.all(5),
+                              width: 300,
+                              height: 200,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(15),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.5),
+                                    spreadRadius: 2,
+                                    blurRadius: 2,
+                                    offset: Offset(
+                                        0, 1), // changes position of shadow
+                                  ),
+                                ],
+                              ),
+                              child: Column(
+                                children: [
+                                  Expanded(
+                                      child: Container(
+                                    width: 320,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(15),
+                                          topRight: Radius.circular(15),
                                         ),
-                                        Container(
-                                          width: 300,
-                                          child: Text(
-                                            '${data['deskripsi']}',
-                                            maxLines: 2,
-                                            overflow: TextOverflow.ellipsis,
+                                        image: DecorationImage(
+                                            fit: BoxFit.cover,
+                                            image:
+                                                NetworkImage(data['gambar']))),
+                                  )),
+                                  Container(
+                                      alignment: Alignment.centerLeft,
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 10, vertical: 5),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            '${data['judul']}',
                                             style: fontBlack.copyWith(
-                                              color: Colors.black54,
-                                              fontSize: 12,
-                                            ),
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w500),
+                                            maxLines: 1,
+                                            overflow: TextOverflow.ellipsis,
                                           ),
-                                        )
-                                      ],
-                                    )),
-                              ],
+                                          Container(
+                                            width: 300,
+                                            child: Text(
+                                              '${parseHtmlString(data['deskripsi'])}',
+                                              maxLines: 2,
+                                              overflow: TextOverflow.ellipsis,
+                                              style: fontBlack.copyWith(
+                                                color: Colors.black54,
+                                                fontSize: 12,
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      )),
+                                ],
+                              ),
                             ),
                           );
                         }),
