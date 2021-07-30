@@ -117,7 +117,7 @@ class _LoginPageState extends State<LoginPage> {
                           color: ColorBase.primary,
                           padding: EdgeInsets.symmetric(vertical: 10),
                           onPressed: () {
-                            Get.offAll(MainPage());
+                            Get.off(MainPage());
                           },
                           child: Text('Login',
                               style: fontWhite.copyWith(
@@ -151,7 +151,7 @@ class _LoginPageState extends State<LoginPage> {
                           color: Colors.blue,
                           padding: EdgeInsets.symmetric(vertical: 10),
                           onPressed: () {
-                            Get.offAll(MainPage());
+                            Get.off(MainPage());
                           },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
