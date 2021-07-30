@@ -70,7 +70,7 @@ class _LoginPageState extends State<LoginPage> {
                                   fillColor: Colors.white,
                                   filled: true,
                                   border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(5),
+                                    borderRadius: BorderRadius.circular(10),
                                     borderSide: BorderSide(width: 1.5),
                                   ),
                                   hintStyle: fontBlack.copyWith(
@@ -96,7 +96,7 @@ class _LoginPageState extends State<LoginPage> {
                                   fillColor: Colors.white,
                                   filled: true,
                                   border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(5),
+                                    borderRadius: BorderRadius.circular(10),
                                     borderSide: BorderSide(width: 1.5),
                                   ),
                                   hintStyle: fontBlack.copyWith(

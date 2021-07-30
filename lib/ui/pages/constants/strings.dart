@@ -1,7 +1,5 @@
-final List<String> imgList = [
-  'https://image.freepik.com/free-psd/3d-render-colorful-sale-discount-promotion-banner_125755-678.jpg',
-  'https://image.freepik.com/free-psd/super-sale-banner_1393-365.jpg'
-];
+import 'package:yessles/core/models/models.dart';
+
 final List<Map> listBanner = [
   {
     "id": 1,
@@ -26,26 +24,92 @@ final List<Map> mapel = [
   {
     "nama_mapel": "Matematika",
     "durasi": "90 menit",
+    "list_mentor": [
+      Teacher(
+          teacherName: 'Prof Manshur',
+          teacherAddress: 'Solo Baru , Sukoharjo, Jawa Tengah',
+          teacherRating: 4,
+          teacherImage:
+              'https://image.freepik.com/free-photo/half-profile-image-beautiful-young-woman-with-bob-hairdo-posing-gazing-with-eyes-full-reproach-suspicion-human-facial-expressions-emotions-reaction-feelings_343059-4660.jpg'),
+      Teacher(
+          teacherName: 'Ahmad Maulana, S.Pd',
+          teacherAddress: 'Solo Baru , Sukoharjo, Jawa Tengah',
+          teacherRating: 3,
+          teacherImage:
+              'https://image.freepik.com/free-photo/half-profile-image-beautiful-young-woman-with-bob-hairdo-posing-gazing-with-eyes-full-reproach-suspicion-human-facial-expressions-emotions-reaction-feelings_343059-4660.jpg'),
+    ],
   },
   {
     "nama_mapel": "IPA",
     "durasi": "90 menit",
+    "list_mentor": [
+      Teacher(
+          teacherName: 'Prof Manshur',
+          teacherAddress: 'Solo Baru , Sukoharjo, Jawa Tengah',
+          teacherRating: 4,
+          teacherImage:
+              'https://image.freepik.com/free-photo/half-profile-image-beautiful-young-woman-with-bob-hairdo-posing-gazing-with-eyes-full-reproach-suspicion-human-facial-expressions-emotions-reaction-feelings_343059-4660.jpg'),
+      Teacher(
+          teacherName: 'Ahmad Maulana, S.Pd',
+          teacherAddress: 'Solo Baru , Sukoharjo, Jawa Tengah',
+          teacherRating: 3,
+          teacherImage:
+              'https://image.freepik.com/free-photo/half-profile-image-beautiful-young-woman-with-bob-hairdo-posing-gazing-with-eyes-full-reproach-suspicion-human-facial-expressions-emotions-reaction-feelings_343059-4660.jpg'),
+    ],
   },
   {
-    "nama_mapel": "Bahasa\nInggris",
+    "nama_mapel": "Bahasa Inggris",
     "durasi": "90 menit",
+    "list_mentor": [
+      Teacher(
+          teacherName: 'Joni, M.Kom',
+          teacherAddress: 'Solo Baru , Sukoharjo, Jawa Tengah',
+          teacherRating: 4,
+          teacherImage:
+              'https://image.freepik.com/free-photo/half-profile-image-beautiful-young-woman-with-bob-hairdo-posing-gazing-with-eyes-full-reproach-suspicion-human-facial-expressions-emotions-reaction-feelings_343059-4660.jpg'),
+      Teacher(
+          teacherName: 'Ahmad Maulana, S.Pd',
+          teacherAddress: 'Solo Baru , Sukoharjo, Jawa Tengah',
+          teacherRating: 3,
+          teacherImage:
+              'https://image.freepik.com/free-photo/half-profile-image-beautiful-young-woman-with-bob-hairdo-posing-gazing-with-eyes-full-reproach-suspicion-human-facial-expressions-emotions-reaction-feelings_343059-4660.jpg'),
+    ],
   },
   {
-    "nama_mapel": "Bahasa\nIndonesia",
+    "nama_mapel": "Bahasa Indonesia",
     "durasi": "90 menit",
+    "list_mentor": [
+      Teacher(
+          teacherName: 'Pepeng, S.Pd',
+          teacherAddress: 'Solo Baru , Sukoharjo, Jawa Tengah',
+          teacherRating: 3,
+          teacherImage:
+              'https://image.freepik.com/free-photo/half-profile-image-beautiful-young-woman-with-bob-hairdo-posing-gazing-with-eyes-full-reproach-suspicion-human-facial-expressions-emotions-reaction-feelings_343059-4660.jpg'),
+    ],
   },
   {
     "nama_mapel": "Fisika",
     "durasi": "90 menit",
+    "list_mentor": [
+      Teacher(
+          teacherName: 'Elon Musk, S.Kom, M.Kom',
+          teacherAddress: 'Solo Baru , Sukoharjo, Jawa Tengah',
+          teacherRating: 4,
+          teacherImage:
+              'https://image.freepik.com/free-photo/half-profile-image-beautiful-young-woman-with-bob-hairdo-posing-gazing-with-eyes-full-reproach-suspicion-human-facial-expressions-emotions-reaction-feelings_343059-4660.jpg'),
+    ],
   },
   {
     "nama_mapel": "Kimia",
     "durasi": "90 menit",
+    "list_mentor": [
+      Teacher(
+          teacherName: 'Prof. Enstein',
+          teacherAddress: 'Solo Baru , Sukoharjo, Jawa Tengah',
+          teacherRating: 4,
+          teacherImage:
+              'https://image.freepik.com/free-photo/half-profile-image-beautiful-young-woman-with-bob-hairdo-posing-gazing-with-eyes-full-reproach-suspicion-human-facial-expressions-emotions-reaction-feelings_343059-4660.jpg'),
+    ],
   }
 ];
 
@@ -107,3 +171,37 @@ final List<Map> listBerita = [
     "deletedAt": null
   }
 ];
+
+// Transaction
+
+List<Map> transactionPaket = [
+  {'nama': 'Paket Reguler'},
+  {'nama': 'Paket Mandiri'},
+];
+
+List<Map> transactionClass = [
+  {
+    'class_name': 'SD',
+    'list_class': ['1', '2', '3', '4', '5', '6']
+  },
+  {
+    'class_name': 'SMP',
+    'list_class': ['7', '8', '9']
+  },
+  {
+    'class_name': 'SMA',
+    'list_class': ['10', '11', '12']
+  },
+];
+
+List teachingDays = [
+  'Senin',
+  'Selasa',
+  'Rabu',
+  'Kamis',
+  "Jum'at",
+  'Sabtu',
+  'Minggu'
+];
+
+List teachingSession = ['Sesi 1 (16:00 - 17:00)', 'Sesi 2 (18:30 - 19:30)'];

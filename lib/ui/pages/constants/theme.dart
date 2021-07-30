@@ -22,6 +22,51 @@ TextStyle fontWhite = GoogleFonts.roboto(
   fontSize: 15,
 );
 
+InputDecoration decorationForm = InputDecoration(
+  fillColor: Colors.white,
+  filled: true,
+  border: OutlineInputBorder(
+    borderRadius: BorderRadius.circular(10),
+    borderSide: BorderSide(width: 1.5),
+  ),
+  isDense: true, // Added this
+  contentPadding: EdgeInsets.all(8), // Added this
+  hintStyle: fontBlack.copyWith(fontSize: 12, color: Colors.black54),
+);
+
+MaterialButton commonButton(
+    {String? btnText, Function()? onPressed, Color? btnColor}) {
+  return MaterialButton(
+    height: 50,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(60),
+    ),
+    padding: EdgeInsets.symmetric(vertical: 15),
+    color: btnColor ?? ColorBase.primary,
+    onPressed: onPressed,
+    child: Text(btnText!, style: fontWhite),
+  );
+}
+
+MaterialButton btnMentor(
+    {String? btnText, Function()? onPressed, Color? btnColor}) {
+  return MaterialButton(
+    height: 20,
+    shape: RoundedRectangleBorder(
+      side: BorderSide(
+        color: ColorBase.primary,
+        width: 2,
+      ),
+      borderRadius: BorderRadius.circular(60),
+    ),
+    padding: EdgeInsets.symmetric(vertical: 15),
+    color: Colors.white,
+    onPressed: onPressed,
+    child: Text('+ Pilih Mentor',
+        style: fontBlack.copyWith(fontSize: 12, color: ColorBase.primary)),
+  );
+}
+
 //* Device size
 double deviceWidth(BuildContext context) {
   return MediaQuery.of(context).size.width;
