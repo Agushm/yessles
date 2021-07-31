@@ -66,17 +66,9 @@ class _LoginPageState extends State<LoginPage> {
                                     fontSize: 16, fontWeight: FontWeight.w500)),
                             SizedBox(height: 5),
                             TextFormField(
-                              decoration: InputDecoration(
-                                  fillColor: Colors.white,
-                                  filled: true,
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    borderSide: BorderSide(width: 1.5),
-                                  ),
-                                  hintStyle: fontBlack.copyWith(
-                                      fontSize: 12, color: Colors.black54),
+                              decoration: decorationForm.copyWith(
                                   hintText:
-                                      'Masukkan email atau nomor WhatsApp'),
+                                      'Masukkan Email atau Nomor WhatsApp'),
                             ),
                           ],
                         ),
@@ -92,16 +84,8 @@ class _LoginPageState extends State<LoginPage> {
                             SizedBox(height: 5),
                             TextFormField(
                               obscureText: true,
-                              decoration: InputDecoration(
-                                  fillColor: Colors.white,
-                                  filled: true,
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    borderSide: BorderSide(width: 1.5),
-                                  ),
-                                  hintStyle: fontBlack.copyWith(
-                                      fontSize: 12, color: Colors.black54),
-                                  hintText: 'Masukkan password'),
+                              decoration: decorationForm.copyWith(
+                                  hintText: 'Masukkan Password'),
                             ),
                           ],
                         ),
@@ -117,7 +101,7 @@ class _LoginPageState extends State<LoginPage> {
                           color: ColorBase.primary,
                           padding: EdgeInsets.symmetric(vertical: 10),
                           onPressed: () {
-                            Get.off(MainPage());
+                            Get.to(MainPage());
                           },
                           child: Text('Login',
                               style: fontWhite.copyWith(
@@ -151,7 +135,7 @@ class _LoginPageState extends State<LoginPage> {
                           color: Colors.blue,
                           padding: EdgeInsets.symmetric(vertical: 10),
                           onPressed: () {
-                            Get.off(MainPage());
+                            Get.to(MainPage());
                           },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,

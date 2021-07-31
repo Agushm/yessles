@@ -36,6 +36,8 @@ class TransactionProvider with ChangeNotifier {
       null,
       null,
     ];
+
+    notifyListeners();
   }
 
   void addSelectedMapel(Map data) {

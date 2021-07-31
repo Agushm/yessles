@@ -9,7 +9,7 @@ class ColorBase {
 
 String iconsPath = 'assets/icons/';
 
-TextStyle fontBlack = GoogleFonts.roboto(
+TextStyle fontBlack = GoogleFonts.poppins(
   color: Colors.black,
   fontSize: 15,
 );
@@ -17,7 +17,7 @@ TextStyle fontBlack = GoogleFonts.roboto(
 TextStyle font2Black =
     GoogleFonts.openSans(fontSize: 12, fontWeight: FontWeight.w300);
 
-TextStyle fontWhite = GoogleFonts.roboto(
+TextStyle fontWhite = GoogleFonts.poppins(
   color: Colors.white,
   fontSize: 15,
 );

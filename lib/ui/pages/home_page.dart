@@ -64,7 +64,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Container(
                     width: double.infinity,
-                    height: 350,
+                    height: 300,
                     child: ListView.separated(
                         scrollDirection: Axis.horizontal,
                         separatorBuilder: (context, index) => Padding(
@@ -113,7 +113,7 @@ class _HomePageState extends State<HomePage> {
                                   Container(
                                       alignment: Alignment.centerLeft,
                                       padding: EdgeInsets.symmetric(
-                                          horizontal: 10, vertical: 5),
+                                          horizontal: 10, vertical: 10),
                                       child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
