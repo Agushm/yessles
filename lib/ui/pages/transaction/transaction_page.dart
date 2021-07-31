@@ -13,7 +13,7 @@ class TransactionPage extends StatelessWidget {
         elevation: 1,
         backgroundColor: Colors.white,
         title: Text(
-          'Beli Paket Pembelajaran',
+          'Order Jadwal',
           style: fontBlack.copyWith(
               fontSize: 20,
               color: ColorBase.primary,

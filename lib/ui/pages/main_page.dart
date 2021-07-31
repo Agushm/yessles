@@ -48,7 +48,7 @@ class _MainPageState extends State<MainPage> {
         type: BottomNavigationBarType.fixed,
         currentIndex: _selectedIndex,
         unselectedItemColor: Colors.grey,
-        selectedItemColor: Colors.amber[800],
+        selectedItemColor: ColorBase.primary,
         onTap: _onItemTapped,
       ),
     );

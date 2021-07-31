@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ColorBase {
-  static final primary = Color(0xFFFF7600);
+  static final primary = Color(0xFFEC422C);
   static final blue = Color(0xFF0176E8);
   static final grey = Color(0xFFF1F1F1);
 }
@@ -30,7 +30,7 @@ InputDecoration decorationForm = InputDecoration(
     borderSide: BorderSide(width: 1.5),
   ),
   isDense: true, // Added this
-  contentPadding: EdgeInsets.all(8), // Added this
+  contentPadding: EdgeInsets.all(10), // Added this
   hintStyle: fontBlack.copyWith(fontSize: 12, color: Colors.black54),
 );
 

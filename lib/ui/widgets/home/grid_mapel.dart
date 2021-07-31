@@ -21,11 +21,14 @@ class GridMapel extends StatelessWidget {
                       : 'https://image.flaticon.com/icons/png/512/501/501405.png'),
                 ),
                 SizedBox(height: 3),
-                Text('${e['nama_mapel']}',
-                    textAlign: TextAlign.center,
-                    style: fontBlack.copyWith(
-                      fontSize: 10,
-                    )),
+                Container(
+                  width: (deviceWidth(context) - 40) / 4,
+                  child: Text('${e['nama_mapel']}',
+                      textAlign: TextAlign.center,
+                      style: fontBlack.copyWith(
+                        fontSize: 9,
+                      )),
+                ),
               ],
             ));
       }).toList(),

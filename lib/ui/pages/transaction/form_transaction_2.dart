@@ -35,7 +35,7 @@ class FormTransaction2 extends StatelessWidget {
                 width: double.infinity,
                 child: commonButton(
                     btnText: 'Batal',
-                    btnColor: Colors.red,
+                    btnColor: Colors.blue,
                     onPressed: () {
                       Provider.of<TransactionProvider>(context, listen: false)
                           .cancelTransaction();

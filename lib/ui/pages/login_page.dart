@@ -25,14 +25,14 @@ class _LoginPageState extends State<LoginPage> {
             height: deviceHeight(context),
             width: deviceWidth(context),
             decoration: BoxDecoration(
-              //color: Colors.white,
-              image: new DecorationImage(
-                fit: BoxFit.cover,
-                colorFilter: new ColorFilter.mode(
-                    Colors.black.withOpacity(0.9), BlendMode.dstATop),
-                image: NetworkImage(
-                    'https://image.freepik.com/free-photo/school-office-tools-white-background_1249-663.jpg'),
-              ),
+              color: Colors.white,
+              // image: new DecorationImage(
+              //   fit: BoxFit.cover,
+              //   colorFilter: new ColorFilter.mode(
+              //       Colors.black.withOpacity(0.9), BlendMode.dstATop),
+              //   image: NetworkImage(
+              //       'https://image.freepik.com/free-photo/school-office-tools-white-background_1249-663.jpg'),
+              // ),
             ),
           ),
           SingleChildScrollView(
