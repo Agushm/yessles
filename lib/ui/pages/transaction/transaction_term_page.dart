@@ -40,8 +40,13 @@ class _TransactionTermState extends State<TransactionTerm> {
               builder: (context, prov, _) {
                 return SingleChildScrollView(
                     child: Container(
-                        margin: EdgeInsets.only(bottom: 100),
-                        padding: EdgeInsets.symmetric(horizontal: 5),
+                        margin: EdgeInsets.only(
+                            bottom: 100, left: 10, right: 10, top: 20),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(15)),
                         child: htmlWidget(htmlTerm)));
               },
             ),

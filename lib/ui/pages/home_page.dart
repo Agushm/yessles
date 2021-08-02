@@ -81,7 +81,7 @@ class _HomePageState extends State<HomePage> {
                             child: Container(
                               margin: EdgeInsets.all(5),
                               width: 300,
-                              height: 200,
+                              height: 210,
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(15),
@@ -99,7 +99,7 @@ class _HomePageState extends State<HomePage> {
                                 children: [
                                   Expanded(
                                       child: Container(
-                                    width: 320,
+                                    width: 300,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.only(
                                           topLeft: Radius.circular(15),
@@ -113,7 +113,7 @@ class _HomePageState extends State<HomePage> {
                                   Container(
                                       alignment: Alignment.centerLeft,
                                       padding: EdgeInsets.symmetric(
-                                          horizontal: 10, vertical: 10),
+                                          horizontal: 10, vertical: 5),
                                       child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,

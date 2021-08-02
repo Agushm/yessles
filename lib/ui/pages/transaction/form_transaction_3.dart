@@ -18,7 +18,9 @@ class FormTransaction3 extends StatelessWidget {
               width: double.infinity,
               child: commonButton(
                 btnText: 'Selanjutnya',
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(FormTransaction4());
+                },
               ),
             ),
             SizedBox(height: 10),
@@ -27,12 +29,18 @@ class FormTransaction3 extends StatelessWidget {
               child: commonButton(
                   btnText: 'Batal',
                   btnColor: Colors.blue,
-                  onPressed: () {
-                    Provider.of<TransactionProvider>(context, listen: false)
-                        .cancelTransaction();
-                    Get.back();
-                    Get.back();
-                    Get.back();
+                  onPressed: () async {
+                    var confirm = await DialogUtils.instance.showConfirmDialog(
+                        context,
+                        'Batalkan Order Jadwal',
+                        'Yakin untuk membatalkan transaksi ?');
+                    if (confirm!) {
+                      Provider.of<TransactionProvider>(context, listen: false)
+                          .cancelTransaction();
+                      Get.back();
+                      Get.back();
+                      Get.back();
+                    }
                   }),
             ),
           ],
@@ -74,7 +82,8 @@ Widget buildForm3() {
                         ),
                         Builder(
                           builder: (context) {
-                            if (prov.selectedTeacher[index] == null) {
+                            if (prov.selectedTeacher[index]['teacher'] ==
+                                null) {
                               return Container(
                                 width: double.infinity,
                                 child: btnMentor(
@@ -86,7 +95,8 @@ Widget buildForm3() {
                               );
                             }
 
-                            var teacher = prov.selectedTeacher[index];
+                            var teacher =
+                                prov.selectedTeacher[index]['teacher'];
                             return Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -97,11 +107,11 @@ Widget buildForm3() {
                                   child: widgetSelectTeacher(teacher),
                                 ),
                                 labelTextForm('Pilih Hari'),
-                                DropdownButtonFormField(
+                                DropdownButtonFormField<String>(
                                   value: teachingDays[0],
                                   isExpanded: true,
                                   items: teachingDays
-                                      .map((e) => DropdownMenuItem(
+                                      .map((e) => DropdownMenuItem<String>(
                                             child: Text('$e',
                                                 style: fontBlack.copyWith(
                                                     fontSize: 13,
@@ -111,14 +121,16 @@ Widget buildForm3() {
                                           ))
                                       .toList(),
                                   decoration: decorationForm,
-                                  onChanged: (value) {},
+                                  onChanged: (value) {
+                                    prov.addSelectedTeachingDays(index, value!);
+                                  },
                                 ),
                                 labelTextForm('Pilih Sesi / Jam'),
-                                DropdownButtonFormField(
+                                DropdownButtonFormField<String>(
                                   value: teachingSession[0],
                                   isExpanded: true,
                                   items: teachingSession
-                                      .map((e) => DropdownMenuItem(
+                                      .map((e) => DropdownMenuItem<String>(
                                             child: Text('$e',
                                                 style: fontBlack.copyWith(
                                                     fontSize: 13,
@@ -128,7 +140,10 @@ Widget buildForm3() {
                                           ))
                                       .toList(),
                                   decoration: decorationForm,
-                                  onChanged: (value) {},
+                                  onChanged: (value) {
+                                    prov.addSelectedTeachingSession(
+                                        index, value!);
+                                  },
                                 ),
                               ],
                             );

@@ -66,7 +66,7 @@ Widget widgetTeacher(Teacher data) {
   );
 }
 
-Widget widgetSelectTeacher(Teacher data) {
+Widget widgetSelectTeacher(Teacher data, {bool showIcon = true}) {
   return Row(
     children: [
       Container(
@@ -107,7 +107,7 @@ Widget widgetSelectTeacher(Teacher data) {
           ],
         ),
       ),
-      Icon(Icons.arrow_forward_ios_rounded),
+      showIcon ? Icon(Icons.arrow_forward_ios_rounded) : SizedBox(),
     ],
   );
 }

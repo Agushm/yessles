@@ -13,11 +13,13 @@ class TransactionProvider with ChangeNotifier {
 
   void changeSelectedPaket(Map data) {
     selectedPaket = data;
+
     notifyListeners();
   }
 
   void changeSelectedClass(Map data) {
     selectedClass = data;
+    selectedNumberClass = selectedClass!['list_class'][0];
     notifyListeners();
   }
 
@@ -31,10 +33,22 @@ class TransactionProvider with ChangeNotifier {
 
   void cancelTransaction() {
     _selectedMapel = [];
-    _selectedTeacher = [
-      null,
-      null,
-      null,
+    _selectedTeacher = _selectedTeacher = [
+      {
+        'teacher': null,
+        'day': teachingDays[0],
+        'sesi': teachingSession[0],
+      },
+      {
+        'teacher': null,
+        'day': teachingDays[0],
+        'sesi': teachingSession[0],
+      },
+      {
+        'teacher': null,
+        'day': teachingDays[0],
+        'sesi': teachingSession[0],
+      },
     ];
 
     notifyListeners();
@@ -53,15 +67,57 @@ class TransactionProvider with ChangeNotifier {
     }
   }
 
-  List<dynamic> _selectedTeacher = [
-    null,
-    null,
-    null,
+  List<Map> _selectedTeacher = [
+    {
+      'teacher': null,
+      'day': teachingDays[0],
+      'sesi': teachingSession[0],
+    },
+    {
+      'teacher': null,
+      'day': teachingDays[0],
+      'sesi': teachingSession[0],
+    },
+    {
+      'teacher': null,
+      'day': teachingDays[0],
+      'sesi': teachingSession[0],
+    },
   ];
-  List<dynamic> get selectedTeacher => _selectedTeacher;
+  List<Map> get selectedTeacher => _selectedTeacher;
 
   void addSelectedTeacher(int index, Teacher teacher) {
-    _selectedTeacher[index] = teacher;
+    _selectedTeacher[index]['teacher'] = teacher;
     notifyListeners();
   }
+
+  void addSelectedTeachingDays(int index, String data) {
+    _selectedTeacher[index]['days'] = data;
+    notifyListeners();
+  }
+
+  void addSelectedTeachingSession(int index, String data) {
+    _selectedTeacher[index]['sesi'] = data;
+    notifyListeners();
+  }
+
+  // Form 4
+  Map? selectedTeachingMode = {
+    'mode': teachingMode[0],
+    'mode_option': teachingMode[0]['mode_options'][0]
+  };
+
+  void changeSelectedTeachingModeName(Map data) {
+    selectedTeachingMode!['mode'] = data;
+    selectedTeachingMode!['mode_option'] =
+        selectedTeachingMode!['mode']['mode_options'][0];
+    notifyListeners();
+  }
+
+  void changeSelectedTeachingModeOption(String data) {
+    selectedTeachingMode!['mode_option'] = data;
+    notifyListeners();
+  }
+  // End Form
+
 }

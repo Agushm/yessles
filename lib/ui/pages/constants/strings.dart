@@ -205,3 +205,14 @@ List teachingDays = [
 ];
 
 List teachingSession = ['Sesi 1 (16:00 - 17:00)', 'Sesi 2 (18:30 - 19:30)'];
+
+List<Map> teachingMode = [
+  {
+    'mode_name': 'Online',
+    'mode_options': ['Google Meet', 'Zoom', 'Whatsapp Video Call'],
+  },
+  {
+    'mode_name': 'Offline',
+    'mode_options': ['Kantor Yessles', 'Rumah'],
+  },
+];

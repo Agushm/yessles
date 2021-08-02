@@ -9,13 +9,20 @@ class TransactionPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorBase.grey,
       appBar: AppBar(
-        automaticallyImplyLeading: false,
         elevation: 1,
         backgroundColor: Colors.white,
+        leading: IconButton(
+          color: Colors.black,
+          icon: Icon(Icons.arrow_back_ios_rounded),
+          iconSize: 15,
+          onPressed: () {
+            Get.back();
+          },
+        ),
         title: Text(
           'Order Jadwal',
           style: fontBlack.copyWith(
-              fontSize: 20,
+              fontSize: 14,
               color: ColorBase.primary,
               fontWeight: FontWeight.bold),
         ),

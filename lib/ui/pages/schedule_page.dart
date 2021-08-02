@@ -119,7 +119,7 @@ class _SchedulePageState extends State<SchedulePage> {
           onPressed: () {
             Get.to(TransactionTerm());
           },
-          child: Text('Beli Paket Pembelajaran', style: fontWhite),
+          child: Text('Order Jadwal', style: fontWhite),
         ),
       ),
     );

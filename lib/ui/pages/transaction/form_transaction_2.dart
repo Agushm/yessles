@@ -41,7 +41,6 @@ class FormTransaction2 extends StatelessWidget {
                           .cancelTransaction();
                       Get.back();
                       Get.back();
-                      Get.back();
                     }),
               ),
             ],
