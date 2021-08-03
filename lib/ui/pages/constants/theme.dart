@@ -48,6 +48,26 @@ MaterialButton commonButton(
   );
 }
 
+TextButton cancelButton(
+    {String? btnText, Function()? onPressed, Color? btnColor}) {
+  return TextButton(
+    onPressed: onPressed,
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(Icons.close, size: 15, color: Colors.blue),
+        SizedBox(width: 5),
+        Text(
+          btnText!,
+          style: fontBlack.copyWith(
+              fontSize: 16, color: Colors.blue, fontWeight: FontWeight.w500),
+        ),
+      ],
+    ),
+  );
+}
+
 MaterialButton btnMentor(
     {String? btnText, Function()? onPressed, Color? btnColor}) {
   return MaterialButton(

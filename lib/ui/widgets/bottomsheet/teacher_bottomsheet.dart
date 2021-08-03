@@ -42,7 +42,12 @@ teacherBottomSheet(BuildContext? context, int index) {
                         },
                         child: Container(
                             margin: EdgeInsets.symmetric(vertical: 5),
-                            child: widgetSelectTeacher(teacher)),
+                            child: Column(
+                              children: [
+                                widgetSelectTeacher(teacher),
+                                Divider(),
+                              ],
+                            )),
                       );
                     },
                   ),

@@ -23,25 +23,21 @@ class FormTransaction3 extends StatelessWidget {
                 },
               ),
             ),
-            SizedBox(height: 10),
-            Container(
-              width: double.infinity,
-              child: commonButton(
-                  btnText: 'Batal',
-                  btnColor: Colors.blue,
-                  onPressed: () async {
-                    var confirm = await DialogUtils.instance.showConfirmDialog(
-                        context,
-                        'Batalkan Order Jadwal',
-                        'Yakin untuk membatalkan transaksi ?');
-                    if (confirm!) {
-                      Provider.of<TransactionProvider>(context, listen: false)
-                          .cancelTransaction();
-                      Get.back();
-                      Get.back();
-                      Get.back();
-                    }
-                  }),
+            cancelButton(
+              btnText: 'Batal',
+              onPressed: () async {
+                var confirm = await DialogUtils.instance.showConfirmDialog(
+                    context,
+                    'Batalkan Order Jadwal',
+                    'Yakin untuk membatalkan transaksi ?');
+                if (confirm!) {
+                  Provider.of<TransactionProvider>(context, listen: false)
+                      .cancelTransaction();
+                  Get.back();
+                  Get.back();
+                  Get.back();
+                }
+              },
             ),
           ],
         ),
