@@ -23,3 +23,4 @@ part 'mapel/mapel_bottomsheet.dart';
 part 'divider.dart';
 part 'html_widget.dart';
 part 'bottomsheet/teacher_bottomsheet.dart';
+part 'bottomsheet/paying_method_bottomsheet.dart';

@@ -216,3 +216,5 @@ List<Map> teachingMode = [
     'mode_options': ['Kantor Yessles', 'Rumah'],
   },
 ];
+
+List payingMethod = ['Bayar Langsung', 'Transfer Bank'];

@@ -53,6 +53,29 @@ class ConfirmTransactionPage extends StatelessWidget {
                       title: 'Opsi',
                       content: prov.selectedTeachingMode!['mode_option']),
                   buildDetailTransactionMapel(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        width: 100,
+                        child: Text(
+                          'Total Harga',
+                          style: fontBlack.copyWith(
+                              color: Colors.black,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500),
+                        ),
+                      ),
+                      Expanded(
+                        child: Text('Rp 3.450.000',
+                            textAlign: TextAlign.right,
+                            style: fontBlack.copyWith(
+                                color: Colors.green,
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold)),
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
@@ -74,7 +97,7 @@ class ConfirmTransactionPage extends StatelessWidget {
               child: commonButton(
                 btnText: 'Pilih Metode Pembayaran',
                 onPressed: () {
-                  //Get.to(FromTransaction4());
+                  payingMethodBottomSheet(context);
                 },
               ),
             ),

@@ -9,14 +9,6 @@ class _LoginPageState extends State<LoginPage> {
   bool? isAgreeRules = false;
 
   @override
-  void initState() {
-    super.initState();
-    Future.delayed(Duration(seconds: 4)).then((value) async {
-      Get.to(LoginPage());
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
@@ -101,7 +93,7 @@ class _LoginPageState extends State<LoginPage> {
                           color: ColorBase.primary,
                           padding: EdgeInsets.symmetric(vertical: 10),
                           onPressed: () {
-                            Get.to(MainPage());
+                            Get.offAll(MainPage());
                           },
                           child: Text('Login',
                               style: fontWhite.copyWith(
@@ -135,7 +127,7 @@ class _LoginPageState extends State<LoginPage> {
                           color: Colors.blue,
                           padding: EdgeInsets.symmetric(vertical: 10),
                           onPressed: () {
-                            Get.to(MainPage());
+                            Get.offAll(MainPage());
                           },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
