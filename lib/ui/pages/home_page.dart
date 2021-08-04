@@ -23,9 +23,7 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 10),
               PosterBaner(),
-              SizedBox(height: 10),
               Container(
                 width: deviceWidth(context),
                 padding: EdgeInsets.all(20),
@@ -37,7 +35,7 @@ class _HomePageState extends State<HomePage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('Wajib kamu coba',
+                        Text('Mata Pelajaran',
                             style: fontBlack.copyWith(
                                 fontSize: 16, fontWeight: FontWeight.bold)),
                         Text('Lihat semua',
