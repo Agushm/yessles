@@ -27,3 +27,4 @@ part 'transaction/form_transaction_3.dart';
 part 'transaction/form_transaction_4.dart';
 part 'transaction/transaction_term_page.dart';
 part 'transaction/confirm_transaction_page.dart';
+part 'transaction/detail_transaction_page.dart';

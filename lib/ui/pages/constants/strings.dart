@@ -218,3 +218,36 @@ List<Map> teachingMode = [
 ];
 
 List payingMethod = ['Bayar Langsung', 'Transfer Bank'];
+
+List bankMethod = [
+  {
+    "id": 11,
+    "bankId": 1,
+    "method": "ATM",
+    "description":
+        "<p><b></b></p>\n\n<p><b>Bank BRI</b></p><p></p><ol><li>Masukkan kartu ATM dan PIN kamu</li><li>Pilih menu \"Lainnya\"</li><li>Pilih \"Pembayaran/Pembelian\"</li><li>Pilih \"Top Up Link Aja\"</li><li>Masukkan no. handphone diatas</li><li>Masukkan Nominal top up</li><li>Ikuti petunjuk selanjutnya untuk menyelesaikan proses isi saldo</li></ol><br><p></p><p><b>Bank Mandiri</b></p><p></p><ol><li>Masukkan kartu ATM dan PIN kamu</li><li>Pilih \"Uang Elektronik\"</li><li>Pilih \"Link Aja\"</li><li>\n\nMasukkan no. handphone diatas\n\n<br></li><li>\n\nMasukkan Nominal top up\n\n<br></li><li>Konfirmasi transaksi</li><li>\n\nIkuti petunjuk selanjutnya untuk menyelesaikan proses isi saldo\n\n<br></li></ol><br><div><b>Bank BNI</b></div><div><ol><li>\n\nMasukkan kartu ATM dan PIN kamu\n\n<br></li><li>Pilih \"Menu Lain\"</li><li>\n\nPilih \"Uang Elektronik\"\n\n<br></li><li>\n\nPilih \"Link Aja\"\n\n<br></li><li>\n\nMasukkan no. handphone diatas\n\n\n<br></li><li>\n\nMasukkan Nominal top up\n\n\n<br></li><li>\n\nKonfirmasi transaksi\n\n<br></li><li>\n\nIkuti petunjuk selanjutnya untuk menyelesaikan proses isi saldo</li></ol></div><p></p>",
+    "createdAt": "2021-03-20T12:06:34.000Z",
+    "updatedAt": "2021-03-20T12:06:34.000Z",
+    "deletedAt": null
+  },
+  {
+    "id": 12,
+    "bankId": 1,
+    "method": "MOBILE BANKING",
+    "description":
+        "<p><b></b></p>\n\n<p><b>Bank BRI</b></p><p></p><ol><li>Masukkan kartu ATM dan PIN kamu</li><li>Pilih menu \"Lainnya\"</li><li>Pilih \"Pembayaran/Pembelian\"</li><li>Pilih \"Top Up Link Aja\"</li><li>Masukkan no. handphone diatas</li><li>Masukkan Nominal top up</li><li>Ikuti petunjuk selanjutnya untuk menyelesaikan proses isi saldo</li></ol><br><p></p><p><b>Bank Mandiri</b></p><p></p><ol><li>Masukkan kartu ATM dan PIN kamu</li><li>Pilih \"Uang Elektronik\"</li><li>Pilih \"Link Aja\"</li><li>\n\nMasukkan no. handphone diatas\n\n<br></li><li>\n\nMasukkan Nominal top up\n\n<br></li><li>Konfirmasi transaksi</li><li>\n\nIkuti petunjuk selanjutnya untuk menyelesaikan proses isi saldo\n\n<br></li></ol><br><div><b>Bank BNI</b></div><div><ol><li>\n\nMasukkan kartu ATM dan PIN kamu\n\n<br></li><li>Pilih \"Menu Lain\"</li><li>\n\nPilih \"Uang Elektronik\"\n\n<br></li><li>\n\nPilih \"Link Aja\"\n\n<br></li><li>\n\nMasukkan no. handphone diatas\n\n\n<br></li><li>\n\nMasukkan Nominal top up\n\n\n<br></li><li>\n\nKonfirmasi transaksi\n\n<br></li><li>\n\nIkuti petunjuk selanjutnya untuk menyelesaikan proses isi saldo</li></ol></div><p></p>",
+    "createdAt": "2021-03-20T12:06:34.000Z",
+    "updatedAt": "2021-03-20T12:06:34.000Z",
+    "deletedAt": null
+  },
+  {
+    "id": 13,
+    "bankId": 1,
+    "method": "INTERNET BANKING",
+    "description":
+        "<p><b></b></p>\n\n<p><b>Bank BRI</b></p><p></p><ol><li>Masukkan kartu ATM dan PIN kamu</li><li>Pilih menu \"Lainnya\"</li><li>Pilih \"Pembayaran/Pembelian\"</li><li>Pilih \"Top Up Link Aja\"</li><li>Masukkan no. handphone diatas</li><li>Masukkan Nominal top up</li><li>Ikuti petunjuk selanjutnya untuk menyelesaikan proses isi saldo</li></ol><br><p></p><p><b>Bank Mandiri</b></p><p></p><ol><li>Masukkan kartu ATM dan PIN kamu</li><li>Pilih \"Uang Elektronik\"</li><li>Pilih \"Link Aja\"</li><li>\n\nMasukkan no. handphone diatas\n\n<br></li><li>\n\nMasukkan Nominal top up\n\n<br></li><li>Konfirmasi transaksi</li><li>\n\nIkuti petunjuk selanjutnya untuk menyelesaikan proses isi saldo\n\n<br></li></ol><br><div><b>Bank BNI</b></div><div><ol><li>\n\nMasukkan kartu ATM dan PIN kamu\n\n<br></li><li>Pilih \"Menu Lain\"</li><li>\n\nPilih \"Uang Elektronik\"\n\n<br></li><li>\n\nPilih \"Link Aja\"\n\n<br></li><li>\n\nMasukkan no. handphone diatas\n\n\n<br></li><li>\n\nMasukkan Nominal top up\n\n\n<br></li><li>\n\nKonfirmasi transaksi\n\n<br></li><li>\n\nIkuti petunjuk selanjutnya untuk menyelesaikan proses isi saldo</li></ol></div><p></p>",
+    "createdAt": "2021-03-20T12:06:34.000Z",
+    "updatedAt": "2021-03-20T12:06:34.000Z",
+    "deletedAt": null
+  }
+];

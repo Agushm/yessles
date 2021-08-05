@@ -96,8 +96,22 @@ class ConfirmTransactionPage extends StatelessWidget {
               width: double.infinity,
               child: commonButton(
                 btnText: 'Pilih Metode Pembayaran',
-                onPressed: () {
-                  payingMethodBottomSheet(context);
+                onPressed: () async {
+                  var method = await payingMethodBottomSheet(context);
+                  var _m = '';
+                  if (method == 'Bayar Langsung') {
+                    _m = 'tunai';
+                  } else {
+                    _m = 'nontunai';
+                  }
+                  Get.back();
+                  Get.back();
+                  Get.back();
+                  Get.back();
+                  Get.back();
+                  Get.to(DetailTransactionPage(
+                    payingMethod: _m,
+                  ));
                 },
               ),
             ),

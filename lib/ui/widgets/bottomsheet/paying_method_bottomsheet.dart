@@ -31,7 +31,7 @@ payingMethodBottomSheet(BuildContext? context) {
                     itemBuilder: (context, i) {
                       return InkWell(
                         onTap: () {
-                          Get.back();
+                          Get.back(result: payingMethod[i]);
                         },
                         child: Container(
                           margin:

@@ -5,6 +5,8 @@ class ColorBase {
   static final primary = Color(0xFFEC422C);
   static final blue = Color(0xFF0176E8);
   static final grey = Color(0xFFF1F1F1);
+  static final green = Color(0xff4E9424);
+  static final btnCopy = Color(0xff508DCB);
 }
 
 String iconsPath = 'assets/icons/';
