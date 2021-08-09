@@ -14,11 +14,21 @@ class _HomePageState extends State<HomePage> {
             automaticallyImplyLeading: false,
             elevation: 1,
             backgroundColor: Colors.white,
-            title: Text('Yessles',
-                style: fontBlack.copyWith(
-                    fontSize: 20,
-                    color: ColorBase.primary,
-                    fontWeight: FontWeight.bold))),
+            title: Row(
+              children: [
+                Image.asset(
+                  'assets/icons/logo.png',
+                  width: 30,
+                  height: 30,
+                ),
+                SizedBox(width: 10),
+                Text('Yessles',
+                    style: fontBlack.copyWith(
+                        fontSize: 20,
+                        color: ColorBase.primary,
+                        fontWeight: FontWeight.bold)),
+              ],
+            )),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

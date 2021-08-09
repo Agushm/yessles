@@ -26,12 +26,10 @@ class _SplashPageState extends State<SplashPage> {
             width: double.infinity,
             height: deviceHeight(context) - 150,
             alignment: Alignment.center,
-            child: Text(
-              'Yessles',
-              style: fontBlack.copyWith(
-                  fontSize: 20,
-                  color: ColorBase.primary,
-                  fontWeight: FontWeight.bold),
+            child: Image.asset(
+              'assets/icons/logo.png',
+              width: 80,
+              height: 80,
             ),
           ),
           Text('Raih prestasimu',
