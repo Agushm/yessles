@@ -30,4 +30,4 @@ part 'transaction/transaction_term_page.dart';
 part 'transaction/confirm_transaction_page.dart';
 part 'transaction/detail_transaction_page.dart';
 part 'mapel_page.dart';
-part 'subbab_mapel_page.dart';
+part 'all_mapel_page.dart';

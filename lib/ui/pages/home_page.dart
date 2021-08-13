@@ -42,17 +42,9 @@ class _HomePageState extends State<HomePage> {
                 ),
                 child: Column(
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('Mata Pelajaran',
-                            style: fontBlack.copyWith(
-                                fontSize: 16, fontWeight: FontWeight.bold)),
-                        Text('Lihat semua',
-                            style: fontBlack.copyWith(
-                                fontSize: 12, color: Colors.blue))
-                      ],
-                    ),
+                    Text('Mata Pelajaran',
+                        style: fontBlack.copyWith(
+                            fontSize: 16, fontWeight: FontWeight.bold)),
                     SizedBox(height: 20),
                     GridMapel()
                   ],

@@ -74,8 +74,19 @@ class _DetailMapelPageState extends State<DetailMapelPage> {
             ),
             divider(),
             Container(
-                padding: EdgeInsets.all(20),
-                child: widgetTeacher(widget.mapel!.teacher!)),
+              child: ExpansionTile(
+                iconColor: ColorBase.primary,
+                title: Text('Daftar Mentor',
+                    style: fontBlack.copyWith(fontWeight: FontWeight.bold)),
+                expandedCrossAxisAlignment: CrossAxisAlignment.start,
+                childrenPadding: EdgeInsets.all(20),
+                children: widget.mapel!.teachers!.map((e) {
+                  return Container(
+                      margin: EdgeInsets.only(top: 5),
+                      child: widgetSelectTeacher(e, showIcon: false));
+                }).toList(),
+              ),
+            ),
             divider(),
             Container(
                 width: double.infinity,

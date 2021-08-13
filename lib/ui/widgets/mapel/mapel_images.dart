@@ -92,6 +92,7 @@ class _MapelImagesState extends State<MapelImages> {
             ),
           ],
         ),
+        SizedBox(height: 5),
         Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: widget.mapel!.listImage!.map((e) {
