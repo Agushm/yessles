@@ -28,28 +28,42 @@ class _AllMapelPageState extends State<AllMapelPage> {
               fontWeight: FontWeight.bold),
         ),
       ),
-      body: ListView.builder(
+      body: GridView.builder(
+        padding: EdgeInsets.symmetric(vertical: 20),
+        gridDelegate:
+            SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
+        shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
         itemCount: mockListMapel.length,
-        itemBuilder: (context, index) {
-          var mapel = mockListMapel[index];
+        itemBuilder: (contex, index) {
+          var e = mockListMapel[index];
+
           return InkWell(
             onTap: () {
               Get.to(MapelPage(index));
             },
             child: Container(
-              margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-              padding: EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(5)),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(mapel.name!, style: fontBlack),
-                  Icon(Icons.arrow_forward_ios_rounded,
-                      size: 15, color: ColorBase.primary),
-                ],
-              ),
-            ),
+                width: deviceWidth(context) / 4,
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    CircleAvatar(
+                      radius: 26,
+                      backgroundImage: NetworkImage(index % 2 != 0
+                          ? 'https://image.flaticon.com/icons/png/512/2232/2232688.png'
+                          : 'https://image.flaticon.com/icons/png/512/501/501405.png'),
+                    ),
+                    SizedBox(height: 3),
+                    Container(
+                      width: (deviceWidth(context) - 40) / 4,
+                      child: Text('${e.name}',
+                          textAlign: TextAlign.center,
+                          style: fontBlack.copyWith(
+                            fontSize: 9,
+                          )),
+                    ),
+                  ],
+                )),
           );
         },
       ),
