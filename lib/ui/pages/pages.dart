@@ -1,6 +1,5 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
@@ -31,3 +30,4 @@ part 'transaction/confirm_transaction_page.dart';
 part 'transaction/detail_transaction_page.dart';
 part 'mapel_page.dart';
 part 'all_mapel_page.dart';
+part 'detail_mentor_page.dart';
