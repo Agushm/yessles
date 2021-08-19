@@ -1,12 +1,12 @@
 part of '../widgets.dart';
 
-Widget widgetReviewMapel(Mapel mapel) {
+Widget widgetReviewMapel(Teacher? teacher) {
   return Column(
     children: [
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text('Review Mata Pelajaran',
+          Text('Review Teacher',
               style: fontBlack.copyWith(fontWeight: FontWeight.bold)),
           TextButton(
               onPressed: () {},
@@ -20,12 +20,12 @@ Widget widgetReviewMapel(Mapel mapel) {
       Row(
         children: [
           StarRating(
-              rating: mapel.rating,
+              rating: teacher!.teacherRating,
               starCount: 5,
               size: 20,
               color: Colors.yellow),
           SizedBox(width: 5),
-          Text('${mapel.rating}',
+          Text('${teacher.teacherRating}',
               style: fontBlack.copyWith(
                   color: Colors.black54,
                   fontSize: 12,

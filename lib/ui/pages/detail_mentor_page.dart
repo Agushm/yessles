@@ -1,9 +1,9 @@
 part of 'pages.dart';
 
 class DetailMentorPage extends StatefulWidget {
-  final Mapel? mapel;
+  final Teacher? teacher;
 
-  const DetailMentorPage({Key? key, this.mapel}) : super(key: key);
+  const DetailMentorPage({Key? key, this.teacher}) : super(key: key);
 
   @override
   _DetailMentorPageState createState() => _DetailMentorPageState();
@@ -26,13 +26,50 @@ class _DetailMentorPageState extends State<DetailMentorPage> {
 
     return Scaffold(
       key: _key,
+      appBar: AppBar(
+        elevation: 1,
+        backgroundColor: Colors.white,
+        leading: IconButton(
+          color: Colors.black,
+          icon: Icon(Icons.arrow_back_ios_rounded),
+          iconSize: 15,
+          onPressed: () {
+            Get.back();
+          },
+        ),
+        title: Text(
+          '${widget.teacher!.teacherName}',
+          style: fontBlack.copyWith(
+              fontSize: 14,
+              color: ColorBase.primary,
+              fontWeight: FontWeight.bold),
+        ),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             SizedBox(
               height: 30,
             ),
-            MapelImages(widget.mapel),
+            Center(
+              child: Container(
+                width: 150,
+                height: 150,
+                decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey,
+                        offset: Offset(0.0, 1.0), //(x,y)
+                        blurRadius: 1,
+                      ),
+                    ],
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: NetworkImage(widget.teacher!.teacherImage!),
+                    )),
+              ),
+            ),
             Container(
               padding: EdgeInsets.symmetric(
                 horizontal: 20,
@@ -45,7 +82,7 @@ class _DetailMentorPageState extends State<DetailMentorPage> {
                     children: [
                       Container(
                         width: 250,
-                        child: Text('${widget.mapel!.name}',
+                        child: Text('${widget.teacher!.teacherName}',
                             style: fontBlack.copyWith(
                                 fontSize: 18, fontWeight: FontWeight.bold)),
                       ),
@@ -56,42 +93,27 @@ class _DetailMentorPageState extends State<DetailMentorPage> {
                   Row(
                     children: [
                       StarRating(
-                          rating: widget.mapel!.rating,
+                          rating: widget.teacher!.teacherRating,
                           starCount: 5,
                           size: 20,
                           color: Colors.yellow),
                       SizedBox(width: 5),
-                      Text('${widget.mapel!.rating}',
+                      Text('${widget.teacher!.teacherRating}',
                           style: fontBlack.copyWith(
                               fontSize: 18, fontWeight: FontWeight.w500))
                     ],
                   ),
                   SizedBox(height: 10),
-                  htmlWidget(widget.mapel!.desc!),
+                  htmlWidget(widget.teacher!.teacherAddress!),
                   SizedBox(height: 15),
                 ],
               ),
             ),
             divider(),
             Container(
-              child: ExpansionTile(
-                iconColor: ColorBase.primary,
-                title: Text('Daftar Mentor',
-                    style: fontBlack.copyWith(fontWeight: FontWeight.bold)),
-                expandedCrossAxisAlignment: CrossAxisAlignment.start,
-                childrenPadding: EdgeInsets.all(20),
-                children: widget.mapel!.teachers!.map((e) {
-                  return Container(
-                      margin: EdgeInsets.only(top: 5),
-                      child: widgetSelectTeacher(e, showIcon: false));
-                }).toList(),
-              ),
-            ),
-            divider(),
-            Container(
                 width: double.infinity,
                 padding: EdgeInsets.all(20),
-                child: widgetReviewMapel(widget.mapel!)),
+                child: widgetReviewMapel(widget.teacher!)),
             divider(),
             SizedBox(height: 100),
           ],

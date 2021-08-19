@@ -89,9 +89,7 @@ class _DetailMapelPageState extends State<DetailMapelPage> {
               itemCount: widget.mapel!.teachers!.length,
               itemBuilder: (context, index) {
                 var teacher = widget.mapel!.teachers![index];
-                return Container(
-                  child: widgetSelectTeacher(teacher, showIcon: false),
-                );
+                return widgetSelectTeacher(teacher, showIcon: false);
               },
             ),
           ),
