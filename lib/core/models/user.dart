@@ -6,53 +6,60 @@ String userToJson(User data) => json.encode(data.toJson());
 
 class User {
   User({
-    this.name,
-    this.image,
-    this.gender,
-    this.bornDate,
+    this.id,
+    this.nik,
+    this.namaLengkap,
     this.email,
     this.phone,
-    this.password,
+    this.photoProfile,
+    this.alamat,
+    this.kelamin,
+    this.tanggalLahir,
+    this.ratingUser,
+    this.ratingGuru,
+    this.jwtToken,
   });
 
-  String? name;
-  String? image;
-  String? gender;
-  DateTime? bornDate;
+  String? id;
+  dynamic nik;
+  String? namaLengkap;
   String? email;
   String? phone;
-  String? password;
+  String? photoProfile;
+  String? alamat;
+  String? kelamin;
+  DateTime? tanggalLahir;
+  double? ratingUser;
+  double? ratingGuru;
+  String? jwtToken;
 
   factory User.fromJson(Map<String, dynamic> json) => User(
-        name: json["name"],
-        image: json["image"],
-        gender: json["gender"],
-        bornDate: json["born_date"] == null
-            ? null
-            : DateTime.parse(json["born_date"]),
+        id: json["id"],
+        nik: json["nik"],
+        namaLengkap: json["nama_lengkap"],
         email: json["email"],
         phone: json["phone"],
-        password: json["password"],
+        photoProfile: json["photo_profile"],
+        alamat: json["alamat"],
+        kelamin: json["kelamin"],
+        tanggalLahir: DateTime.parse(json["tanggal_lahir"]),
+        ratingUser: double.parse(json['ratingUser']),
+        ratingGuru: double.parse(json['ratingGuru']),
+        jwtToken: json["jwt_token"],
       );
 
   Map<String, dynamic> toJson() => {
-        "name": name,
-        "image": image,
-        "gender": gender,
-        "born_date": bornDate!.toIso8601String(),
+        "id": id,
+        "nik": nik,
+        "nama_lengkap": namaLengkap,
         "email": email,
         "phone": phone,
-        "password": password,
+        "photo_profile": photoProfile,
+        "alamat": alamat,
+        "kelamin": kelamin,
+        "tanggal_lahir": tanggalLahir?.toIso8601String(),
+        "rating_user": ratingUser,
+        "rating_guru": ratingGuru,
+        "jwt_token": jwtToken,
       };
 }
-
-var jsonUser = {
-  "name": "John Wick",
-  "image": "sdsda",
-  "gender": "Pria",
-  "born_date": "1969-07-20 20:18:04Z",
-  "email": "asd@asd.com",
-  "phone": "0898988808",
-  "password": "*******"
-};
-User mockUser = User.fromJson(jsonUser);

@@ -12,6 +12,7 @@ import 'constants/theme.dart';
 import 'constants/strings.dart';
 
 part 'login_page.dart';
+part 'register_page.dart';
 part 'splash_page.dart';
 part 'main_page.dart';
 part 'home_page.dart';

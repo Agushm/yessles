@@ -62,14 +62,14 @@ Widget widgetReviewMapel(Teacher? teacher) {
                             shape: BoxShape.circle,
                             image: DecorationImage(
                               fit: BoxFit.cover,
-                              image: NetworkImage(review.user!.image!),
+                              image: NetworkImage(review.user!.photoProfile!),
                             ),
                           ),
                         ),
                         SizedBox(width: 10),
                         Column(
                           children: [
-                            Text('${review.user!.name}',
+                            Text('${review.user!.namaLengkap}',
                                 style: fontBlack.copyWith(
                                     fontSize: 10, fontWeight: FontWeight.bold)),
                             StarRating(

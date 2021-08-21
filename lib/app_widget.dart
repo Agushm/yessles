@@ -2,13 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
+import 'config_reader.dart';
 import 'core/providers/providers.dart';
 import 'ui/pages/constants/theme.dart';
 import 'ui/pages/pages.dart';
-
-void main() {
-  runApp(MyApp());
-}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -22,7 +19,7 @@ class MyApp extends StatelessWidget {
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Yessles',
+        title: ConfigReader.getAppName(),
         theme: ThemeData.from(
           colorScheme: ColorScheme.light(
             primary: ColorBase.primary,
