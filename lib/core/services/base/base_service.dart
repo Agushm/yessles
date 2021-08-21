@@ -27,6 +27,7 @@ class BaseServices {
     }
 
     try {
+      print('URL: $url');
       switch (type) {
         case RequestType.GET:
           response = await _dio.get(url, options: _headersOption);

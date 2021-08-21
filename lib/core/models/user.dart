@@ -43,8 +43,8 @@ class User {
         alamat: json["alamat"],
         kelamin: json["kelamin"],
         tanggalLahir: DateTime.parse(json["tanggal_lahir"]),
-        ratingUser: double.parse(json['ratingUser']),
-        ratingGuru: double.parse(json['ratingGuru']),
+        // ratingUser: double.parse(json['ratingUser']),
+        // ratingGuru: double.parse(json['ratingGuru']),
         jwtToken: json["jwt_token"],
       );
 

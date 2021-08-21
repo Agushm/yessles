@@ -47,6 +47,9 @@ class InfoDialog extends StatelessWidget {
           SizedBox(height: 20),
           onPressed != null
               ? MaterialButton(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
                   color: ColorBase.primary,
                   onPressed: onPressed,
                   child: Text('$btnText', style: fontWhite))

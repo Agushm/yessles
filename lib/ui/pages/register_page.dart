@@ -48,7 +48,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   SizedBox(
-                    height: 150,
+                    height: 60,
                   ),
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 20),
@@ -73,14 +73,40 @@ class _RegisterPageState extends State<RegisterPage> {
                                       fontSize: 16,
                                       fontWeight: FontWeight.w500)),
                               SizedBox(height: 5),
-                              TextFormField(
+                              _buildTextForm(
                                 controller: nameController,
-                                decoration: decorationForm.copyWith(
-                                    hintText: 'Masukkan Nama Lengkap'),
-                                validator: (value) {
-                                  if (value!.isEmpty) {
-                                    return 'Harus diisi';
-                                  }
+                                hintText: 'Masukkan nama lengkap',
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.symmetric(vertical: 5),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Jenis Kelamin',
+                                  style: fontBlack.copyWith(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500)),
+                              SizedBox(height: 5),
+                              DropdownButtonFormField<String>(
+                                value: selectedGender,
+                                isExpanded: true,
+                                items: _gender
+                                    .map((e) => DropdownMenuItem<String>(
+                                          child: Text(e,
+                                              style: fontBlack.copyWith(
+                                                  fontSize: 13,
+                                                  fontWeight: FontWeight.w500)),
+                                          value: e,
+                                        ))
+                                    .toList(),
+                                decoration: decorationForm,
+                                onChanged: (value) {
+                                  setState(() {
+                                    selectedGender = value;
+                                  });
                                 },
                               ),
                             ],
@@ -96,15 +122,32 @@ class _RegisterPageState extends State<RegisterPage> {
                                       fontSize: 16,
                                       fontWeight: FontWeight.w500)),
                               SizedBox(height: 5),
-                              TextFormField(
-                                controller: hpController,
-                                decoration: decorationForm.copyWith(
-                                    hintText: 'Masukkan Nomor WhatsApp'),
-                                validator: (value) {
-                                  if (value!.isEmpty) {
-                                    return 'Harus diisi';
-                                  }
-                                },
+                              _buildTextForm(
+                                  controller: hpController,
+                                  hintText: '081xxxxxxxxx',
+                                  keyboardType: TextInputType.phone,
+                                  validator: (value) {
+                                    if (!value!.isNumericOnly) {
+                                      return 'Masukan hanya angka saja';
+                                    }
+                                  }),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.symmetric(vertical: 5),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Alamat',
+                                  style: fontBlack.copyWith(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500)),
+                              SizedBox(height: 5),
+                              _buildTextForm(
+                                controller: schoolController,
+                                hintText: 'Masukkan alamat rumah',
+                                keyboardType: TextInputType.phone,
                               ),
                             ],
                           ),
@@ -119,16 +162,15 @@ class _RegisterPageState extends State<RegisterPage> {
                                       fontSize: 16,
                                       fontWeight: FontWeight.w500)),
                               SizedBox(height: 5),
-                              TextFormField(
-                                controller: schoolController,
-                                decoration: decorationForm.copyWith(
-                                    hintText: 'Masukkan Nama Sekolah'),
-                                validator: (value) {
-                                  if (value!.isEmpty) {
-                                    return 'Harus diisi';
-                                  }
-                                },
-                              ),
+                              _buildTextForm(
+                                  controller: schoolController,
+                                  hintText: 'Masukkan nama sekolah',
+                                  keyboardType: TextInputType.phone,
+                                  validator: (value) {
+                                    if (!value!.isNumericOnly) {
+                                      return 'Masukan hanya angka saja';
+                                    }
+                                  }),
                             ],
                           ),
                         ),
@@ -148,8 +190,8 @@ class _RegisterPageState extends State<RegisterPage> {
                                 decoration: decorationForm.copyWith(
                                     hintText: 'Masukkan Password'),
                                 validator: (value) {
-                                  if (value!.isEmpty) {
-                                    return 'Harus disi';
+                                  if (value!.length < 6) {
+                                    return 'Password minimal 6 karakter';
                                   }
                                 },
                               ),
@@ -180,26 +222,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             ],
                           ),
                         ),
-                        DropdownButtonFormField<String>(
-                          value: selectedGender,
-                          isExpanded: true,
-                          items: _gender
-                              .map((e) => DropdownMenuItem<String>(
-                                    child: Text(e,
-                                        style: fontBlack.copyWith(
-                                            fontSize: 13,
-                                            fontWeight: FontWeight.w500)),
-                                    value: e,
-                                  ))
-                              .toList(),
-                          decoration: decorationForm,
-                          onChanged: (value) {
-                            setState(() {
-                              selectedGender = value;
-                            });
-                          },
-                        ),
-                        SizedBox(height: 20),
+                        SizedBox(height: 100),
                       ],
                     ),
                   ),
@@ -237,4 +260,26 @@ class _RegisterPageState extends State<RegisterPage> {
       ),
     );
   }
+}
+
+TextFormField _buildTextForm(
+    {String? hintText,
+    TextEditingController? controller,
+    TextInputAction? textInputAction,
+    TextInputType? keyboardType,
+    String? Function(String?)? validator,
+    int? minLines}) {
+  return TextFormField(
+    controller: controller,
+    decoration: decorationForm.copyWith(hintText: hintText),
+    keyboardType: keyboardType ?? TextInputType.text,
+    textInputAction: textInputAction ?? TextInputAction.next,
+    minLines: minLines ?? 1,
+    validator: validator ??
+        (value) {
+          if (value!.isEmpty) {
+            return 'Maaf harus diisi';
+          }
+        },
+  );
 }

@@ -1,7 +1,7 @@
 import 'package:yessles/config_reader.dart';
 
 class API {
-  static String baseURL = ConfigReader.getBaseUrl() + 'api/v1';
+  static String baseURL = ConfigReader.getBaseUrl() + '/api/v1';
 
   // *User* //
   static String loginGmail = baseURL + '/user/login-gmail';

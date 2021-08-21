@@ -16,6 +16,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider.value(
           value: TransactionProvider(),
         ),
+        ChangeNotifierProvider.value(
+          value: UserProvider(),
+        ),
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,

@@ -68,6 +68,11 @@ class _LoginPageState extends State<LoginPage> {
                                 decoration: decorationForm.copyWith(
                                     hintText:
                                         'Masukkan Email atau Nomor WhatsApp'),
+                                validator: (value) {
+                                  if (value!.isEmpty) {
+                                    return 'Masukan email atau nomor WhatsApp';
+                                  }
+                                },
                               ),
                             ],
                           ),
@@ -87,6 +92,11 @@ class _LoginPageState extends State<LoginPage> {
                                 obscureText: true,
                                 decoration: decorationForm.copyWith(
                                     hintText: 'Masukkan Password'),
+                                validator: (value) {
+                                  if (value!.length < 6) {
+                                    return 'Password tidak valid';
+                                  }
+                                },
                               ),
                             ],
                           ),
@@ -102,11 +112,14 @@ class _LoginPageState extends State<LoginPage> {
                             color: ColorBase.primary,
                             padding: EdgeInsets.symmetric(vertical: 10),
                             onPressed: () {
-                              Provider.of<UserProvider>(context, listen: false)
-                                  .loginPhone(context, {
-                                'email': emailController.text,
-                                'password': passwordController.text
-                              });
+                              if (_formKey.currentState!.validate()) {
+                                Provider.of<UserProvider>(context,
+                                        listen: false)
+                                    .loginPhone(context, {
+                                  'email': emailController.text,
+                                  'password': passwordController.text
+                                });
+                              }
                             },
                             child: Text('Login',
                                 style: fontWhite.copyWith(

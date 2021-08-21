@@ -15,8 +15,8 @@ class UserServices extends BaseServices {
       final res =
           await request(API.loginGmail, RequestType.POST, context, data: {
         'email': google.email,
-        'fcmToken': fcmToken,
-        'googleId': google.id,
+        'fcm_token': fcmToken,
+        'google_id': google.id,
       });
       return {
         "res": res,
@@ -30,7 +30,7 @@ class UserServices extends BaseServices {
     final res = await request(API.loginPhone, RequestType.POST, context, data: {
       'email': data['email'],
       'password': data['password'],
-      'fcmToken': fcmToken,
+      'fcm_token': fcmToken,
     });
     return {
       "res": res,
