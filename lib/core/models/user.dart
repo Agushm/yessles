@@ -34,7 +34,7 @@ class User {
   String? jwtToken;
 
   factory User.fromJson(Map<String, dynamic> json) => User(
-        id: json["id"],
+        id: json["id"].toString(),
         nik: json["nik"],
         namaLengkap: json["nama_lengkap"],
         email: json["email"],

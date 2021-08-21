@@ -28,7 +28,7 @@ class UserProvider with ChangeNotifier {
     Get.back();
     if (res['res']['status'] == 'success') {
       _user = User.fromJson(res['res']['data']);
-      ServicePreferances.instance.saveData('token', res['res']['jwt']);
+      ServicePreferances.instance.saveData('token', res['res']['jwt_token']);
       ServicePreferances.instance.saveData('userData', json.encode(_user));
       Get.offAll(MainPage());
     } else if (res['res']['status'] == 'error' && res['res']['code'] == 400) {
@@ -59,7 +59,7 @@ class UserProvider with ChangeNotifier {
     }
     if (res['res']['status'] == 'success') {
       _user = User.fromJson(res['res']['data']);
-      ServicePreferances.instance.saveData('token', res['res']['jwt']);
+      ServicePreferances.instance.saveData('token', res['res']['jwt_token']);
       ServicePreferances.instance.saveData('userData', json.encode(_user));
       Get.offAll(MainPage());
     }
@@ -70,7 +70,7 @@ class UserProvider with ChangeNotifier {
           message: res['res']['message'],
           btnText: 'Daftar Sekarang', onPressed: () {
         Get.back();
-        //Get.to(RegisterPage(res['google']));
+        Get.to(RegisterPage(googleAccount: res['google']));
       });
       return null;
     }
@@ -82,6 +82,29 @@ class UserProvider with ChangeNotifier {
         Get.back();
       });
       return null;
+    } else {
+      return null;
+    }
+  }
+
+  Future loginPhone(BuildContext context, Map data) async {
+    DialogUtils.instance.showLoading(context, 'Mohon menunggu...');
+    final res = await UserServices.instance.loginPhone(context, data);
+    Get.back();
+    if (res == null) {
+      return null;
+    } else if (res['res']['status'] == 'success') {
+      _user = User.fromJson(res['res']['data']);
+      ServicePreferances.instance.saveData('token', res['res']['jwt_token']);
+      ServicePreferances.instance.saveData('userData', json.encode(_user));
+      Get.offAll(MainPage());
+    } else if (res['res']['status'] == 'error') {
+      DialogUtils.instance.showInfo(context,
+          title: 'Gagal login',
+          message: res['res']['message'],
+          btnText: 'Tutup', onPressed: () {
+        Get.back();
+      });
     } else {
       return null;
     }

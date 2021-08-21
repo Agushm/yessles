@@ -10,7 +10,12 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     super.initState();
     Future.delayed(Duration(seconds: 3)).then((value) async {
-      Get.offAll(LoginPage());
+      var user = await ServicePreferances.instance.getUserData();
+      if (user == null) {
+        Get.offAll(LoginPage());
+      } else {
+        Get.offAll(MainPage());
+      }
     });
   }
 

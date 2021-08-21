@@ -12,18 +12,29 @@ class UserServices extends BaseServices {
       return null;
     } else {
       var fcmToken = await FCMService.instance.fcmToken();
-      final res = await request(API.login, RequestType.POST, context, data: {
+      final res =
+          await request(API.loginGmail, RequestType.POST, context, data: {
         'email': google.email,
         'fcmToken': fcmToken,
         'googleId': google.id,
-        "latitude": "",
-        "longitude": ""
       });
       return {
         "res": res,
         "google": google,
       };
     }
+  }
+
+  Future<dynamic> loginPhone(BuildContext context, Map data) async {
+    var fcmToken = await FCMService.instance.fcmToken();
+    final res = await request(API.loginPhone, RequestType.POST, context, data: {
+      'email': data['email'],
+      'password': data['password'],
+      'fcmToken': fcmToken,
+    });
+    return {
+      "res": res,
+    };
   }
 
   Future<dynamic> register(

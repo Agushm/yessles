@@ -4,7 +4,8 @@ class API {
   static String baseURL = ConfigReader.getBaseUrl() + 'api/v1';
 
   // *User* //
-  static String login = baseURL + '/user/login';
+  static String loginGmail = baseURL + '/user/login-gmail';
+  static String loginPhone = baseURL + '/user/login-phone';
   static String register = baseURL + '/user/register';
   static String userProfile = baseURL + '/user/detail';
   static String report = baseURL + '/user/report';
