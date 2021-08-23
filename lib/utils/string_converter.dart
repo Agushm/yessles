@@ -6,6 +6,8 @@ final formatter = NumberFormat("#,##0", "in_ID");
 
 final fRupiah = NumberFormat("Rp" + "#,##0", "in_ID");
 
+final fDate = DateFormat('dd MMMM yyyy', 'id_ID');
+
 String formatInt(int nominal) {
   return formatter.format(nominal);
 }

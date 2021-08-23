@@ -3,12 +3,14 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 import 'app_widget.dart';
 import 'config_reader.dart';
 import 'core/services/services.dart';
 
 Future<void> mainCommon(String env) async {
+  await initializeDateFormatting();
   var _fcm = FCMService.instance;
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();

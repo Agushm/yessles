@@ -28,7 +28,7 @@ class UserServices extends BaseServices {
   Future<dynamic> loginPhone(BuildContext context, Map data) async {
     var fcmToken = await FCMService.instance.fcmToken();
     final res = await request(API.loginPhone, RequestType.POST, context, data: {
-      'email': data['email'],
+      'phone': data['email'],
       'password': data['password'],
       'fcm_token': fcmToken,
     });

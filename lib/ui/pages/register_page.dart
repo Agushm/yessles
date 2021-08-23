@@ -12,6 +12,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
+  TextEditingController addressController = TextEditingController();
   TextEditingController hpController = TextEditingController();
   TextEditingController schoolController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -19,6 +20,9 @@ class _RegisterPageState extends State<RegisterPage> {
     'Pria',
     'Wanita',
   ];
+
+  DateTime _selectedDate = DateTime.now();
+  TextEditingController bornDateController = TextEditingController();
 
   String? selectedGender = 'Pria';
   @override
@@ -63,164 +67,91 @@ class _RegisterPageState extends State<RegisterPage> {
                         SizedBox(
                           height: 20,
                         ),
-                        Container(
-                          margin: EdgeInsets.symmetric(vertical: 5),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('Nama Lengkap',
-                                  style: fontBlack.copyWith(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500)),
-                              SizedBox(height: 5),
-                              _buildTextForm(
-                                controller: nameController,
-                                hintText: 'Masukkan nama lengkap',
-                              ),
-                            ],
-                          ),
+                        _buildTextForm(
+                          labelText: 'Nama Lengkap',
+                          controller: nameController,
+                          hintText: 'Masukkan nama lengkap',
                         ),
-                        Container(
-                          margin: EdgeInsets.symmetric(vertical: 5),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('Jenis Kelamin',
-                                  style: fontBlack.copyWith(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500)),
-                              SizedBox(height: 5),
-                              DropdownButtonFormField<String>(
-                                value: selectedGender,
-                                isExpanded: true,
-                                items: _gender
-                                    .map((e) => DropdownMenuItem<String>(
-                                          child: Text(e,
-                                              style: fontBlack.copyWith(
-                                                  fontSize: 13,
-                                                  fontWeight: FontWeight.w500)),
-                                          value: e,
-                                        ))
-                                    .toList(),
-                                decoration: decorationForm,
-                                onChanged: (value) {
-                                  setState(() {
-                                    selectedGender = value;
-                                  });
-                                },
-                              ),
-                            ],
-                          ),
+                        SizedBox(height: 15),
+                        TextFormField(
+                          focusNode: AlwaysDisabledFocusNode(),
+                          readOnly: true,
+                          controller: bornDateController,
+                          onTap: () {
+                            _selectDate(context);
+                          },
+                          decoration:
+                              registerForm.copyWith(labelText: 'Tanggal Lahir'),
                         ),
-                        Container(
-                          margin: EdgeInsets.symmetric(vertical: 5),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('Nomor WhatsApp',
-                                  style: fontBlack.copyWith(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500)),
-                              SizedBox(height: 5),
-                              _buildTextForm(
-                                  controller: hpController,
-                                  hintText: '081xxxxxxxxx',
-                                  keyboardType: TextInputType.phone,
-                                  validator: (value) {
-                                    if (!value!.isNumericOnly) {
-                                      return 'Masukan hanya angka saja';
-                                    }
-                                  }),
-                            ],
-                          ),
+                        SizedBox(height: 15),
+                        DropdownButtonFormField<String>(
+                          value: selectedGender,
+                          isExpanded: true,
+                          items: _gender
+                              .map((e) => DropdownMenuItem<String>(
+                                    child: Text(e,
+                                        style: fontBlack.copyWith(
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w500)),
+                                    value: e,
+                                  ))
+                              .toList(),
+                          decoration:
+                              registerForm.copyWith(labelText: 'Jenis Kelamin'),
+                          onChanged: (value) {
+                            setState(() {
+                              selectedGender = value;
+                            });
+                          },
                         ),
-                        Container(
-                          margin: EdgeInsets.symmetric(vertical: 5),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('Alamat',
-                                  style: fontBlack.copyWith(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500)),
-                              SizedBox(height: 5),
-                              _buildTextForm(
-                                controller: schoolController,
-                                hintText: 'Masukkan alamat rumah',
-                                keyboardType: TextInputType.phone,
-                              ),
-                            ],
-                          ),
+                        SizedBox(height: 15),
+                        _buildTextForm(
+                            labelText: 'Nomor WhatsApp',
+                            controller: hpController,
+                            hintText: '081xxxxxxxxx',
+                            keyboardType: TextInputType.phone,
+                            validator: (value) {
+                              if (!value!.isNumericOnly) {
+                                return 'Masukan hanya angka saja';
+                              }
+                            }),
+                        SizedBox(height: 15),
+                        _buildTextForm(
+                            labelText: 'Alamat',
+                            controller: addressController,
+                            hintText: 'Masukkan alamat rumah',
+                            keyboardType: TextInputType.text,
+                            maxLines: 4),
+                        SizedBox(height: 15),
+                        _buildTextForm(
+                          labelText: 'Sekolah',
+                          controller: schoolController,
+                          hintText: 'Masukkan nama sekolah',
+                          keyboardType: TextInputType.text,
                         ),
-                        Container(
-                          margin: EdgeInsets.symmetric(vertical: 5),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('Sekolah',
-                                  style: fontBlack.copyWith(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500)),
-                              SizedBox(height: 5),
-                              _buildTextForm(
-                                  controller: schoolController,
-                                  hintText: 'Masukkan nama sekolah',
-                                  keyboardType: TextInputType.phone,
-                                  validator: (value) {
-                                    if (!value!.isNumericOnly) {
-                                      return 'Masukan hanya angka saja';
-                                    }
-                                  }),
-                            ],
-                          ),
+                        SizedBox(height: 15),
+                        _buildTextForm(
+                          labelText: 'Password',
+                          controller: passwordController,
+                          obscureText: true,
+                          hintText: 'Masukkan Password',
+                          validator: (value) {
+                            if (value!.length < 6) {
+                              return 'Password minimal 6 karakter';
+                            }
+                          },
                         ),
-                        Container(
-                          margin: EdgeInsets.symmetric(vertical: 5),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('Password',
-                                  style: fontBlack.copyWith(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500)),
-                              SizedBox(height: 5),
-                              TextFormField(
-                                controller: passwordController,
-                                obscureText: true,
-                                decoration: decorationForm.copyWith(
-                                    hintText: 'Masukkan Password'),
-                                validator: (value) {
-                                  if (value!.length < 6) {
-                                    return 'Password minimal 6 karakter';
-                                  }
-                                },
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.symmetric(vertical: 5),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('Konfirmasi Password',
-                                  style: fontBlack.copyWith(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500)),
-                              SizedBox(height: 5),
-                              TextFormField(
-                                obscureText: true,
-                                decoration: decorationForm.copyWith(
-                                    hintText: 'Masukkan Ulang Password'),
-                                validator: (value) {
-                                  if (value!.isNotEmpty &&
-                                      value != passwordController.text) {
-                                    return 'Password tidak sama';
-                                  }
-                                },
-                              ),
-                            ],
-                          ),
+                        SizedBox(height: 15),
+                        _buildTextForm(
+                          labelText: 'Konfirmasi Password',
+                          obscureText: true,
+                          hintText: 'Masukkan Ulang Password',
+                          validator: (value) {
+                            if (value!.isNotEmpty &&
+                                value != passwordController.text) {
+                              return 'Password tidak sama';
+                            }
+                          },
                         ),
                         SizedBox(height: 100),
                       ],
@@ -233,9 +164,10 @@ class _RegisterPageState extends State<RegisterPage> {
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      resizeToAvoidBottomInset: false,
       floatingActionButton: Container(
         width: double.infinity,
-        padding: EdgeInsets.fromLTRB(20, 5, 20, 20),
+        padding: EdgeInsets.fromLTRB(20, 5, 20, 0),
         decoration: BoxDecoration(color: Colors.white),
         child: MaterialButton(
           height: 50,
@@ -243,14 +175,21 @@ class _RegisterPageState extends State<RegisterPage> {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(60)),
           color: ColorBase.primary,
-          padding: EdgeInsets.symmetric(vertical: 10),
           onPressed: () {
             if (_formKey.currentState!.validate()) {
-              // If the form is valid, display a snackbar. In the real world,
-              // you'd often call a server or save the information in a database.
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Processing Data')),
-              );
+              Provider.of<UserProvider>(context, listen: false)
+                  .register(context, {
+                "google_id": widget.googleAccount!.id,
+                "email": widget.googleAccount!.email,
+                "password": passwordController.text,
+                "nama_lengkap": nameController.text,
+                "alamat": addressController.text,
+                "phone": hpController.text,
+                "photo_profile": widget.googleAccount!.photoUrl,
+                "kelamin": selectedGender!.toLowerCase(),
+                "tanggal_lahir":
+                    DateFormat('dd-MM-yyyy', 'id_ID').format(_selectedDate),
+              });
             }
           },
           child: Text('Daftar',
@@ -260,21 +199,55 @@ class _RegisterPageState extends State<RegisterPage> {
       ),
     );
   }
+
+  _selectDate(BuildContext context) async {
+    DateTime? newSelectedDate = await showDatePicker(
+        context: context,
+        initialDate: _selectedDate,
+        firstDate: DateTime(1980),
+        lastDate: DateTime.now(),
+        builder: (BuildContext context, Widget? child) {
+          return Theme(
+            data: ThemeData.dark().copyWith(
+              colorScheme: ColorScheme.dark(
+                primary: ColorBase.primary,
+                onPrimary: Colors.white,
+                surface: Colors.black,
+                onSurface: ColorBase.primary,
+              ),
+              dialogBackgroundColor: Colors.black54,
+            ),
+            child: child!,
+          );
+        });
+
+    if (newSelectedDate != null) {
+      _selectedDate = newSelectedDate;
+      bornDateController
+        ..text = DateFormat('dd MMMM yyyy', 'id_ID').format(_selectedDate)
+        ..selection = TextSelection.fromPosition(TextPosition(
+            offset: bornDateController.text.length,
+            affinity: TextAffinity.upstream));
+    }
+  }
 }
 
 TextFormField _buildTextForm(
-    {String? hintText,
+    {String? labelText,
+    String? hintText,
     TextEditingController? controller,
     TextInputAction? textInputAction,
     TextInputType? keyboardType,
     String? Function(String?)? validator,
-    int? minLines}) {
+    int? maxLines,
+    bool? obscureText}) {
   return TextFormField(
     controller: controller,
-    decoration: decorationForm.copyWith(hintText: hintText),
+    decoration: registerForm.copyWith(labelText: labelText, hintText: hintText),
     keyboardType: keyboardType ?? TextInputType.text,
     textInputAction: textInputAction ?? TextInputAction.next,
-    minLines: minLines ?? 1,
+    maxLines: maxLines ?? 1,
+    obscureText: obscureText ?? false,
     validator: validator ??
         (value) {
           if (value!.isEmpty) {
@@ -282,4 +255,9 @@ TextFormField _buildTextForm(
           }
         },
   );
+}
+
+class AlwaysDisabledFocusNode extends FocusNode {
+  @override
+  bool get hasFocus => false;
 }

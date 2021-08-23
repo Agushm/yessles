@@ -20,6 +20,7 @@ class UserProvider with ChangeNotifier {
     ServicePreferances.instance.saveData('token', 'Null');
     ServicePreferances.instance.saveData('userData', 'Null');
     _g.signOutGoogle();
+    Get.offAll(LoginPage());
   }
 
   Future register(BuildContext context, Map<String, dynamic> data) async {

@@ -36,6 +36,16 @@ InputDecoration decorationForm = InputDecoration(
   hintStyle: fontBlack.copyWith(fontSize: 12, color: Colors.black54),
 );
 
+InputDecoration registerForm = InputDecoration(
+  fillColor: Colors.grey[100],
+  filled: true,
+  border: OutlineInputBorder(
+      borderSide: BorderSide.none, borderRadius: BorderRadius.circular(8)),
+  isDense: true, // Added this
+  contentPadding: EdgeInsets.all(15), // Added this
+  hintStyle: fontBlack.copyWith(fontSize: 12, color: Colors.black54),
+);
+
 MaterialButton commonButton(
     {String? btnText, Function()? onPressed, Color? btnColor}) {
   return MaterialButton(
