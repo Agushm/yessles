@@ -11,3 +11,5 @@ import 'package:yessles/utils/dialog_utils.dart';
 
 part 'transaction_provider.dart';
 part 'user_provider.dart';
+part 'article_provider.dart';
+part 'mapel_provider.dart';

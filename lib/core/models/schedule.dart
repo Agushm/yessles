@@ -33,8 +33,8 @@ List<Schedule> mockSchedule = [
     day: 'Senin',
     duration: 90,
     mapel: Mapel(
-        name: 'Matematika',
-        desc: '''
+      name: 'Matematika',
+      desc: '''
         <h1>HTML Ipsum Presents</h1>
 
 <p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
@@ -55,24 +55,19 @@ List<Schedule> mockSchedule = [
    <li>Aliquam tincidunt mauris eu risus.</li>
 </ul>
         ''',
-        rating: 3.4,
-        listImage: [
-          'https://images.pexels.com/photos/5428011/pexels-photo-5428011.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-          'https://images.pexels.com/photos/5427820/pexels-photo-5427820.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
-        ],
-        teacher: Teacher(
-            teacherName: 'Prof Manshur',
-            teacherAddress: 'Solo Baru , Sukoharjo, Jawa Tengah',
-            teacherRating: 4,
-            teacherImage:
-                'https://image.freepik.com/free-photo/half-profile-image-beautiful-young-woman-with-bob-hairdo-posing-gazing-with-eyes-full-reproach-suspicion-human-facial-expressions-emotions-reaction-feelings_343059-4660.jpg')),
+      rating: 3.4,
+      listImage: [
+        'https://images.pexels.com/photos/5428011/pexels-photo-5428011.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+        'https://images.pexels.com/photos/5427820/pexels-photo-5427820.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
+      ],
+    ),
   ),
   Schedule(
     day: 'Kamis',
     duration: 90,
     mapel: Mapel(
-        name: 'Kimia',
-        desc: '''
+      name: 'Kimia',
+      desc: '''
         <h1>HTML Ipsum Presents</h1>
 
 <p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
@@ -93,23 +88,18 @@ List<Schedule> mockSchedule = [
    <li>Aliquam tincidunt mauris eu risus.</li>
 </ul>
         ''',
-        rating: 3.4,
-        listImage: [
-          'https://images.pexels.com/photos/5427820/pexels-photo-5427820.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
-        ],
-        teacher: Teacher(
-            teacherName: 'Prof Manshur',
-            teacherAddress: 'Solo Baru , Sukoharjo, Jawa Tengah',
-            teacherRating: 4,
-            teacherImage:
-                'https://image.freepik.com/free-photo/half-profile-image-beautiful-young-woman-with-bob-hairdo-posing-gazing-with-eyes-full-reproach-suspicion-human-facial-expressions-emotions-reaction-feelings_343059-4660.jpg')),
+      rating: 3.4,
+      listImage: [
+        'https://images.pexels.com/photos/5427820/pexels-photo-5427820.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
+      ],
+    ),
   ),
   Schedule(
     day: 'Sabtu',
     duration: 90,
     mapel: Mapel(
-        name: 'Fisika',
-        desc: '''
+      name: 'Fisika',
+      desc: '''
         <h1>HTML Ipsum Presents</h1>
 
 <p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
@@ -130,16 +120,11 @@ List<Schedule> mockSchedule = [
    <li>Aliquam tincidunt mauris eu risus.</li>
 </ul>
         ''',
-        rating: 3.4,
-        listImage: [
-          'https://images.pexels.com/photos/5428011/pexels-photo-5428011.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-          'https://images.pexels.com/photos/5427820/pexels-photo-5427820.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
-        ],
-        teacher: Teacher(
-            teacherName: 'Prof Manshur',
-            teacherAddress: 'Solo Baru , Sukoharjo, Jawa Tengah',
-            teacherRating: 4,
-            teacherImage:
-                'https://image.freepik.com/free-photo/half-profile-image-beautiful-young-woman-with-bob-hairdo-posing-gazing-with-eyes-full-reproach-suspicion-human-facial-expressions-emotions-reaction-feelings_343059-4660.jpg')),
+      rating: 3.4,
+      listImage: [
+        'https://images.pexels.com/photos/5428011/pexels-photo-5428011.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+        'https://images.pexels.com/photos/5427820/pexels-photo-5427820.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
+      ],
+    ),
   ),
 ];

@@ -1,7 +1,7 @@
 part of 'pages.dart';
 
 class ArticlePage extends StatefulWidget {
-  final Map data;
+  final Article data;
   ArticlePage(this.data);
   @override
   _ArticlePageState createState() => _ArticlePageState();
@@ -15,7 +15,7 @@ class _ArticlePageState extends State<ArticlePage> {
         elevation: 1,
         backgroundColor: Colors.white,
         title: Text(
-          '${widget.data['judul']}',
+          '${widget.data.judul}',
           style: fontBlack,
         ),
         leadingWidth: 30,
@@ -32,14 +32,14 @@ class _ArticlePageState extends State<ArticlePage> {
           children: [
             Container(
               padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-              child: Text(widget.data['judul'],
+              child: Text(widget.data.judul!,
                   style: fontBlack.copyWith(
                       fontSize: 18, fontWeight: FontWeight.bold)),
             ),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 15),
               child: Text(
-                  '${tanggalBerita(DateTime.parse(widget.data['createdAt']), withTime: true)}',
+                  '${tanggalBerita(widget.data.updatedAt!, withTime: true)}',
                   style: fontBlack.copyWith(
                     fontSize: 12,
                   )),
@@ -53,14 +53,14 @@ class _ArticlePageState extends State<ArticlePage> {
                   height: 200,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      fit: BoxFit.scaleDown,
-                      image: NetworkImage(widget.data['gambar']),
+                      fit: BoxFit.cover,
+                      image: NetworkImage(widget.data.thumbnail!),
                     ),
                   ),
                 )),
             Container(
                 padding: EdgeInsets.symmetric(horizontal: 5),
-                child: htmlWidget(widget.data['deskripsi'])),
+                child: htmlWidget(widget.data.deskripsi!)),
             SizedBox(height: 100),
           ],
         ),

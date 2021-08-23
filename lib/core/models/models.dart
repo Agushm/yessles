@@ -5,3 +5,4 @@ part 'review.dart';
 part 'user.dart';
 part 'mapel.dart';
 part 'schedule.dart';
+part 'article.dart';

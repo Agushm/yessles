@@ -29,7 +29,8 @@ class UserProvider with ChangeNotifier {
     Get.back();
     if (res['res']['status'] == 'success') {
       _user = User.fromJson(res['res']['data']);
-      ServicePreferances.instance.saveData('token', res['res']['jwt_token']);
+      ServicePreferances.instance
+          .saveData('token', res['res']['data']['jwt_token']);
       ServicePreferances.instance.saveData('userData', json.encode(_user));
       Get.offAll(MainPage());
     } else if (res['res']['status'] == 'error' && res['res']['code'] == 400) {
@@ -60,7 +61,8 @@ class UserProvider with ChangeNotifier {
     }
     if (res['res']['status'] == 'success') {
       _user = User.fromJson(res['res']['data']);
-      ServicePreferances.instance.saveData('token', res['res']['jwt_token']);
+      ServicePreferances.instance
+          .saveData('token', res['res']['data']['jwt_token']);
       ServicePreferances.instance.saveData('userData', json.encode(_user));
       Get.offAll(MainPage());
     }
@@ -96,7 +98,8 @@ class UserProvider with ChangeNotifier {
       return null;
     } else if (res['res']['status'] == 'success') {
       _user = User.fromJson(res['res']['data']);
-      ServicePreferances.instance.saveData('token', res['res']['jwt_token']);
+      ServicePreferances.instance
+          .saveData('token', res['res']['data']['jwt_token']);
       ServicePreferances.instance.saveData('userData', json.encode(_user));
       Get.offAll(MainPage());
     } else if (res['res']['status'] == 'error') {

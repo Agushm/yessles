@@ -19,3 +19,5 @@ part 'firebase/fcm_services.dart';
 part 'google_signin_service.dart';
 part 'service_preference/service_preference.dart';
 part 'user/user_services.dart';
+part 'article/article_services.dart';
+part 'mapel/mapel_services.dart';

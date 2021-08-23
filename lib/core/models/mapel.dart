@@ -6,26 +6,34 @@ String mapelToJson(Mapel data) => json.encode(data.toJson());
 
 class Mapel {
   Mapel(
-      {this.name,
+      {this.id,
+      this.nama,
+      this.ikon,
+      this.name,
       this.desc,
       this.rating,
       this.listImage,
-      this.teacher,
       this.teachers});
 
+  int? id;
+  String? nama;
+  String? ikon;
   String? name;
   String? desc;
   double? rating;
   List<String>? listImage;
-  Teacher? teacher;
   List<Teacher>? teachers;
 
   factory Mapel.fromJson(Map<String, dynamic> json) => Mapel(
+        id: json["id"],
+        nama: json['nama'],
+        ikon: json['ikon'],
         name: json["name"],
         desc: json['desc'],
-        rating: json["rating"].toDouble() ?? 4.6,
-        listImage: List<String>.from(json["listImage"].map((x) => x)),
-        teacher: Teacher.fromJson(json["teacher"]),
+        rating: json["rating"] ?? 4.6,
+        listImage: json["listImage"] == null
+            ? []
+            : List<String>.from(json["listImage"].map((x) => x)),
         teachers: json['teachers'] == null
             ? []
             : List<Teacher>.from(
@@ -36,7 +44,6 @@ class Mapel {
         "name": name,
         "rating": rating,
         "listImage": List<dynamic>.from(listImage!.map((x) => x)),
-        "teacher": teacher!.toJson(),
       };
 }
 
@@ -114,12 +121,6 @@ List<Mapel> mockListMapel = List.generate(9, (index) {
       'https://media.istockphoto.com/photos/mature-man-professor-standing-in-class-picture-id1278976696?b=1&k=6&m=1278976696&s=170667a&w=0&h=eFHHTMKNM3DETJnvM0k2F9v_6uo1et0olLsmukPRrzE=',
       'https://media.istockphoto.com/photos/africanamerican-teacher-reading-to-school-children-picture-id1194312424?k=6&m=1194312424&s=612x612&w=0&h=mlU0lmWE8fg-ZrCFSQVXfZ-6GWUYhkQMzVkzpCIU4mA='
     ],
-    teacher: Teacher(
-        teacherName: 'Prof. Manshur',
-        teacherAddress: 'Solo Baru , Sukoharjo, Jawa Tengah',
-        teacherRating: 4,
-        teacherImage:
-            'https://image.freepik.com/free-photo/half-profile-image-beautiful-young-woman-with-bob-hairdo-posing-gazing-with-eyes-full-reproach-suspicion-human-facial-expressions-emotions-reaction-feelings_343059-4660.jpg'),
     teachers: [
       Teacher(
           teacherName: 'Prof. Manshur',

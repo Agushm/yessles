@@ -19,6 +19,12 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider.value(
           value: UserProvider(),
         ),
+        ChangeNotifierProvider.value(
+          value: ArticleProvider(),
+        ),
+        ChangeNotifierProvider.value(
+          value: MapelProvider(),
+        ),
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,

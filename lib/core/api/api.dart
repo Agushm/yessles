@@ -8,19 +8,12 @@ class API {
   static String loginPhone = baseURL + '/user/login-phone';
   static String register = baseURL + '/user/register';
   static String userProfile = baseURL + '/user/detail';
-  static String report = baseURL + '/user/report';
 
-  // *Topup* //
-  static String createTopup = baseURL + '/topup/create';
-  static String topupDetail = baseURL + '/topup/detail';
-  static String topupMethod = baseURL + '/topup/method';
-  static String historyTopup = baseURL + '/topup/history';
-  static String topupCoin = baseURL + '/topup/coin';
+  // *Article* //
+  static String getArticle = baseURL + '/artikel/all';
+  static String getArticleById = baseURL + '/artikel/detail/';
 
-  // *Gift* //
-  static String listGift = baseURL + '/item/list';
-
-  // *Term* //
-  static String getTerm = baseURL + '/helpdesk/all?type=tnc';
-  static String getHelp = baseURL + '/helpdesk/all?type=help';
+  // *Mapel* //
+  static String getMapel = baseURL + '/kategori/all';
+  static String getMapelById = baseURL + '/kategori/detail/';
 }

@@ -41,6 +41,7 @@ class _HomePageState extends State<HomePage> {
                   color: Colors.white,
                 ),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('Mata Pelajaran',
                         style: fontBlack.copyWith(
@@ -63,89 +64,9 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   Container(
-                    width: double.infinity,
-                    height: 300,
-                    child: ListView.separated(
-                        scrollDirection: Axis.horizontal,
-                        separatorBuilder: (context, index) => Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Divider(),
-                            ),
-                        padding: EdgeInsets.fromLTRB(10, 10, 10, 80),
-                        physics: const AlwaysScrollableScrollPhysics(),
-                        itemCount: listBerita.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          var data = listBerita[index];
-                          return InkWell(
-                            onTap: () => Get.to(ArticlePage(data)),
-                            child: Container(
-                              margin: EdgeInsets.all(5),
-                              width: 300,
-                              height: 210,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(15),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.5),
-                                    spreadRadius: 2,
-                                    blurRadius: 2,
-                                    offset: Offset(
-                                        0, 1), // changes position of shadow
-                                  ),
-                                ],
-                              ),
-                              child: Column(
-                                children: [
-                                  Expanded(
-                                      child: Container(
-                                    width: 300,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(15),
-                                          topRight: Radius.circular(15),
-                                        ),
-                                        image: DecorationImage(
-                                            fit: BoxFit.cover,
-                                            image:
-                                                NetworkImage(data['gambar']))),
-                                  )),
-                                  Container(
-                                      alignment: Alignment.centerLeft,
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 10, vertical: 5),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            '${data['judul']}',
-                                            style: fontBlack.copyWith(
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.w500),
-                                            maxLines: 1,
-                                            overflow: TextOverflow.ellipsis,
-                                          ),
-                                          Container(
-                                            width: 300,
-                                            child: Text(
-                                              '${parseHtmlString(data['deskripsi'])}',
-                                              maxLines: 2,
-                                              overflow: TextOverflow.ellipsis,
-                                              style: fontBlack.copyWith(
-                                                color: Colors.black54,
-                                                fontSize: 12,
-                                              ),
-                                            ),
-                                          )
-                                        ],
-                                      )),
-                                ],
-                              ),
-                            ),
-                          );
-                        }),
-                  ),
+                      width: double.infinity,
+                      height: 300,
+                      child: ListArticle()),
                 ],
               ),
             ],

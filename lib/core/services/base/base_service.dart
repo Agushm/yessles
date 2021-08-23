@@ -16,7 +16,7 @@ class BaseServices {
   }
 
   Future<dynamic> request(String url, RequestType type, BuildContext context,
-      {dynamic data, bool? useToken}) async {
+      {Map<String, dynamic>? params, dynamic data, bool? useToken}) async {
     var response;
 
     //If this route use token then fetch token
@@ -30,20 +30,27 @@ class BaseServices {
       print('URL: $url');
       switch (type) {
         case RequestType.GET:
-          response = await _dio.get(url, options: _headersOption);
+          response = await _dio.get(url,
+              options: _headersOption, queryParameters: params);
           break;
         case RequestType.POST:
           response = await _dio.post(url,
-              data: data != null ? data : null, options: _headersOption);
+              data: data != null ? data : null,
+              options: _headersOption,
+              queryParameters: params);
           break;
 
         case RequestType.PUT:
           response = await _dio.put(url,
-              data: data != null ? data : null, options: _headersOption);
+              data: data != null ? data : null,
+              options: _headersOption,
+              queryParameters: params);
           break;
         case RequestType.DELETE:
           response = await _dio.delete(url,
-              data: data != null ? data : null, options: _headersOption);
+              data: data != null ? data : null,
+              options: _headersOption,
+              queryParameters: params);
           break;
       }
     } on DioError catch (e) {
