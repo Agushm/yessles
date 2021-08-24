@@ -40,7 +40,7 @@ class _AllMapelPageState extends State<AllMapelPage> {
 
           return InkWell(
             onTap: () {
-              Get.to(MapelPage(index));
+              Get.to(MapelPage(e));
             },
             child: Container(
                 width: deviceWidth(context) / 4,

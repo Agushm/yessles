@@ -16,4 +16,12 @@ class API {
   // *Mapel* //
   static String getMapel = baseURL + '/kategori/all';
   static String getMapelById = baseURL + '/kategori/detail/';
+
+  // *Jenjang* //
+  static String getJenjang = baseURL + '/jenjang/all';
+
+  // *Mapel* //
+  static String getTeacher = baseURL + '/guru/all';
+  static String getTeacherById = baseURL + '/guru/detail/';
+  static String getTeacherFilter = baseURL + '/guru/filter/';
 }

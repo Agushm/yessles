@@ -17,4 +17,20 @@ class MapelProvider with ChangeNotifier {
     }
     mapelInit = false;
   }
+
+  List<SchoolLevel> _schoolLevel = [];
+  List<SchoolLevel> get schoolLevel => _schoolLevel;
+  bool schoolLevelInit = true;
+
+  Future getSchoolLevel(BuildContext context) async {
+    var res = await MapelServices.instance.getAllJenjang(context);
+    if (res != null && res['status'] == 'success') {
+      var d = res['data'] as List;
+      d.forEach((e) {
+        _schoolLevel.add(SchoolLevel.fromJson(e));
+      });
+      notifyListeners();
+    }
+    schoolLevelInit = false;
+  }
 }

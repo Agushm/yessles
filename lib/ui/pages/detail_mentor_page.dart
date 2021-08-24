@@ -38,7 +38,7 @@ class _DetailMentorPageState extends State<DetailMentorPage> {
           },
         ),
         title: Text(
-          '${widget.teacher!.teacherName}',
+          '${widget.teacher!.nama}',
           style: fontBlack.copyWith(
               fontSize: 14,
               color: ColorBase.primary,
@@ -66,7 +66,7 @@ class _DetailMentorPageState extends State<DetailMentorPage> {
                     shape: BoxShape.circle,
                     image: DecorationImage(
                       fit: BoxFit.cover,
-                      image: NetworkImage(widget.teacher!.teacherImage!),
+                      image: NetworkImage(widget.teacher!.photo!),
                     )),
               ),
             ),
@@ -82,7 +82,7 @@ class _DetailMentorPageState extends State<DetailMentorPage> {
                     children: [
                       Container(
                         width: 250,
-                        child: Text('${widget.teacher!.teacherName}',
+                        child: Text('${widget.teacher!.nama}',
                             style: fontBlack.copyWith(
                                 fontSize: 18, fontWeight: FontWeight.bold)),
                       ),
@@ -98,7 +98,7 @@ class _DetailMentorPageState extends State<DetailMentorPage> {
                           size: 20,
                           color: Colors.yellow),
                       SizedBox(width: 5),
-                      Text('${widget.teacher!.teacherRating}',
+                      Text('${widget.teacher!.totalRating}',
                           style: fontBlack.copyWith(
                               fontSize: 18, fontWeight: FontWeight.w500))
                     ],

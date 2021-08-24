@@ -25,6 +25,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider.value(
           value: MapelProvider(),
         ),
+        ChangeNotifierProvider.value(
+          value: TeacherProvider(),
+        ),
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,

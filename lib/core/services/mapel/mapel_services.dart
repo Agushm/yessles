@@ -18,4 +18,11 @@ class MapelServices extends BaseServices {
     );
     return res;
   }
+
+  Future<dynamic> getAllJenjang(BuildContext context,
+      {Map<String, dynamic>? params}) async {
+    var res = await request(API.getJenjang, RequestType.GET, context,
+        useToken: true, params: params);
+    return res;
+  }
 }

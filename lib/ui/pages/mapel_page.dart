@@ -1,8 +1,8 @@
 part of 'pages.dart';
 
 class MapelPage extends StatelessWidget {
-  final int index;
-  MapelPage(this.index);
+  final Mapel mapel;
+  MapelPage(this.mapel);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,28 +25,58 @@ class MapelPage extends StatelessWidget {
               fontWeight: FontWeight.bold),
         ),
       ),
-      body: ListView.builder(
-        itemCount: transactionClass.length,
-        itemBuilder: (context, i) {
-          var _class = transactionClass[i];
-          return InkWell(
-            onTap: () {
-              Get.to(DetailMapelPage(mapel: mockListMapel[index]));
+      body: Consumer<MapelProvider>(
+        builder: (context, prov, _) {
+          if (prov.schoolLevelInit && prov.schoolLevel.isEmpty) {
+            prov.getSchoolLevel(context);
+            return ListView.builder(
+              padding: EdgeInsets.symmetric(vertical: 20),
+              itemCount: 4,
+              itemBuilder: (context, i) {
+                return Container(
+                  width: double.infinity,
+                  height: 30,
+                  margin: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                        colors: [Colors.black26, Colors.black12]),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                );
+              },
+            );
+          }
+          return ListView.builder(
+            padding: EdgeInsets.symmetric(vertical: 20),
+            itemCount: prov.schoolLevel.length,
+            itemBuilder: (context, i) {
+              var _class = prov.schoolLevel[i];
+              return InkWell(
+                onTap: () {
+                  Get.to(DetailMapelPage(
+                    mapel: mapel,
+                    schoolLevel: _class,
+                  ));
+                },
+                child: Container(
+                  margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(5)),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(_class.jenjang!, style: fontBlack),
+                      Icon(Icons.arrow_forward_ios_rounded,
+                          size: 15, color: ColorBase.primary),
+                    ],
+                  ),
+                ),
+              );
             },
-            child: Container(
-              margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-              padding: EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(5)),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(_class['class_name'], style: fontBlack),
-                  Icon(Icons.arrow_forward_ios_rounded,
-                      size: 15, color: ColorBase.primary),
-                ],
-              ),
-            ),
           );
         },
       ),

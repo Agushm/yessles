@@ -117,3 +117,8 @@ Color colorStatus(String status) {
     return Colors.red;
   }
 }
+
+LinearGradient loadingGradient = LinearGradient(
+    begin: Alignment.centerLeft,
+    end: Alignment.centerRight,
+    colors: [Colors.black26, Colors.black12]);

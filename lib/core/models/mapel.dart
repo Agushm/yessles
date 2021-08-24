@@ -47,37 +47,37 @@ class Mapel {
       };
 }
 
-class Teacher {
-  Teacher({
-    this.teacherName,
-    this.teacherImage,
-    this.teacherRating,
-    this.teacherOnline,
-    this.teacherAddress,
-  });
+// class Teacher {
+//   Teacher({
+//     this.teacherName,
+//     this.teacherImage,
+//     this.teacherRating,
+//     this.teacherOnline,
+//     this.teacherAddress,
+//   });
 
-  String? teacherName;
-  String? teacherImage;
-  double? teacherRating;
-  dynamic teacherOnline;
-  String? teacherAddress;
+//   String? teacherName;
+//   String? teacherImage;
+//   double? teacherRating;
+//   dynamic teacherOnline;
+//   String? teacherAddress;
 
-  factory Teacher.fromJson(Map<String, dynamic> json) => Teacher(
-        teacherName: json["teacher_name"],
-        teacherImage: json["teacher_image"],
-        teacherRating: json["teacher_rating"].toDouble(),
-        teacherOnline: json["teacher_online"],
-        teacherAddress: json["teacher_address"],
-      );
+//   factory Teacher.fromJson(Map<String, dynamic> json) => Teacher(
+//         teacherName: json["teacher_name"],
+//         teacherImage: json["teacher_image"],
+//         teacherRating: json["teacher_rating"].toDouble(),
+//         teacherOnline: json["teacher_online"],
+//         teacherAddress: json["teacher_address"],
+//       );
 
-  Map<String, dynamic> toJson() => {
-        "teacher_name": teacherName,
-        "teacher_image": teacherImage,
-        "teacher_rating": teacherRating,
-        "teacher_online": teacherOnline,
-        "teacher_address": teacherAddress,
-      };
-}
+//   Map<String, dynamic> toJson() => {
+//         "teacher_name": teacherName,
+//         "teacher_image": teacherImage,
+//         "teacher_rating": teacherRating,
+//         "teacher_online": teacherOnline,
+//         "teacher_address": teacherAddress,
+//       };
+// }
 
 String mockDesc = '''
         <h1>HTML Ipsum Presents</h1>
