@@ -8,3 +8,4 @@ part 'schedule.dart';
 part 'article.dart';
 part 'teacher.dart';
 part 'school_level.dart';
+part 'rating.dart';

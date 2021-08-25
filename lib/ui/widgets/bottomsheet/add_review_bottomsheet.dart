@@ -87,6 +87,7 @@ class _AddRatingWidgetState extends State<AddRatingWidget> {
               ),
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
+                  Get.back();
                   Provider.of<RatingProvider>(context, listen: false)
                       .addRating(context, {
                     "guru_id": widget.teacher.id,

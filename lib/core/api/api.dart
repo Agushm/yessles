@@ -26,6 +26,6 @@ class API {
   static String getTeacherFilter = baseURL + '/guru/filter/';
 
   // *Rating* //
-  static String getRating = baseURL + '/rating/all';
-  static String addRating = baseURL + '/rating/create';
+  static String getRating = baseURL + '/rating/all/';
+  static String addRating = baseURL + '/rating/create/';
 }

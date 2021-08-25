@@ -15,15 +15,21 @@ class _DetailMapelPageState extends State<DetailMapelPage> {
   final _key = GlobalKey<ScaffoldState>();
 
   PageController pageController = PageController();
-
+  bool isLoading = true;
   @override
   void initState() {
     super.initState();
-    Provider.of<TeacherProvider>(context, listen: false).getTeacher(context,
-        isRefresh: true,
-        idMapel: widget.mapel!.id.toString(),
-        idJenjang: widget.schoolLevel!.id.toString(),
-        idKelas: widget.kelas!.id.toString());
+    Provider.of<TeacherProvider>(context, listen: false)
+        .getTeacher(context,
+            isRefresh: true,
+            idMapel: widget.mapel!.id.toString(),
+            idJenjang: widget.schoolLevel!.id.toString(),
+            idKelas: widget.kelas!.id.toString())
+        .then((value) {
+      setState(() {
+        isLoading = false;
+      });
+    });
   }
 
   @override
@@ -69,7 +75,7 @@ class _DetailMapelPageState extends State<DetailMapelPage> {
             width: double.infinity,
             height: 60,
             child: Consumer<TeacherProvider>(builder: (context, prov, _) {
-              if (prov.teacherInit && prov.teachers.isEmpty) {
+              if (isLoading) {
                 return ListView.builder(
                   padding: EdgeInsets.only(left: 20),
                   scrollDirection: Axis.horizontal,
@@ -129,7 +135,7 @@ class _DetailMapelPageState extends State<DetailMapelPage> {
           ),
           Expanded(
             child: Consumer<TeacherProvider>(builder: (context, prov, _) {
-              if (prov.teacherInit) {
+              if (isLoading) {
                 return ListView.builder(
                   padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
                   itemCount: 4,

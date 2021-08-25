@@ -44,7 +44,9 @@ class User {
         photoProfile: json["photo_profile"],
         alamat: json["alamat"],
         kelamin: json["kelamin"],
-        tanggalLahir: DateTime.parse(json["tanggal_lahir"]),
+        tanggalLahir: json["tanggal_lahir"] == null
+            ? null
+            : DateTime.parse(json["tanggal_lahir"]),
         // ratingUser: double.parse(json['ratingUser']),
         // ratingGuru: double.parse(json['ratingGuru']),
         jwtToken: json["jwt_token"],

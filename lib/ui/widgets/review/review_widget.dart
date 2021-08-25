@@ -20,34 +20,38 @@ Widget widgetReviewMapel(Teacher? teacher) {
       Row(
         children: [
           StarRating(
-              rating: teacher!.teacherRating,
+              rating: teacher!.totalRating,
               starCount: 5,
               size: 20,
               color: Colors.yellow),
           SizedBox(width: 5),
-          Text('${teacher.teacherRating}',
+          Text('${teacher.totalRating}',
               style: fontBlack.copyWith(
                   color: Colors.black54,
                   fontSize: 12,
                   fontWeight: FontWeight.bold)),
           SizedBox(width: 5),
-          Text('(${0} Review)',
+          Text('(${teacher.totalRating} Review)',
               style: fontBlack.copyWith(
                   color: Colors.black54,
                   fontSize: 12,
                   fontWeight: FontWeight.w500)),
         ],
       ),
+      SizedBox(height: 10),
       Consumer<RatingProvider>(builder: (context, prov, _) {
+        if (prov.ratings.isEmpty && !prov.reviewsInit) {
+          return Text('Belum ada data');
+        }
         return ListView.separated(
           physics: NeverScrollableScrollPhysics(),
           shrinkWrap: true,
-          itemCount: reviews.length,
+          itemCount: prov.ratings.length,
           separatorBuilder: (c, i) {
             return Divider();
           },
           itemBuilder: (c, i) {
-            var review = reviews[i];
+            var review = prov.ratings[i];
             return Container(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -74,7 +78,7 @@ Widget widgetReviewMapel(Teacher? teacher) {
                                 style: fontBlack.copyWith(
                                     fontSize: 10, fontWeight: FontWeight.bold)),
                             StarRating(
-                                rating: review.review!.rating,
+                                rating: review.rating,
                                 starCount: 5,
                                 size: 12,
                                 color: Colors.yellow),
@@ -85,24 +89,24 @@ Widget widgetReviewMapel(Teacher? teacher) {
                   ),
                   Container(
                     margin: EdgeInsets.symmetric(vertical: 10),
-                    child: Text('${review.review!.message}',
+                    child: Text('${review.komentar!}',
                         style: fontBlack.copyWith(
                             fontSize: 12, fontWeight: FontWeight.w300)),
                   ),
-                  Row(
-                    children: review.review!.images!
-                        .map((e) => Container(
-                              margin: EdgeInsets.only(right: 10),
-                              decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1, color: Colors.black12),
-                              ),
-                              child: Image.network(e, width: 72, height: 72),
-                            ))
-                        .toList(),
-                  ),
+                  // Row(
+                  //   children: review.review!.images!
+                  //       .map((e) => Container(
+                  //             margin: EdgeInsets.only(right: 10),
+                  //             decoration: BoxDecoration(
+                  //               border:
+                  //                   Border.all(width: 1, color: Colors.black12),
+                  //             ),
+                  //             child: Image.network(e, width: 72, height: 72),
+                  //           ))
+                  //       .toList(),
+                  // ),
                   SizedBox(height: 10),
-                  Text('01-04-2021 19:23',
+                  Text('${tanggalInvoice(review.createdAt!)}',
                       style: fontBlack.copyWith(
                           color: Colors.black54,
                           fontSize: 10,
@@ -114,11 +118,6 @@ Widget widgetReviewMapel(Teacher? teacher) {
           },
         );
       }),
-      Text('Lihat Semua ulasan >',
-          style: fontBlack.copyWith(
-              fontWeight: FontWeight.bold,
-              color: ColorBase.primary,
-              fontSize: 12)),
     ],
   );
 }

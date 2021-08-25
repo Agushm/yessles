@@ -28,6 +28,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider.value(
           value: TeacherProvider(),
         ),
+        ChangeNotifierProvider.value(
+          value: RatingProvider(),
+        ),
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,

@@ -39,4 +39,10 @@ class TeacherProvider with ChangeNotifier {
     print("teacher INit$teacherInit");
     notifyListeners();
   }
+
+  void updateTotalRating(int? teacherId, double? newRating) {
+    var index = _teachers.indexWhere((e) => e.id == teacherId);
+    _teachers[index].totalRating = newRating;
+    notifyListeners();
+  }
 }
