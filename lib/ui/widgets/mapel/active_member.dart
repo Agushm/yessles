@@ -13,14 +13,14 @@ Widget activeMember(Teacher data) {
             shape: BoxShape.circle,
             image: DecorationImage(
               fit: BoxFit.cover,
-              image: NetworkImage(data.teacherImage!),
+              image: NetworkImage(data.photo!),
             ),
           ),
         ),
         SizedBox(width: 10),
         Container(
           width: 60,
-          child: Text('${data.teacherName}',
+          child: Text('${data.nama!}',
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: fontBlack.copyWith(

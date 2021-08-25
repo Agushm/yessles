@@ -3,7 +3,8 @@ part of 'pages.dart';
 class DetailMapelPage extends StatefulWidget {
   final Mapel? mapel;
   final SchoolLevel? schoolLevel;
-  const DetailMapelPage({Key? key, this.mapel, this.schoolLevel})
+  final Kelas? kelas;
+  const DetailMapelPage({Key? key, this.mapel, this.schoolLevel, this.kelas})
       : super(key: key);
 
   @override
@@ -21,7 +22,8 @@ class _DetailMapelPageState extends State<DetailMapelPage> {
     Provider.of<TeacherProvider>(context, listen: false).getTeacher(context,
         isRefresh: true,
         idMapel: widget.mapel!.id.toString(),
-        idJenjang: widget.schoolLevel!.id.toString());
+        idJenjang: widget.schoolLevel!.id.toString(),
+        idKelas: widget.kelas!.id.toString());
   }
 
   @override

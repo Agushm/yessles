@@ -153,7 +153,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             }
                           },
                         ),
-                        SizedBox(height: 100),
+                        SizedBox(height: deviceHeight(context) / 2),
                       ],
                     ),
                   ),
@@ -185,10 +185,11 @@ class _RegisterPageState extends State<RegisterPage> {
                 "nama_lengkap": nameController.text,
                 "alamat": addressController.text,
                 "phone": hpController.text,
+                "sekolah": schoolController.text,
                 "photo_profile": widget.googleAccount!.photoUrl,
                 "kelamin": selectedGender!.toLowerCase(),
                 "tanggal_lahir":
-                    DateFormat('dd-MM-yyyy', 'id_ID').format(_selectedDate),
+                    DateFormat('yyyy-MM-dd', 'id_ID').format(_selectedDate),
               });
             }
           },

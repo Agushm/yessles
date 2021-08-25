@@ -93,7 +93,7 @@ class _DetailMentorPageState extends State<DetailMentorPage> {
                   Row(
                     children: [
                       StarRating(
-                          rating: widget.teacher!.teacherRating,
+                          rating: widget.teacher!.totalRating,
                           starCount: 5,
                           size: 20,
                           color: Colors.yellow),
@@ -104,7 +104,7 @@ class _DetailMentorPageState extends State<DetailMentorPage> {
                     ],
                   ),
                   SizedBox(height: 10),
-                  htmlWidget(widget.teacher!.teacherAddress!),
+                  // htmlWidget(widget.teacher!.alamat!),
                   SizedBox(height: 15),
                 ],
               ),
@@ -160,7 +160,9 @@ class _DetailMentorPageState extends State<DetailMentorPage> {
                     borderRadius: BorderRadius.circular(5),
                   ),
                   color: ColorBase.primary,
-                  onPressed: () {},
+                  onPressed: () {
+                    sendReviewBottomSheet(context, widget.teacher!);
+                  },
                   child: Text('Review Sekarang',
                       style: fontBlack.copyWith(
                           fontWeight: FontWeight.bold,

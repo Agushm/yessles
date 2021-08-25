@@ -6,16 +6,22 @@ class TeacherProvider with ChangeNotifier {
   bool teacherInit = true;
 
   Future getTeacher(BuildContext context,
-      {String? idMapel, String? idJenjang, bool? isRefresh = true}) async {
+      {String? idMapel,
+      String? idJenjang,
+      String? idKelas,
+      bool? isRefresh = true}) async {
     if (isRefresh!) {
       _teachers = [];
       teacherInit = true;
     }
-    var res = await TeacherServices.instance
-        .getByFilter(context, idMapel: idMapel, idJenjang: idJenjang, params: {
-      'page': 1,
-      'max': 15,
-    });
+    var res = await TeacherServices.instance.getByFilter(context,
+        idMapel: idMapel,
+        idJenjang: idJenjang,
+        idKelas: idKelas,
+        params: {
+          'page': 1,
+          'max': 15,
+        });
     if (res != null && res['status'] == 'success') {
       var d = res['data']['docs'] as List;
       d.forEach((e) {

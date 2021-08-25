@@ -24,4 +24,8 @@ class API {
   static String getTeacher = baseURL + '/guru/all';
   static String getTeacherById = baseURL + '/guru/detail/';
   static String getTeacherFilter = baseURL + '/guru/filter/';
+
+  // *Rating* //
+  static String getRating = baseURL + '/rating/all';
+  static String addRating = baseURL + '/rating/create';
 }

@@ -53,28 +53,34 @@ class MapelPage extends StatelessWidget {
             itemCount: prov.schoolLevel.length,
             itemBuilder: (context, i) {
               var _class = prov.schoolLevel[i];
-              return InkWell(
-                onTap: () {
-                  Get.to(DetailMapelPage(
-                    mapel: mapel,
-                    schoolLevel: _class,
-                  ));
-                },
-                child: Container(
-                  margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(5)),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(_class.jenjang!, style: fontBlack),
-                      Icon(Icons.arrow_forward_ios_rounded,
-                          size: 15, color: ColorBase.primary),
-                    ],
-                  ),
-                ),
+              return ExpansionTile(
+                title: Text(_class.jenjang!, style: fontBlack),
+                childrenPadding: EdgeInsets.only(bottom: 10),
+                children: _class.kelas!.map((e) {
+                  return InkWell(
+                    onTap: () {
+                      Get.to(DetailMapelPage(
+                          mapel: mapel, schoolLevel: _class, kelas: e));
+                    },
+                    child: Container(
+                      margin: EdgeInsets.symmetric(horizontal: 10),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      decoration: BoxDecoration(
+                          color: ColorBase.primary,
+                          borderRadius: BorderRadius.circular(20)),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Icon(Icons.arrow_forward_ios_rounded,
+                              size: 15, color: Colors.white),
+                          SizedBox(width: 20),
+                          Text(e.kelas!, style: fontWhite),
+                        ],
+                      ),
+                    ),
+                  );
+                }).toList(),
               );
             },
           );

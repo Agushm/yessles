@@ -31,14 +31,15 @@ Widget widgetReviewMapel(Teacher? teacher) {
                   fontSize: 12,
                   fontWeight: FontWeight.bold)),
           SizedBox(width: 5),
-          Text('(${reviews.length} Review)',
+          Text('(${0} Review)',
               style: fontBlack.copyWith(
                   color: Colors.black54,
                   fontSize: 12,
                   fontWeight: FontWeight.w500)),
         ],
       ),
-      ListView.separated(
+      Consumer<RatingProvider>(builder: (context, prov, _) {
+        return ListView.separated(
           physics: NeverScrollableScrollPhysics(),
           shrinkWrap: true,
           itemCount: reviews.length,
@@ -110,7 +111,9 @@ Widget widgetReviewMapel(Teacher? teacher) {
                 ],
               ),
             );
-          }),
+          },
+        );
+      }),
       Text('Lihat Semua ulasan >',
           style: fontBlack.copyWith(
               fontWeight: FontWeight.bold,

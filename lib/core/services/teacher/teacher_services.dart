@@ -22,10 +22,14 @@ class TeacherServices extends BaseServices {
   Future<dynamic> getByFilter(BuildContext context,
       {String? idMapel,
       String? idJenjang,
+      String? idKelas,
       Map<String, dynamic>? params}) async {
     var res = await request(
-        API.getTeacherFilter + '$idMapel/$idJenjang', RequestType.GET, context,
-        useToken: true, params: params);
+        API.getTeacherFilter + '$idMapel/$idJenjang/$idKelas',
+        RequestType.GET,
+        context,
+        useToken: true,
+        params: params);
     return res;
   }
 }

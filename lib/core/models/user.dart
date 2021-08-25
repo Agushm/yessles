@@ -18,6 +18,7 @@ class User {
     this.ratingUser,
     this.ratingGuru,
     this.jwtToken,
+    this.sekolah,
   });
 
   String? id;
@@ -32,6 +33,7 @@ class User {
   double? ratingUser;
   double? ratingGuru;
   String? jwtToken;
+  String? sekolah;
 
   factory User.fromJson(Map<String, dynamic> json) => User(
         id: json["id"].toString(),
@@ -46,6 +48,7 @@ class User {
         // ratingUser: double.parse(json['ratingUser']),
         // ratingGuru: double.parse(json['ratingGuru']),
         jwtToken: json["jwt_token"],
+        sekolah: json['sekolah'],
       );
 
   Map<String, dynamic> toJson() => {
@@ -61,5 +64,6 @@ class User {
         "rating_user": ratingUser,
         "rating_guru": ratingGuru,
         "jwt_token": jwtToken,
+        "sekolah": sekolah
       };
 }

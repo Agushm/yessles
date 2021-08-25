@@ -27,4 +27,5 @@ part 'divider.dart';
 part 'html_widget.dart';
 part 'bottomsheet/teacher_bottomsheet.dart';
 part 'bottomsheet/paying_method_bottomsheet.dart';
+part 'bottomsheet/add_review_bottomsheet.dart';
 part 'mapel/active_member.dart';

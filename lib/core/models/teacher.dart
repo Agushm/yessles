@@ -31,7 +31,7 @@ class Teacher {
   dynamic phone;
   dynamic alamat;
   DateTime? createdAt;
-  String? totalRating;
+  double? totalRating;
 
   Kategori? kategori;
   String? teacherName;
@@ -49,13 +49,13 @@ class Teacher {
         phone: json["phone"],
         alamat: json["alamat"],
         createdAt: DateTime.parse(json["createdAt"]),
-        totalRating: json["total_rating"],
+        totalRating: json["total_rating"] ?? 0,
         kategori: Kategori.fromJson(
           json["kategori"],
         ),
         teacherName: json["teacher_name"],
         teacherImage: json["teacher_image"],
-        teacherRating: json["teacher_rating"].toDouble(),
+        teacherRating: json["teacher_rating"] ?? 0,
         teacherOnline: json["teacher_online"],
         teacherAddress: json["teacher_address"],
       );

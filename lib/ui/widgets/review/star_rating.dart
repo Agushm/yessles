@@ -8,13 +8,14 @@ class StarRating extends StatelessWidget {
   final RatingChangeCallback? onRatingChanged;
   final Color? color;
   final double? size;
-
+  final MainAxisAlignment? mainAxisAlignment;
   StarRating(
       {this.starCount = 5,
       this.rating = .0,
       this.onRatingChanged,
       this.color,
-      this.size});
+      this.size,
+      this.mainAxisAlignment});
 
   Widget buildStar(BuildContext context, int index) {
     Icon icon;
@@ -48,6 +49,7 @@ class StarRating extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Row(
+          mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
           children:
               List.generate(starCount!, (index) => buildStar(context, index))),
     );

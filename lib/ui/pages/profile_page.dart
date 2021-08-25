@@ -52,6 +52,8 @@ class _ProfilePageState extends State<ProfilePage> {
                     label: 'Jenis Kelamin', data: prov.user!.kelamin!),
                 detailItemBio(context,
                     label: 'Alamat', data: prov.user!.alamat!),
+                detailItemBio(context,
+                    label: 'Sekolah', data: prov.user!.sekolah!),
                 SizedBox(height: 20),
                 Center(
                   child: Container(

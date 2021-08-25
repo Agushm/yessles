@@ -48,6 +48,7 @@ class UserServices extends BaseServices {
           "nama_lengkap": data['nama_lengkap'],
           "alamat": data['alamat'],
           "phone": data['phone'],
+          "sekolah": data['sekolah'],
           "photo_profile": data['photo_profile'],
           "kelamin": data['kelamin'],
           "tanggal_lahir": data['tanggal_lahir'],

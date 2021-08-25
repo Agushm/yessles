@@ -84,7 +84,7 @@ Widget widgetSelectTeacher(Teacher data, {bool showIcon = true}) {
               shape: BoxShape.circle,
               image: DecorationImage(
                 fit: BoxFit.cover,
-                image: NetworkImage(data.teacherImage!),
+                image: NetworkImage(data.photo!),
               ),
             ),
           ),
@@ -95,7 +95,7 @@ Widget widgetSelectTeacher(Teacher data, {bool showIcon = true}) {
               children: [
                 Container(
                   width: 250,
-                  child: Text('${data.teacherName}',
+                  child: Text('${data.nama}',
                       maxLines: 1,
                       style: fontBlack.copyWith(
                           fontWeight: FontWeight.bold,
@@ -105,7 +105,7 @@ Widget widgetSelectTeacher(Teacher data, {bool showIcon = true}) {
                 Row(
                   children: [
                     Icon(Icons.star, color: Colors.yellow, size: 12),
-                    Text(' ${data.teacherRating} rating pengajar',
+                    Text(' ${data.totalRating} rating pengajar',
                         style: fontBlack.copyWith(
                             fontWeight: FontWeight.w500,
                             color: Colors.black54,

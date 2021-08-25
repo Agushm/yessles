@@ -33,7 +33,7 @@ class ListArticle extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           var data = prov.listNews[index];
           return InkWell(
-            //onTap: () => Get.to(ArticlePage(data)),
+            onTap: () => Get.to(ArticlePage(data)),
             child: Container(
               margin: EdgeInsets.all(5),
               width: 300,
