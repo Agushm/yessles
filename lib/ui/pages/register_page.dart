@@ -111,6 +111,9 @@ class _RegisterPageState extends State<RegisterPage> {
                             hintText: '081xxxxxxxxx',
                             keyboardType: TextInputType.phone,
                             validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Harus diisi';
+                              }
                               if (!value!.isNumericOnly) {
                                 return 'Masukan hanya angka saja';
                               }

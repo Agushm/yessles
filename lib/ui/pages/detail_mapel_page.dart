@@ -61,76 +61,82 @@ class _DetailMapelPageState extends State<DetailMapelPage> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // Container(
+          //   margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          //   child: Text(
+          //     'Member Kelas',
+          //     style: fontBlack.copyWith(
+          //         fontSize: 16,
+          //         color: ColorBase.primary,
+          //         fontWeight: FontWeight.w500),
+          //   ),
+          // ),
+          // Container(
+          //   width: double.infinity,
+          //   height: 60,
+          //   child: Consumer<TeacherProvider>(builder: (context, prov, _) {
+          //     if (isLoading) {
+          //       return ListView.builder(
+          //         padding: EdgeInsets.only(left: 20),
+          //         scrollDirection: Axis.horizontal,
+          //         itemCount: 5,
+          //         itemBuilder: (context, index) {
+          //           return Container(
+          //             margin: EdgeInsets.symmetric(horizontal: 5),
+          //             child: Column(
+          //               mainAxisSize: MainAxisSize.min,
+          //               children: [
+          //                 Container(
+          //                   height: 40,
+          //                   width: 40,
+          //                   decoration: BoxDecoration(
+          //                       shape: BoxShape.circle,
+          //                       gradient: loadingGradient),
+          //                 ),
+          //                 SizedBox(height: 5),
+          //                 Container(
+          //                   width: 60,
+          //                   height: 10,
+          //                   decoration: BoxDecoration(
+          //                       borderRadius: BorderRadius.circular(5),
+          //                       gradient: loadingGradient),
+          //                 ),
+          //               ],
+          //             ),
+          //           );
+          //         },
+          //       );
+          //     }
+          //     if (!prov.teacherInit && prov.teachers.isEmpty) {
+          //       return Center(child: Text('Belum ada data', style: fontBlack));
+          //     }
+          //     return ListView.builder(
+          //       padding: EdgeInsets.only(left: 20),
+          //       scrollDirection: Axis.horizontal,
+          //       itemCount: prov.teachers.length,
+          //       itemBuilder: (context, index) {
+          //         var teacher = prov.teachers[index];
+          //         return Container(
+          //           child: activeMember(teacher),
+          //         );
+          //       },
+          //     );
+          //   }),
+          // ),
           Container(
-            margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: Text(
-              'Member Kelas',
-              style: fontBlack.copyWith(
-                  fontSize: 16,
-                  color: ColorBase.primary,
-                  fontWeight: FontWeight.w500),
+            margin: EdgeInsets.symmetric(vertical: 10),
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+            decoration: BoxDecoration(
+              color: ColorBase.primary,
+              borderRadius: BorderRadius.only(
+                topRight: Radius.circular(20),
+                bottomRight: Radius.circular(20),
+              ),
             ),
-          ),
-          Container(
-            width: double.infinity,
-            height: 60,
-            child: Consumer<TeacherProvider>(builder: (context, prov, _) {
-              if (isLoading) {
-                return ListView.builder(
-                  padding: EdgeInsets.only(left: 20),
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 5,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      margin: EdgeInsets.symmetric(horizontal: 5),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Container(
-                            height: 40,
-                            width: 40,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                gradient: loadingGradient),
-                          ),
-                          SizedBox(height: 5),
-                          Container(
-                            width: 60,
-                            height: 10,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                gradient: loadingGradient),
-                          ),
-                        ],
-                      ),
-                    );
-                  },
-                );
-              }
-              if (!prov.teacherInit && prov.teachers.isEmpty) {
-                return Center(child: Text('Belum ada data', style: fontBlack));
-              }
-              return ListView.builder(
-                padding: EdgeInsets.only(left: 20),
-                scrollDirection: Axis.horizontal,
-                itemCount: prov.teachers.length,
-                itemBuilder: (context, index) {
-                  var teacher = prov.teachers[index];
-                  return Container(
-                    child: activeMember(teacher),
-                  );
-                },
-              );
-            }),
-          ),
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Text(
               'Daftar Mentor',
-              style: fontBlack.copyWith(
-                  fontSize: 16,
-                  color: ColorBase.primary,
-                  fontWeight: FontWeight.w500),
+              style:
+                  fontWhite.copyWith(fontSize: 14, fontWeight: FontWeight.w500),
             ),
           ),
           Expanded(

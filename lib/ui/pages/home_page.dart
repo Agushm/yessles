@@ -36,16 +36,29 @@ class _HomePageState extends State<HomePage> {
               PosterBaner(),
               Container(
                 width: deviceWidth(context),
-                padding: EdgeInsets.all(20),
                 decoration: BoxDecoration(
                   color: Colors.white,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Mata Pelajaran',
-                        style: fontBlack.copyWith(
-                            fontSize: 16, fontWeight: FontWeight.bold)),
+                    SizedBox(height: 20),
+                    Container(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                      decoration: BoxDecoration(
+                        color: ColorBase.primary,
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(20),
+                          bottomRight: Radius.circular(20),
+                        ),
+                      ),
+                      child: Text(
+                        'Mata Pelajaraan',
+                        style: fontWhite.copyWith(
+                            fontSize: 14, fontWeight: FontWeight.bold),
+                      ),
+                    ),
                     SizedBox(height: 20),
                     GridMapel()
                   ],
@@ -55,12 +68,20 @@ class _HomePageState extends State<HomePage> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  SizedBox(height: 10),
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                    decoration: BoxDecoration(
+                      color: ColorBase.primary,
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(20),
+                        bottomRight: Radius.circular(20),
+                      ),
+                    ),
                     child: Text(
                       'Ada yang baru nih',
-                      style: fontBlack.copyWith(
-                          fontSize: 16, fontWeight: FontWeight.bold),
+                      style: fontWhite.copyWith(
+                          fontSize: 14, fontWeight: FontWeight.bold),
                     ),
                   ),
                   Container(
