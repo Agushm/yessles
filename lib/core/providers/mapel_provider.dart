@@ -29,6 +29,8 @@ class MapelProvider with ChangeNotifier {
       d.forEach((e) {
         _schoolLevel.add(SchoolLevel.fromJson(e));
       });
+      Provider.of<TransactionProvider>(context, listen: false)
+          .changeSelectedClass(_schoolLevel[0]);
       notifyListeners();
     }
     schoolLevelInit = false;

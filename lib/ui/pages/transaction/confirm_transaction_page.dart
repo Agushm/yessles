@@ -42,10 +42,10 @@ class ConfirmTransactionPage extends StatelessWidget {
                       content: prov.selectedPaket!['nama']),
                   buildDetailTransaction(
                       title: 'Jenjang Sekolah',
-                      content: prov.selectedClass!['class_name']),
+                      content: prov.selectedClass!.jenjang),
                   buildDetailTransaction(
                       title: 'Jenjang Kelas',
-                      content: prov.selectedNumberClass),
+                      content: prov.selectedNumberClass!.kelas),
                   buildDetailTransaction(
                       title: 'Mode Pembelajaran',
                       content: prov.selectedTeachingMode!['mode']['mode_name']),
@@ -168,7 +168,7 @@ Widget buildDetailTransactionMapel() {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('${e['nama_mapel']}',
+                    Text('${e.nama}',
                         style: fontBlack.copyWith(
                             fontSize: 14, fontWeight: FontWeight.w500)),
                     widgetSelectTeacher(teacher, showIcon: false),

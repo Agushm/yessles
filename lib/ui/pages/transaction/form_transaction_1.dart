@@ -22,7 +22,8 @@ class FormTransaction1 extends StatelessWidget {
 }
 
 Widget buildFormSession1() {
-  return Consumer<TransactionProvider>(builder: (context, prov, _) {
+  return Consumer2<TransactionProvider, MapelProvider>(
+      builder: (context, prov, mapel, _) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20),
       child: Column(
@@ -30,56 +31,66 @@ Widget buildFormSession1() {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           labelTextForm('Paket Pembelajaran'),
-          DropdownButtonFormField<Map>(
-            value: transactionPaket[0],
-            isExpanded: true,
-            items: transactionPaket
-                .map((e) => DropdownMenuItem<Map>(
-                      child: Text('${e['nama']}',
-                          style: fontBlack.copyWith(
-                              fontSize: 13, fontWeight: FontWeight.w500)),
-                      value: e,
-                    ))
-                .toList(),
-            decoration: decorationForm,
-            onChanged: (value) {
-              prov.changeSelectedPaket(value!);
-            },
-          ),
+          Builder(builder: (context) {
+            if (prov.paketInit && prov.listPaket.isEmpty) {
+              prov.getPaket(context);
+              return LinearProgressIndicator();
+            }
+            return DropdownButtonFormField<Map<String, dynamic>>(
+              value: prov.selectedPaket,
+              isExpanded: true,
+              items: prov.listPaket
+                  .map((e) => DropdownMenuItem<Map<String, dynamic>>(
+                        child: Text('${e['nama']}',
+                            style: fontBlack.copyWith(
+                                fontSize: 13, fontWeight: FontWeight.w500)),
+                        value: e,
+                      ))
+                  .toList(),
+              decoration: decorationForm,
+              onChanged: (value) {
+                prov.changeSelectedPaket(value!);
+              },
+            );
+          }),
           labelTextForm('Jenjang Sekolah'),
-          DropdownButtonFormField<Map>(
-            value: transactionClass[0],
-            isExpanded: true,
-            items: transactionClass
-                .map((e) => DropdownMenuItem<Map>(
-                      child: Text('${e['class_name']}',
-                          style: fontBlack.copyWith(
-                              fontSize: 13, fontWeight: FontWeight.w500)),
-                      value: e,
-                    ))
-                .toList(),
-            decoration: decorationForm,
-            onChanged: (value) {
-              prov.changeSelectedClass(value!);
-            },
-          ),
+          Builder(builder: (context) {
+            if (mapel.schoolLevelInit && mapel.schoolLevel.isEmpty) {
+              mapel.getSchoolLevel(context);
+              return LinearProgressIndicator();
+            }
+            return DropdownButtonFormField<SchoolLevel>(
+              value: mapel.schoolLevel[0],
+              isExpanded: true,
+              items: mapel.schoolLevel
+                  .map((e) => DropdownMenuItem<SchoolLevel>(
+                        child: Text('${e.jenjang}',
+                            style: fontBlack.copyWith(
+                                fontSize: 13, fontWeight: FontWeight.w500)),
+                        value: e,
+                      ))
+                  .toList(),
+              decoration: decorationForm,
+              onChanged: (value) {
+                prov.changeSelectedClass(value!);
+              },
+            );
+          }),
           Builder(
             builder: (context) {
               if (prov.selectedClass == null) {
                 return SizedBox();
               } else {
-                List _classNumber = prov.selectedClass!['list_class'];
-
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     labelTextForm('Jenjang Kelas'),
-                    DropdownButtonFormField(
-                      value: _classNumber[0],
+                    DropdownButtonFormField<Kelas>(
+                      value: prov.selectedNumberClass,
                       isExpanded: true,
-                      items: _classNumber
-                          .map((e) => DropdownMenuItem(
-                                child: Text('$e',
+                      items: prov.selectedClass!.kelas!
+                          .map((e) => DropdownMenuItem<Kelas>(
+                                child: Text('${e.kelas}',
                                     style: fontBlack.copyWith(
                                         fontSize: 13,
                                         fontWeight: FontWeight.w500)),
@@ -88,7 +99,7 @@ Widget buildFormSession1() {
                           .toList(),
                       decoration: decorationForm,
                       onChanged: (value) {
-                        //prov.changeSelectedNumberClass(value!);
+                        prov.changeSelectedNumberClass(value!);
                       },
                     ),
                   ],

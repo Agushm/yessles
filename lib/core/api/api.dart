@@ -28,4 +28,7 @@ class API {
   // *Rating* //
   static String getRating = baseURL + '/rating/all/';
   static String addRating = baseURL + '/rating/create/';
+
+  // *Transaction* //
+  static String getPaket = baseURL + '/paket/all/';
 }

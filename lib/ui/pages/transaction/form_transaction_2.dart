@@ -55,7 +55,8 @@ class FormTransaction2 extends StatelessWidget {
 }
 
 Widget buildForm2() {
-  return Consumer<TransactionProvider>(builder: (context, prov, _) {
+  return Consumer2<TransactionProvider, MapelProvider>(
+      builder: (context, prov, mapel, _) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20),
       child: Column(
@@ -87,67 +88,87 @@ Widget buildForm2() {
               ],
             ),
           ),
-          GridView.count(
-            crossAxisCount: 4,
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            mainAxisSpacing: 5,
-            crossAxisSpacing: 5,
-            children: mapel.map((e) {
-              return InkWell(
-                onTap: () {
-                  prov.addSelectedMapel(e);
-                },
-                child: Stack(
-                  children: [
-                    Container(
-                      width: deviceWidth(context) / 4,
+          Builder(builder: (context) {
+            if (mapel.mapelInit && mapel.mapel.isEmpty) {
+              mapel.getMapel(context);
+              return GridView.count(
+                  crossAxisCount: 4,
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  mainAxisSpacing: 5,
+                  crossAxisSpacing: 5,
+                  children: List.generate(
+                    8,
+                    (index) => Container(
                       decoration: BoxDecoration(
-                          color: Colors.white,
-                          border: Border.all(
-                              color: prov.selectedMapel.indexOf(e) != -1
-                                  ? ColorBase.primary
-                                  : Colors.grey.shade300,
-                              width: 2),
-                          borderRadius: BorderRadius.circular(10)),
-                      alignment: Alignment.center,
-                      child: Text(
-                        '${e['nama_mapel']}',
-                        textAlign: TextAlign.center,
-                        style: fontBlack.copyWith(
-                            color: prov.selectedMapel.indexOf(e) != -1
-                                ? Colors.black
-                                : Colors.black54,
-                            fontSize: 10,
-                            fontWeight: FontWeight.w500),
+                        gradient: loadingGradient,
+                        borderRadius: BorderRadius.circular(20),
                       ),
                     ),
-                    Builder(
-                      builder: (context) {
-                        var no = prov.selectedMapel.indexOf(e);
-                        if (no == -1) {
-                          return SizedBox();
-                        }
-                        return Positioned(
-                          top: 5,
-                          left: 5,
-                          child: Container(
-                            child: Text(
-                              '${no + 1}',
-                              style: fontBlack.copyWith(
-                                  color: ColorBase.primary,
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.bold),
+                  ));
+            }
+            return GridView.count(
+              crossAxisCount: 4,
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              mainAxisSpacing: 5,
+              crossAxisSpacing: 5,
+              children: mapel.mapel.map((e) {
+                return InkWell(
+                  onTap: () {
+                    prov.addSelectedMapel(e);
+                  },
+                  child: Stack(
+                    children: [
+                      Container(
+                        width: deviceWidth(context) / 4,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(
+                                color: prov.selectedMapel.indexOf(e) != -1
+                                    ? ColorBase.primary
+                                    : Colors.grey.shade300,
+                                width: 2),
+                            borderRadius: BorderRadius.circular(10)),
+                        alignment: Alignment.center,
+                        child: Text(
+                          '${e.nama}',
+                          textAlign: TextAlign.center,
+                          style: fontBlack.copyWith(
+                              color: prov.selectedMapel.indexOf(e) != -1
+                                  ? Colors.black
+                                  : Colors.black54,
+                              fontSize: 10,
+                              fontWeight: FontWeight.w500),
+                        ),
+                      ),
+                      Builder(
+                        builder: (context) {
+                          var no = prov.selectedMapel.indexOf(e);
+                          if (no == -1) {
+                            return SizedBox();
+                          }
+                          return Positioned(
+                            top: 5,
+                            left: 5,
+                            child: Container(
+                              child: Text(
+                                '${no + 1}',
+                                style: fontBlack.copyWith(
+                                    color: ColorBase.primary,
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.bold),
+                              ),
                             ),
-                          ),
-                        );
-                      },
-                    ),
-                  ],
-                ),
-              );
-            }).toList(),
-          ),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                );
+              }).toList(),
+            );
+          }),
         ],
       ),
     );

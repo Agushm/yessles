@@ -18,7 +18,7 @@ teacherBottomSheet(BuildContext? context, int index) {
             bottom: MediaQuery.of(context).viewInsets.bottom),
         child: Consumer<TransactionProvider>(
           builder: (context, prov, _) {
-            var mentors = prov.selectedMapel[index]['list_mentor'];
+            var mentors = prov.selectedMapel[index].teachers;
             return Column(
               children: [
                 Container(
@@ -32,7 +32,7 @@ teacherBottomSheet(BuildContext? context, int index) {
                 Container(
                   height: deviceWidth(context) / 2,
                   child: ListView.builder(
-                    itemCount: mentors.length,
+                    itemCount: mentors!.length,
                     itemBuilder: (context, i) {
                       var teacher = mentors[i];
                       return InkWell(

@@ -72,7 +72,7 @@ Widget buildForm3() {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('${e['nama_mapel']}', style: fontBlack),
+                        Text('${e.nama}', style: fontBlack),
                         SizedBox(
                           height: 10,
                         ),

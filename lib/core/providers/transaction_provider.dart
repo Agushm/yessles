@@ -1,35 +1,45 @@
 part of 'providers.dart';
 
 class TransactionProvider with ChangeNotifier {
-  Map? selectedPaket;
-  Map? selectedClass;
-  String? selectedNumberClass;
+  Map<String, dynamic>? selectedPaket;
+  SchoolLevel? selectedClass;
+  Kelas? selectedNumberClass;
 
-  TransactionProvider() {
-    selectedPaket = transactionPaket[0];
-    selectedClass = transactionClass[0];
-    selectedNumberClass = selectedClass!['list_class'][0];
+  List<Map<String, dynamic>> listPaket = [];
+  bool paketInit = true;
+
+  Future getPaket(BuildContext context) async {
+    var res = await TransactionServices.instance.getPaket(context);
+    if (res != null && res['status'] == 'success') {
+      var d = res['data'] as List;
+      d.forEach((e) {
+        listPaket.add(e);
+      });
+      selectedPaket = listPaket[0];
+    }
+    paketInit = false;
+    notifyListeners();
   }
 
-  void changeSelectedPaket(Map data) {
+  void changeSelectedPaket(Map<String, dynamic> data) {
     selectedPaket = data;
 
     notifyListeners();
   }
 
-  void changeSelectedClass(Map data) {
+  void changeSelectedClass(SchoolLevel data) {
     selectedClass = data;
-    selectedNumberClass = selectedClass!['list_class'][0];
+    selectedNumberClass = selectedClass!.kelas![0];
     notifyListeners();
   }
 
-  void changeSelectedNumberClass(String data) {
+  void changeSelectedNumberClass(Kelas data) {
     selectedNumberClass = data;
     notifyListeners();
   }
 
-  List<Map> _selectedMapel = [];
-  List<Map> get selectedMapel => _selectedMapel;
+  List<Mapel> _selectedMapel = [];
+  List<Mapel> get selectedMapel => _selectedMapel;
 
   void cancelTransaction() {
     _selectedMapel = [];
@@ -54,7 +64,7 @@ class TransactionProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void addSelectedMapel(Map data) {
+  void addSelectedMapel(Mapel data) {
     if (_selectedMapel.indexOf(data) != -1) {
       print('Memilih Mapel $data');
       return;

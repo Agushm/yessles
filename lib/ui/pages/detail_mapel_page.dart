@@ -39,6 +39,7 @@ class _DetailMapelPageState extends State<DetailMapelPage> {
 
     return Scaffold(
       key: _key,
+      backgroundColor: ColorBase.grey,
       appBar: AppBar(
         elevation: 1,
         backgroundColor: Colors.white,
@@ -124,7 +125,7 @@ class _DetailMapelPageState extends State<DetailMapelPage> {
           //   }),
           // ),
           Container(
-            margin: EdgeInsets.symmetric(vertical: 10),
+            margin: EdgeInsets.symmetric(vertical: 20),
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
             decoration: BoxDecoration(
               color: ColorBase.primary,
@@ -142,14 +143,16 @@ class _DetailMapelPageState extends State<DetailMapelPage> {
           Expanded(
             child: Consumer<TeacherProvider>(builder: (context, prov, _) {
               if (isLoading) {
-                return ListView.builder(
-                  padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
-                  itemCount: 4,
+                return GridView.builder(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 10,
+                  ),
+                  itemCount: prov.teachers.length,
                   itemBuilder: (context, index) {
                     return Container(
-                      margin: EdgeInsets.only(bottom: 10),
-                      width: double.infinity,
-                      height: 60,
                       decoration: BoxDecoration(
                         gradient: loadingGradient,
                         borderRadius: BorderRadius.circular(20),
@@ -161,12 +164,74 @@ class _DetailMapelPageState extends State<DetailMapelPage> {
               if (!prov.teacherInit && prov.teachers.isEmpty) {
                 return Center(child: Text('Belum ada data', style: fontBlack));
               }
-              return ListView.builder(
-                padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
+              // return ListView.builder(
+              //   padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
+              //   itemCount: prov.teachers.length,
+              //   itemBuilder: (context, index) {
+              //     var teacher = prov.teachers[index];
+              //     return widgetSelectTeacher(teacher, showIcon: false);
+              //   },
+              // );
+              return GridView.builder(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 10,
+                ),
                 itemCount: prov.teachers.length,
                 itemBuilder: (context, index) {
                   var teacher = prov.teachers[index];
-                  return widgetSelectTeacher(teacher, showIcon: false);
+                  return InkWell(
+                    onTap: () => Get.to(DetailMentorPage(teacher: teacher)),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Column(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(10),
+                                  topRight: Radius.circular(10),
+                                ),
+                                image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: NetworkImage(teacher.photo!),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.all(10),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  teacher.nama!,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: fontBlack.copyWith(
+                                    fontSize: 11,
+                                  ),
+                                ),
+                                StarRating(
+                                    rating: teacher.totalRating!,
+                                    starCount: 5,
+                                    size: 15,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    color: Colors.yellow),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
                 },
               );
             }),
