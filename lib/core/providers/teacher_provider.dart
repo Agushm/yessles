@@ -5,7 +5,7 @@ class TeacherProvider with ChangeNotifier {
   List<Teacher> get teachers => _teachers;
   bool teacherInit = true;
 
-  Future getTeacher(BuildContext context,
+  Future<List<Teacher>?> getTeacher(BuildContext context,
       {String? idMapel,
       String? idJenjang,
       String? idKelas,
@@ -27,17 +27,12 @@ class TeacherProvider with ChangeNotifier {
       d.forEach((e) {
         _teachers.add(Teacher.fromJson(e));
       });
-    } else {
-      DialogUtils.instance.showInfo(context,
-          title: 'Error',
-          message: res['message'],
-          btnText: 'Tutup', onPressed: () {
-        Get.back();
-      });
+      return _teachers;
     }
     teacherInit = false;
     print("teacher INit$teacherInit");
     notifyListeners();
+    return [];
   }
 
   void updateTotalRating(int? teacherId, double? newRating) {

@@ -31,4 +31,5 @@ class API {
 
   // *Transaction* //
   static String getPaket = baseURL + '/paket/all/';
+  static String getSchedule = baseURL + '/jadwal/guru/';
 }

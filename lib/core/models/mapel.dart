@@ -112,28 +112,3 @@ List _listMapel = [
   'Geografi',
 ];
 var random = Random();
-List<Mapel> mockListMapel = List.generate(9, (index) {
-  return Mapel(
-    name: _listMapel[index],
-    desc: mockDesc,
-    rating: random.nextInt(5).toDouble(),
-    listImage: [
-      'https://media.istockphoto.com/photos/mature-man-professor-standing-in-class-picture-id1278976696?b=1&k=6&m=1278976696&s=170667a&w=0&h=eFHHTMKNM3DETJnvM0k2F9v_6uo1et0olLsmukPRrzE=',
-      'https://media.istockphoto.com/photos/africanamerican-teacher-reading-to-school-children-picture-id1194312424?k=6&m=1194312424&s=612x612&w=0&h=mlU0lmWE8fg-ZrCFSQVXfZ-6GWUYhkQMzVkzpCIU4mA='
-    ],
-    teachers: [
-      Teacher(
-          teacherName: 'Prof. Manshur',
-          teacherAddress: 'Solo Baru , Sukoharjo, Jawa Tengah',
-          teacherRating: 4,
-          teacherImage:
-              'https://media.istockphoto.com/photos/young-woman-wearing-casual-red-sweater-over-isolated-background-away-picture-id1127788799?k=6&m=1127788799&s=612x612&w=0&h=r31i9BV_cKtZ32CAbp3EQLbXRnCWTP_wzAWKhBAei9g='),
-      Teacher(
-          teacherName: 'Lord Elon',
-          teacherAddress: 'Texas, California',
-          teacherRating: 1,
-          teacherImage:
-              'https://image.freepik.com/free-photo/half-profile-image-beautiful-young-woman-with-bob-hairdo-posing-gazing-with-eyes-full-reproach-suspicion-human-facial-expressions-emotions-reaction-feelings_343059-4660.jpg'),
-    ],
-  );
-});

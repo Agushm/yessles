@@ -6,27 +6,48 @@ String scheduleToJson(Schedule data) => json.encode(data.toJson());
 
 class Schedule {
   Schedule({
+    this.id,
+    this.guruId,
+    this.hariId,
     this.day,
-    this.mapel,
+    this.jamMulai,
+    this.jamSelesai,
+    this.status,
     this.duration,
+    this.mapel,
   });
 
+  int? id;
+  int? guruId;
+  int? hariId;
   String? day;
-  Mapel? mapel;
+  String? jamMulai;
+  String? jamSelesai;
+  String? status;
   int? duration;
+  Mapel? mapel;
 
   factory Schedule.fromJson(Map<String, dynamic> json) => Schedule(
-        day: json["day"],
-        mapel: json["mapel"],
-        duration: json["duration"],
+        id: json["id"],
+        guruId: json["guruId"],
+        hariId: json["hariId"],
+        day: days[json['hariId']],
+        jamMulai: json["jamMulai"],
+        jamSelesai: json["jamSelesai"],
+        status: json["status"],
       );
 
   Map<String, dynamic> toJson() => {
-        "day": day,
-        "mapel": mapel,
-        "duration": duration,
+        "id": id,
+        "guruId": guruId,
+        "hariId": hariId,
+        "jamMulai": jamMulai,
+        "jamSelesai": jamSelesai,
+        "status": status,
       };
 }
+
+List<String?> days = ['senin', 'selasa', 'rabu', 'kamis', "jum'at", 'sabtu'];
 
 List<Schedule> mockSchedule = [
   Schedule(

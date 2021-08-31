@@ -1,11 +1,11 @@
 part of 'providers.dart';
 
 class TransactionProvider with ChangeNotifier {
-  Map<String, dynamic>? selectedPaket;
+  Paket? selectedPaket;
   SchoolLevel? selectedClass;
   Kelas? selectedNumberClass;
 
-  List<Map<String, dynamic>> listPaket = [];
+  List<Paket> listPaket = [];
   bool paketInit = true;
 
   Future getPaket(BuildContext context) async {
@@ -13,7 +13,7 @@ class TransactionProvider with ChangeNotifier {
     if (res != null && res['status'] == 'success') {
       var d = res['data'] as List;
       d.forEach((e) {
-        listPaket.add(e);
+        listPaket.add(Paket.fromJson(e));
       });
       selectedPaket = listPaket[0];
     }
@@ -21,7 +21,7 @@ class TransactionProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void changeSelectedPaket(Map<String, dynamic> data) {
+  void changeSelectedPaket(Paket data) {
     selectedPaket = data;
 
     notifyListeners();
@@ -80,34 +80,80 @@ class TransactionProvider with ChangeNotifier {
   List<Map> _selectedTeacher = [
     {
       'teacher': null,
-      'day': teachingDays[0],
+      'day': days[0],
       'sesi': teachingSession[0],
     },
     {
       'teacher': null,
-      'day': teachingDays[0],
+      'day': days[0],
       'sesi': teachingSession[0],
     },
     {
       'teacher': null,
-      'day': teachingDays[0],
+      'day': days[0],
       'sesi': teachingSession[0],
     },
   ];
   List<Map> get selectedTeacher => _selectedTeacher;
 
-  void addSelectedTeacher(int index, Teacher teacher) {
+  void addSelectedTeacher(
+      BuildContext context, int index, Teacher teacher) async {
     _selectedTeacher[index]['teacher'] = teacher;
+    var teacherSchedule = await getTeacherSchedule(context,
+        teacherId: teacher.id.toString(), dayId: "1");
+    Teacher t = _selectedTeacher[index]['teacher'];
+    t.jadwal = teacherSchedule;
     notifyListeners();
   }
 
-  void addSelectedTeachingDays(int index, String data) {
+  Future<List<Schedule>?> getTeacherSchedule(BuildContext context,
+      {String? teacherId, String? dayId}) async {
+    var res = await TransactionServices.instance
+        .getSchedule(context, teacherId: teacherId, dayId: dayId);
+    if (res == null) {
+      return [];
+    } else if (res['status'] == 'success') {
+      var d = res['data'] as List;
+      List<Schedule> _load = [];
+      d.forEach((e) {
+        _load.add(Schedule.fromJson(e));
+      });
+      return _load;
+    } else {
+      return [];
+    }
+  }
+
+  Future addSelectedTeachingDays(
+      BuildContext context, int index, String data) async {
+    var teacher = _selectedTeacher[index]['teacher'];
+    var iDays = days.indexOf(data);
+    var teacherSchedule = await getTeacherSchedule(context,
+        teacherId: teacher.id.toString(), dayId: "${iDays + 1}");
+    Teacher t = _selectedTeacher[index]['teacher'];
+    t.jadwal = teacherSchedule;
     _selectedTeacher[index]['days'] = data;
+
     notifyListeners();
   }
 
-  void addSelectedTeachingSession(int index, String data) {
+  void addSelectedTeachingSession(int index, Schedule data) {
     _selectedTeacher[index]['sesi'] = data;
+    notifyListeners();
+  }
+
+  bool isGetTeacherInit = true;
+  Future getTeachers(BuildContext context) async {
+    _selectedMapel.forEach((m) async {
+      var _teachers = await Provider.of<TeacherProvider>(context, listen: false)
+          .getTeacher(context,
+              idMapel: m.id.toString(),
+              idJenjang: selectedClass!.id!.toString(),
+              idKelas: selectedNumberClass!.id!.toString());
+      var index = _selectedMapel.indexOf(m);
+      _selectedMapel[index].teachers = _teachers;
+    });
+    isGetTeacherInit = false;
     notifyListeners();
   }
 

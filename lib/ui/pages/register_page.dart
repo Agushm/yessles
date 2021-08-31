@@ -114,7 +114,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               if (value!.isEmpty) {
                                 return 'Harus diisi';
                               }
-                              if (!value!.isNumericOnly) {
+                              if (!value.isNumericOnly) {
                                 return 'Masukan hanya angka saja';
                               }
                             }),

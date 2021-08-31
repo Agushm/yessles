@@ -5,23 +5,18 @@ Teacher teacherFromJson(String str) => Teacher.fromJson(json.decode(str));
 String teacherToJson(Teacher data) => json.encode(data.toJson());
 
 class Teacher {
-  Teacher({
-    this.id,
-    this.kategoriId,
-    this.nama,
-    this.photo,
-    this.deskripsi,
-    this.phone,
-    this.alamat,
-    this.createdAt,
-    this.totalRating,
-    this.kategori,
-    this.teacherName,
-    this.teacherImage,
-    this.teacherRating,
-    this.teacherOnline,
-    this.teacherAddress,
-  });
+  Teacher(
+      {this.id,
+      this.kategoriId,
+      this.nama,
+      this.photo,
+      this.deskripsi,
+      this.phone,
+      this.alamat,
+      this.createdAt,
+      this.totalRating,
+      this.kategori,
+      this.jadwal});
 
   int? id;
   int? kategoriId;
@@ -32,35 +27,24 @@ class Teacher {
   dynamic alamat;
   DateTime? createdAt;
   double? totalRating;
-
   Kategori? kategori;
-  String? teacherName;
-  String? teacherImage;
-  double? teacherRating;
-  dynamic teacherOnline;
-  String? teacherAddress;
+  List<Schedule>? jadwal;
 
   factory Teacher.fromJson(Map<String, dynamic> json) => Teacher(
-        id: json["id"],
-        kategoriId: json["kategori_id"],
-        nama: json["nama"],
-        photo: json["photo"],
-        deskripsi: json["deskripsi"],
-        phone: json["phone"],
-        alamat: json["alamat"] ?? '',
-        createdAt: DateTime.parse(json["createdAt"]),
-        totalRating: json["total_rating"] == null
-            ? 0
-            : double.parse(json["total_rating"]),
-        kategori: Kategori.fromJson(
-          json["kategori"],
-        ),
-        teacherName: json["teacher_name"],
-        teacherImage: json["teacher_image"],
-        teacherRating: json["teacher_rating"] ?? 0,
-        teacherOnline: json["teacher_online"],
-        teacherAddress: json["teacher_address"],
-      );
+      id: json["id"],
+      kategoriId: json["kategori_id"],
+      nama: json["nama"],
+      photo: json["photo"],
+      deskripsi: json["deskripsi"],
+      phone: json["phone"],
+      alamat: json["alamat"] ?? '',
+      createdAt: DateTime.parse(json["createdAt"]),
+      totalRating:
+          json["total_rating"] == null ? 0 : double.parse(json["total_rating"]),
+      kategori: Kategori.fromJson(
+        json["kategori"],
+      ),
+      jadwal: []);
 
   Map<String, dynamic> toJson() => {
         "id": id,

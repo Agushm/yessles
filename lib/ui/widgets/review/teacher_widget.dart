@@ -10,7 +10,7 @@ Widget widgetTeacher(Teacher data) {
           shape: BoxShape.circle,
           image: DecorationImage(
             fit: BoxFit.cover,
-            image: NetworkImage(data.teacherImage!),
+            image: NetworkImage(data.photo!),
           ),
         ),
       ),
@@ -21,14 +21,14 @@ Widget widgetTeacher(Teacher data) {
           children: [
             Container(
               width: 250,
-              child: Text('${data.teacherName}',
+              child: Text('${data.nama}',
                   maxLines: 1,
                   style: fontBlack.copyWith(
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
                       fontSize: 12)),
             ),
-            Text('Aktif 23 menit lalu | ${data.teacherAddress}',
+            Text('Aktif 23 menit lalu | ${data.alamat}',
                 style: fontBlack.copyWith(
                     fontWeight: FontWeight.w500,
                     color: Colors.black54,
@@ -36,7 +36,7 @@ Widget widgetTeacher(Teacher data) {
             Row(
               children: [
                 Icon(Icons.star, color: Colors.yellow, size: 12),
-                Text(' ${data.teacherRating} rating pengajar',
+                Text(' ${data.totalRating} rating pengajar',
                     style: fontBlack.copyWith(
                         fontWeight: FontWeight.w500,
                         color: Colors.black54,

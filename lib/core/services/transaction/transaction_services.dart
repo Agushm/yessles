@@ -9,4 +9,12 @@ class TransactionServices extends BaseServices {
         useToken: true, params: params);
     return res;
   }
+
+  Future<dynamic> getSchedule(BuildContext context,
+      {String? dayId, String? teacherId, Map<String, dynamic>? params}) async {
+    var res = await request(
+        API.getSchedule + '$dayId/$teacherId', RequestType.GET, context,
+        useToken: true, params: params);
+    return res;
+  }
 }

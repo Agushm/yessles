@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -23,7 +24,8 @@ part 'profile_page.dart';
 part 'schedule_page.dart';
 part 'notification_page.dart';
 part 'detail_mapel_page.dart';
-part 'article_page.dart';
+part 'article/list_article_page.dart';
+part 'article/article_page.dart';
 part 'transaction/transaction_page.dart';
 part 'transaction/form_transaction_1.dart';
 part 'transaction/form_transaction_2.dart';

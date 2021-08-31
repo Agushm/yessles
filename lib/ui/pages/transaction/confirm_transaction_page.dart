@@ -39,7 +39,7 @@ class ConfirmTransactionPage extends StatelessWidget {
                 children: [
                   buildDetailTransaction(
                       title: 'Paket Pembelajaran',
-                      content: prov.selectedPaket!['nama']),
+                      content: prov.selectedPaket!.nama),
                   buildDetailTransaction(
                       title: 'Jenjang Sekolah',
                       content: prov.selectedClass!.jenjang),
