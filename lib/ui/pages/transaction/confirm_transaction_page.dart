@@ -67,7 +67,7 @@ class ConfirmTransactionPage extends StatelessWidget {
                         ),
                       ),
                       Expanded(
-                        child: Text('Rp 3.450.000',
+                        child: Text(formatRupiah(prov.selectedPaket!.harga!),
                             textAlign: TextAlign.right,
                             style: fontBlack.copyWith(
                                 color: Colors.green,
@@ -158,7 +158,10 @@ Widget buildDetailTransactionMapel() {
               children: prov.selectedMapel.map(
             (e) {
               var index = prov.selectedMapel.indexOf(e);
-              Teacher teacher = prov.selectedTeacher[index]['teacher'];
+              Teacher? teacher = prov.selectedTeacher[index]['teacher'];
+              if (teacher == null) {
+                return Text('Belum memilih guru');
+              }
               return Container(
                 padding: EdgeInsets.all(10),
                 margin: EdgeInsets.only(bottom: 10),
