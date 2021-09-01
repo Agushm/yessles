@@ -43,22 +43,7 @@ class _HomePageState extends State<HomePage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(height: 20),
-                    Container(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                      decoration: BoxDecoration(
-                        color: ColorBase.primary,
-                        borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(20),
-                          bottomRight: Radius.circular(20),
-                        ),
-                      ),
-                      child: Text(
-                        'Mata Pelajaraan',
-                        style: fontWhite.copyWith(
-                            fontSize: 14, fontWeight: FontWeight.bold),
-                      ),
-                    ),
+                    buildLabelTitle('Mata Pelajaraan'),
                     SizedBox(height: 20),
                     GridMapel()
                   ],
@@ -69,21 +54,7 @@ class _HomePageState extends State<HomePage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 10),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                    decoration: BoxDecoration(
-                      color: ColorBase.primary,
-                      borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(20),
-                        bottomRight: Radius.circular(20),
-                      ),
-                    ),
-                    child: Text(
-                      'Ada yang baru nih',
-                      style: fontWhite.copyWith(
-                          fontSize: 14, fontWeight: FontWeight.bold),
-                    ),
-                  ),
+                  buildLabelTitle('Ada yang baru nih'),
                   Container(
                       width: double.infinity,
                       height: 300,
@@ -94,4 +65,21 @@ class _HomePageState extends State<HomePage> {
           ),
         ));
   }
+}
+
+Widget buildLabelTitle(String? title) {
+  return Container(
+    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+    decoration: BoxDecoration(
+      color: ColorBase.primary,
+      borderRadius: BorderRadius.only(
+        topRight: Radius.circular(20),
+        bottomRight: Radius.circular(20),
+      ),
+    ),
+    child: Text(
+      title!,
+      style: fontWhite.copyWith(fontSize: 14, fontWeight: FontWeight.bold),
+    ),
+  );
 }

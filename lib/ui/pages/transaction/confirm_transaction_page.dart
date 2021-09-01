@@ -28,56 +28,84 @@ class ConfirmTransactionPage extends StatelessWidget {
       body: Consumer<TransactionProvider>(
         builder: (context, prov, _) {
           return SingleChildScrollView(
-            child: Container(
-              margin: EdgeInsets.fromLTRB(10, 20, 10, 200),
-              padding: EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: Column(
-                children: [
-                  buildDetailTransaction(
-                      title: 'Paket Pembelajaran',
-                      content: prov.selectedPaket!.nama),
-                  buildDetailTransaction(
-                      title: 'Jenjang Sekolah',
-                      content: prov.selectedClass!.jenjang),
-                  buildDetailTransaction(
-                      title: 'Jenjang Kelas',
-                      content: prov.selectedNumberClass!.kelas),
-                  buildDetailTransaction(
-                      title: 'Mode Pembelajaran',
-                      content: prov.selectedTeachingMode!['mode']['mode_name']),
-                  buildDetailTransaction(
-                      title: 'Opsi',
-                      content: prov.selectedTeachingMode!['mode_option']),
-                  buildDetailTransactionMapel(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  margin: EdgeInsets.fromLTRB(10, 20, 10, 20),
+                  padding: EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Column(
                     children: [
-                      Container(
-                        width: 100,
-                        child: Text(
-                          'Total Harga',
-                          style: fontBlack.copyWith(
-                              color: Colors.black,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500),
-                        ),
-                      ),
-                      Expanded(
-                        child: Text(formatRupiah(prov.selectedPaket!.harga!),
-                            textAlign: TextAlign.right,
-                            style: fontBlack.copyWith(
-                                color: Colors.green,
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold)),
+                      buildDetailTransaction(
+                          title: 'Paket Pembelajaran',
+                          content: prov.selectedPaket!.nama),
+                      buildDetailTransaction(
+                          title: 'Jenjang Sekolah',
+                          content: prov.selectedClass!.jenjang),
+                      buildDetailTransaction(
+                          title: 'Jenjang Kelas',
+                          content: prov.selectedNumberClass!.kelas),
+                      buildDetailTransaction(
+                          title: 'Mode Pembelajaran',
+                          content: prov.selectedTeachingMode!['mode']
+                              ['mode_name']),
+                      buildDetailTransaction(
+                          title: 'Opsi',
+                          content: prov.selectedTeachingMode!['mode_option']),
+                      buildDetailTransactionMapel(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            width: 100,
+                            child: Text(
+                              'Total Harga',
+                              style: fontBlack.copyWith(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ),
+                          Expanded(
+                            child: Text(
+                                formatRupiah(prov.selectedPaket!.harga!),
+                                textAlign: TextAlign.right,
+                                style: fontBlack.copyWith(
+                                    color: Colors.green,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold)),
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                ],
-              ),
+                ),
+                buildLabelTitle('Kode Promo'),
+                Container(
+                  margin: EdgeInsets.fromLTRB(10, 20, 10, 200),
+                  padding: EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: TextField(
+                          decoration: registerForm.copyWith(
+                              hintText: 'Masukan kode promo (Optional)'),
+                        ),
+                      ),
+                      SizedBox(width: 5),
+                      TextButton(onPressed: () {}, child: Text('Pasang'))
+                    ],
+                  ),
+                ),
+              ],
             ),
           );
         },
