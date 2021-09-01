@@ -176,4 +176,30 @@ class TransactionProvider with ChangeNotifier {
   }
   // End Form
 
+  //Create Transaction
+  void createTransaction(BuildContext context, {String? payMethod}) async {
+    DialogUtils.instance.showLoading(context, 'Membuat transaksi...');
+    var res =
+        await TransactionServices.instance.createTransaction(context, data: {
+      "paket_id": selectedPaket!.id!,
+      "pembayaran": payMethod,
+      "voucher": "",
+      "jadwal": []
+    });
+    Get.back();
+    if (res == null) {
+      return;
+    } else if (res['status'] == 'success') {
+      Get.to(DetailTransactionPage(
+        payingMethod: payMethod,
+      ));
+    } else {
+      DialogUtils.instance.showInfo(context,
+          title: 'Transaksi Gagal',
+          message: res['message'],
+          btnText: 'Tutup', onPressed: () {
+        Get.back();
+      });
+    }
+  }
 }

@@ -17,4 +17,24 @@ class TransactionServices extends BaseServices {
         useToken: true, params: params);
     return res;
   }
+
+  Future<dynamic> getTransaction(BuildContext context,
+      {String? type, String? userId, Map<String, dynamic>? params}) async {
+    var res = await request(API.getTransaction, RequestType.GET, context,
+        useToken: true, params: params);
+    return res;
+  }
+
+  Future<dynamic> createTransaction(BuildContext context,
+      {Map<String, dynamic>? data, Map<String, dynamic>? params}) async {
+    var res = await request(
+      API.addTransaction,
+      RequestType.GET,
+      context,
+      useToken: true,
+      params: params,
+      data: data,
+    );
+    return res;
+  }
 }

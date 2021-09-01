@@ -30,6 +30,8 @@ class API {
   static String addRating = baseURL + '/rating/create/';
 
   // *Transaction* //
+  static String getTransaction = baseURL + '/transaksi/all/';
+  static String addTransaction = baseURL + '/transaksi/create/';
   static String getPaket = baseURL + '/paket/all/';
   static String getSchedule = baseURL + '/jadwal/guru/';
 }

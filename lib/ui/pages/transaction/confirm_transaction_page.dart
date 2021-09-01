@@ -102,16 +102,15 @@ class ConfirmTransactionPage extends StatelessWidget {
                   if (method == 'Bayar Langsung') {
                     _m = 'tunai';
                   } else {
-                    _m = 'nontunai';
+                    _m = 'transfer';
                   }
                   Get.back();
                   Get.back();
                   Get.back();
                   Get.back();
                   Get.back();
-                  Get.to(DetailTransactionPage(
-                    payingMethod: _m,
-                  ));
+                  Provider.of<TransactionProvider>(context, listen: false)
+                      .createTransaction(context, payMethod: _m);
                 },
               ),
             ),

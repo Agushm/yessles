@@ -132,9 +132,12 @@ class _DetailTransactionPageState extends State<DetailTransactionPage> {
                           'https://logos-download.com/wp-content/uploads/2016/06/Mandiri_logo.png',
                           width: 80,
                           height: 40),
-                      Text('a.n, Yessles Membangun Negeri',
-                          style: fontBlack.copyWith(
-                              fontSize: 12, fontWeight: FontWeight.w300)),
+                      Container(
+                        width: 80,
+                        child: Text('a.n, Yessles Membangun Negeri',
+                            style: fontBlack.copyWith(
+                                fontSize: 12, fontWeight: FontWeight.w300)),
+                      ),
                     ],
                   ),
                   SizedBox(height: 10),
