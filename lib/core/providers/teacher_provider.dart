@@ -23,11 +23,13 @@ class TeacherProvider with ChangeNotifier {
           'max': 15,
         });
     if (res != null && res['status'] == 'success') {
+      List<Teacher> _load = [];
       var d = res['data']['docs'] as List;
       d.forEach((e) {
         _teachers.add(Teacher.fromJson(e));
+        _load.add(Teacher.fromJson(e));
       });
-      return _teachers;
+      return _load;
     }
     teacherInit = false;
     print("teacher INit$teacherInit");

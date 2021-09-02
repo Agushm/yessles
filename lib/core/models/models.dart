@@ -10,3 +10,4 @@ part 'teacher.dart';
 part 'school_level.dart';
 part 'rating.dart';
 part 'paket.dart';
+part 'transaction.dart';

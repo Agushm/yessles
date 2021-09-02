@@ -3,7 +3,8 @@ part of '../pages.dart';
 class DetailTransactionPage extends StatefulWidget {
   //final Topup data;
   final String? payingMethod;
-  DetailTransactionPage({this.payingMethod});
+  final Transaction? data;
+  DetailTransactionPage({this.payingMethod, this.data});
   @override
   _DetailTransactionPageState createState() => _DetailTransactionPageState();
 }
@@ -60,9 +61,61 @@ class _DetailTransactionPageState extends State<DetailTransactionPage> {
                             fontSize: 15, color: Colors.black)),
                   ],
                 ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('Nama Paket',
+                        style: fontBlack.copyWith(
+                            color: Colors.black38,
+                            fontSize: 13,
+                            fontWeight: FontWeight.w500)),
+                    Text('${widget.data!.namaPaket!}'.toUpperCase(),
+                        style: fontBlack.copyWith(
+                            fontSize: 15, color: Colors.black)),
+                  ],
+                ),
                 _detailDepositItem(
                   'Nominal',
-                  3400000,
+                  widget.data!.harga!,
+                ),
+                Builder(
+                  builder: (context) {
+                    if (widget.data!.voucher != null) {
+                      return Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text('Kode Voucher',
+                                  style: fontBlack.copyWith(
+                                      color: Colors.black38,
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.w500)),
+                              Text('${widget.data!.voucher!}'.toUpperCase(),
+                                  style: fontBlack.copyWith(
+                                      fontSize: 15, color: Colors.black)),
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text('Diskon',
+                                  style: fontBlack.copyWith(
+                                      color: Colors.black38,
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.w500)),
+                              Text(
+                                  '- ${formatRupiah(widget.data!.diskon!)}'
+                                      .toUpperCase(),
+                                  style: fontBlack.copyWith(
+                                      fontSize: 15, color: Colors.red)),
+                            ],
+                          ),
+                        ],
+                      );
+                    }
+                    return SizedBox();
+                  },
                 ),
                 // _detailDepositItem(
                 //   'Biaya Admin',
@@ -85,7 +138,7 @@ class _DetailTransactionPageState extends State<DetailTransactionPage> {
                         : 'Total Transfer',
                     style: fontBlack.copyWith(
                         fontSize: 13, color: Colors.black38)),
-                Text('${formatRupiah(3400000)}',
+                Text('${formatRupiah(widget.data!.totalHarga!)}',
                     style: fontBlack.copyWith(
                         fontSize: 18,
                         color: ColorBase.green,

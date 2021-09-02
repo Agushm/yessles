@@ -103,6 +103,7 @@ class TransactionProvider with ChangeNotifier {
         teacherId: teacher.id.toString(), dayId: "1");
     Teacher t = _selectedTeacher[index]['teacher'];
     t.jadwal = teacherSchedule;
+    _selectedTeacher[index]['day'] = days[0];
     notifyListeners();
   }
 
@@ -149,16 +150,15 @@ class TransactionProvider with ChangeNotifier {
   bool isGetTeacherInit = true;
   Future getTeachers(BuildContext context) async {
     _selectedMapel.forEach((m) async {
-      var _teachers = await Provider.of<TeacherProvider>(context, listen: false)
+      var index = _selectedMapel.indexOf(m);
+      var teacher = await Provider.of<TeacherProvider>(context, listen: false)
           .getTeacher(context,
               idMapel: m.id.toString(),
               idJenjang: selectedClass!.id!.toString(),
               idKelas: selectedNumberClass!.id!.toString());
-      var index = _selectedMapel.indexOf(m);
-      _selectedMapel[index].teachers = _teachers;
+      _selectedMapel[index].teachers = teacher;
     });
     isGetTeacherInit = false;
-    notifyListeners();
   }
 
   // Form 4
@@ -209,12 +209,13 @@ class TransactionProvider with ChangeNotifier {
       Get.back();
       Get.back();
       Get.to(DetailTransactionPage(
-        payingMethod: payMethod,
-      ));
+          payingMethod: payMethod, data: Transaction.fromJson(res['data'])));
     } else {
       DialogUtils.instance.showInfo(context,
           title: 'Transaksi Gagal',
-          message: res['message'],
+          message: res['message'].runtimeType == String
+              ? res['message']
+              : 'Terjadi Kesalahan',
           btnText: 'Tutup', onPressed: () {
         Get.back();
       });

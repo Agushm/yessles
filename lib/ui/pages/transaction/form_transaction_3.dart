@@ -40,20 +40,21 @@ class _FormTransaction3State extends State<FormTransaction3> {
               child: commonButton(
                 btnText: 'Selanjutnya',
                 onPressed: () {
-                  var prov =
-                      Provider.of<TransactionProvider>(context, listen: false);
-                  if (prov.selectedTeacher[0]['sesi'] != null &&
-                      prov.selectedTeacher[1]['sesi'] != null &&
-                      prov.selectedTeacher[3]['sesi'] != null) {
-                    Get.to(FormTransaction4());
-                  } else {
-                    DialogUtils.instance.showInfo(context,
-                        title: '',
-                        message: 'Anda belum memilih 3 jadwal pelajaran',
-                        btnText: 'Tutup', onPressed: () {
-                      Get.back();
-                    });
-                  }
+                  // var prov =
+                  //     Provider.of<TransactionProvider>(context, listen: false);
+                  // if (prov.selectedTeacher[0]['sesi'] != null &&
+                  //     prov.selectedTeacher[1]['sesi'] != null &&
+                  //     prov.selectedTeacher[3]['sesi'] != null) {
+                  //   Get.to(FormTransaction4());
+                  // } else {
+                  //   DialogUtils.instance.showInfo(context,
+                  //       title: '',
+                  //       message: 'Anda belum memilih 3 jadwal pelajaran',
+                  //       btnText: 'Tutup', onPressed: () {
+                  //     Get.back();
+                  //   });
+                  // }
+                  Get.to(FormTransaction4());
                 },
               ),
             ),
@@ -151,7 +152,7 @@ class _BuildForm3State extends State<BuildForm3> {
                                   ),
                                   labelTextForm('Pilih Hari'),
                                   DropdownButtonFormField<String>(
-                                    value: days[0],
+                                    value: prov.selectedTeacher[index]['day'],
                                     isExpanded: true,
                                     items: days
                                         .map((e) => DropdownMenuItem<String>(
@@ -191,7 +192,7 @@ class _BuildForm3State extends State<BuildForm3> {
                                     if (jadwal.isEmpty) {
                                       return Center(
                                         child: Text(
-                                          'Jadwal penuh',
+                                          'Tidak ada jadwal',
                                           style: fontBlack.copyWith(
                                             fontSize: 10,
                                           ),

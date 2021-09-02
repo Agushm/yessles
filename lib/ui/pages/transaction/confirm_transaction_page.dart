@@ -259,7 +259,7 @@ class _ConfirmTransactionPageState extends State<ConfirmTransactionPage> {
                   } else {
                     _m = 'transfer';
                   }
-                  
+
                   Provider.of<TransactionProvider>(context, listen: false)
                       .createTransaction(context, payMethod: _m);
                 },
@@ -309,7 +309,9 @@ Widget buildDetailTransactionMapel() {
             (e) {
               var index = prov.selectedMapel.indexOf(e);
               Teacher? teacher = prov.selectedTeacher[index]['teacher'];
-              if (teacher == null) {
+
+              Schedule? sesi = prov.selectedTeacher[index]['sesi'];
+              if (teacher == null || sesi == null) {
                 return Container(
                   width: double.infinity,
                   padding: EdgeInsets.all(10),
@@ -325,7 +327,7 @@ Widget buildDetailTransactionMapel() {
                               fontSize: 14, fontWeight: FontWeight.w500)),
                       SizedBox(height: 10),
                       Text(
-                        'Belum memilih guru',
+                        'Belum memilih jadwal guru',
                         style: fontBlack.copyWith(
                             fontSize: 12, color: Colors.black54),
                       ),
@@ -333,7 +335,6 @@ Widget buildDetailTransactionMapel() {
                   ),
                 );
               }
-              Schedule? sesi = prov.selectedTeacher[index]['sesi'];
 
               return Container(
                 padding: EdgeInsets.all(10),
@@ -347,7 +348,7 @@ Widget buildDetailTransactionMapel() {
                     Text('${e.nama}',
                         style: fontBlack.copyWith(
                             fontSize: 14, fontWeight: FontWeight.w500)),
-                    widgetSelectTeacher(teacher, showIcon: false),
+                    widgetSelectTeacher(teacher!, showIcon: false),
                     buildDetailTransaction(
                         title: 'Hari',
                         content: '${prov.selectedTeacher[index]['day']}'

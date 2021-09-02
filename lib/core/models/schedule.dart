@@ -31,7 +31,7 @@ class Schedule {
         id: json["id"],
         guruId: json["guruId"],
         hariId: json["hariId"],
-        day: days[json['hariId']],
+        day: days[json['hariId'] - 1],
         jamMulai: json["jamMulai"],
         jamSelesai: json["jamSelesai"],
         status: json["status"],

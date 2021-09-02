@@ -11,56 +11,50 @@ teacherBottomSheet(BuildContext? context, int index) {
       ),
     ),
     builder: (context) {
-      return Container(
-        padding: EdgeInsets.only(
-            left: 10,
-            right: 10,
-            bottom: MediaQuery.of(context).viewInsets.bottom),
-        child: Consumer<TransactionProvider>(
-          builder: (context, prov, _) {
-            var mentors = prov.selectedMapel[index].teachers;
-            return !prov.isGetTeacherInit && mentors!.isEmpty
-                ? Center(
-                    child: Text('Maaf, tidak ada data', style: fontBlack),
-                  )
-                : Column(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.symmetric(vertical: 20),
-                        child: Text(
-                          'Pilih Mentor',
-                          style: fontBlack.copyWith(
-                              fontSize: 16, fontWeight: FontWeight.bold),
-                        ),
+      return Consumer<TransactionProvider>(
+        builder: (context, prov, _) {
+          var mentors = prov.selectedMapel[index].teachers;
+          return !prov.isGetTeacherInit && mentors!.isEmpty
+              ? Center(
+                  child: Text('Maaf, tidak ada data', style: fontBlack),
+                )
+              : Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.symmetric(vertical: 20),
+                      child: Text(
+                        'Pilih Mentor',
+                        style: fontBlack.copyWith(
+                            fontSize: 16, fontWeight: FontWeight.bold),
                       ),
-                      Container(
-                        height: deviceWidth(context) / 2,
-                        child: ListView.builder(
-                          itemCount: mentors!.length,
-                          itemBuilder: (context, i) {
-                            var teacher = mentors[i];
-                            return InkWell(
-                              onTap: () {
-                                prov.addSelectedTeacher(
-                                    context, index, teacher);
-                                Get.back();
-                              },
-                              child: Container(
-                                  margin: EdgeInsets.symmetric(vertical: 5),
-                                  child: Column(
-                                    children: [
-                                      widgetSelectTeacher(teacher),
-                                      Divider(),
-                                    ],
-                                  )),
-                            );
-                          },
-                        ),
+                    ),
+                    Container(
+                      height: 300,
+                      child: ListView.builder(
+                        itemCount: mentors!.length,
+                        itemBuilder: (context, i) {
+                          var teacher = mentors[i];
+                          return InkWell(
+                            onTap: () {
+                              prov.addSelectedTeacher(context, index, teacher);
+                              Get.back();
+                            },
+                            child: Container(
+                                margin: EdgeInsets.symmetric(vertical: 5),
+                                child: Column(
+                                  children: [
+                                    widgetSelectTeacher(teacher),
+                                    Divider(),
+                                  ],
+                                )),
+                          );
+                        },
                       ),
-                    ],
-                  );
-          },
-        ),
+                    ),
+                  ],
+                );
+        },
       );
     },
   );
