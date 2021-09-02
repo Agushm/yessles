@@ -47,17 +47,17 @@ class TransactionProvider with ChangeNotifier {
       {
         'teacher': null,
         'day': teachingDays[0],
-        'sesi': teachingSession[0],
+        'sesi': null,
       },
       {
         'teacher': null,
         'day': teachingDays[0],
-        'sesi': teachingSession[0],
+        'sesi': null,
       },
       {
         'teacher': null,
         'day': teachingDays[0],
-        'sesi': teachingSession[0],
+        'sesi': null,
       },
     ];
 
@@ -81,17 +81,17 @@ class TransactionProvider with ChangeNotifier {
     {
       'teacher': null,
       'day': days[0],
-      'sesi': teachingSession[0],
+      'sesi': null,
     },
     {
       'teacher': null,
       'day': days[0],
-      'sesi': teachingSession[0],
+      'sesi': null,
     },
     {
       'teacher': null,
       'day': days[0],
-      'sesi': teachingSession[0],
+      'sesi': null,
     },
   ];
   List<Map> get selectedTeacher => _selectedTeacher;
@@ -107,7 +107,7 @@ class TransactionProvider with ChangeNotifier {
   }
 
   Future<List<Schedule>?> getTeacherSchedule(BuildContext context,
-      {String? teacherId, String? dayId}) async {
+      {int? index, String? teacherId, String? dayId}) async {
     var res = await TransactionServices.instance
         .getSchedule(context, teacherId: teacherId, dayId: dayId);
     if (res == null) {
@@ -118,6 +118,10 @@ class TransactionProvider with ChangeNotifier {
       d.forEach((e) {
         _load.add(Schedule.fromJson(e));
       });
+      if (index != null) {
+        addSelectedTeachingSession(index, _load[0]);
+        notifyListeners();
+      }
       return _load;
     } else {
       return [];
@@ -129,10 +133,10 @@ class TransactionProvider with ChangeNotifier {
     var teacher = _selectedTeacher[index]['teacher'];
     var iDays = days.indexOf(data);
     var teacherSchedule = await getTeacherSchedule(context,
-        teacherId: teacher.id.toString(), dayId: "${iDays + 1}");
+        index: index, teacherId: teacher.id.toString(), dayId: "${iDays + 1}");
     Teacher t = _selectedTeacher[index]['teacher'];
     t.jadwal = teacherSchedule;
-    _selectedTeacher[index]['days'] = data;
+    _selectedTeacher[index]['day'] = data;
 
     notifyListeners();
   }
@@ -178,18 +182,32 @@ class TransactionProvider with ChangeNotifier {
 
   //Create Transaction
   void createTransaction(BuildContext context, {String? payMethod}) async {
+    List<int> _jadwal = [];
+    selectedTeacher.forEach((e) {
+      Schedule? sesi = e['sesi'];
+      if (sesi != null) {
+        _jadwal.add(sesi.id!);
+      }
+    });
     DialogUtils.instance.showLoading(context, 'Membuat transaksi...');
     var res =
         await TransactionServices.instance.createTransaction(context, data: {
       "paket_id": selectedPaket!.id!,
       "pembayaran": payMethod,
-      "voucher": "",
-      "jadwal": []
+      "voucher": voucherTextController.text.isEmpty
+          ? null
+          : voucherTextController.text,
+      "jadwal": _jadwal
     });
     Get.back();
     if (res == null) {
       return;
     } else if (res['status'] == 'success') {
+      Get.back();
+      Get.back();
+      Get.back();
+      Get.back();
+      Get.back();
       Get.to(DetailTransactionPage(
         payingMethod: payMethod,
       ));
@@ -200,6 +218,25 @@ class TransactionProvider with ChangeNotifier {
           btnText: 'Tutup', onPressed: () {
         Get.back();
       });
+    }
+  }
+
+  TextEditingController voucherTextController = TextEditingController();
+  Voucher? selectedVoucher;
+
+  Future<Map<String, dynamic>?> cekVoucher(BuildContext context,
+      {String? payMethod}) async {
+    DialogUtils.instance.showLoading(context, 'Cek Voucher');
+    var res = await TransactionServices.instance
+        .cekVoucher(context, data: {"voucher": voucherTextController.text});
+    Get.back();
+    if (res == null) {
+      return res;
+    } else if (res['status'] == 'success') {
+      selectedVoucher = Voucher.fromJson(res['data']);
+      return res;
+    } else {
+      return res;
     }
   }
 }

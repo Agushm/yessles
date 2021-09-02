@@ -40,20 +40,34 @@ class _FormTransaction3State extends State<FormTransaction3> {
               child: commonButton(
                 btnText: 'Selanjutnya',
                 onPressed: () {
-                  Get.to(FormTransaction4());
+                  var prov =
+                      Provider.of<TransactionProvider>(context, listen: false);
+                  if (prov.selectedTeacher[0]['sesi'] != null &&
+                      prov.selectedTeacher[1]['sesi'] != null &&
+                      prov.selectedTeacher[3]['sesi'] != null) {
+                    Get.to(FormTransaction4());
+                  } else {
+                    DialogUtils.instance.showInfo(context,
+                        title: '',
+                        message: 'Anda belum memilih 3 jadwal pelajaran',
+                        btnText: 'Tutup', onPressed: () {
+                      Get.back();
+                    });
+                  }
                 },
               ),
             ),
             cancelButton(
               btnText: 'Batal',
               onPressed: () async {
+                var prov =
+                    Provider.of<TransactionProvider>(context, listen: false);
                 var confirm = await DialogUtils.instance.showConfirmDialog(
                     context,
                     'Batalkan Order Jadwal',
                     'Yakin untuk membatalkan transaksi ?');
                 if (confirm!) {
-                  Provider.of<TransactionProvider>(context, listen: false)
-                      .cancelTransaction();
+                  prov.cancelTransaction();
                   Get.back();
                   Get.back();
                   Get.back();

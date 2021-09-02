@@ -38,7 +38,8 @@ class Teacher {
       deskripsi: json["deskripsi"],
       phone: json["phone"],
       alamat: json["alamat"] ?? '',
-      createdAt: DateTime.parse(json["createdAt"]),
+      createdAt:
+          json["createdAt"] == null ? null : DateTime.parse(json["createdAt"]),
       totalRating:
           json["total_rating"] == null ? 0 : double.parse(json["total_rating"]),
       kategori: Kategori.fromJson(

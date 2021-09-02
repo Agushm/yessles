@@ -32,6 +32,7 @@ class API {
   // *Transaction* //
   static String getTransaction = baseURL + '/transaksi/all/';
   static String addTransaction = baseURL + '/transaksi/create/';
+  static String cekVoucher = baseURL + '/transaksi/cek-voucher';
   static String getPaket = baseURL + '/paket/all/';
   static String getSchedule = baseURL + '/jadwal/guru/';
 }
