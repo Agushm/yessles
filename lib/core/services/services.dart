@@ -24,3 +24,4 @@ part 'mapel/mapel_services.dart';
 part 'teacher/teacher_services.dart';
 part 'review/review_services.dart';
 part 'transaction/transaction_services.dart';
+part 'schedule/schedule_services.dart';

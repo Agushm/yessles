@@ -348,7 +348,7 @@ Widget buildDetailTransactionMapel() {
                     Text('${e.nama}',
                         style: fontBlack.copyWith(
                             fontSize: 14, fontWeight: FontWeight.w500)),
-                    widgetSelectTeacher(teacher!, showIcon: false),
+                    widgetSelectTeacher(teacher, showIcon: false),
                     buildDetailTransaction(
                         title: 'Hari',
                         content: '${prov.selectedTeacher[index]['day']}'
@@ -356,7 +356,7 @@ Widget buildDetailTransactionMapel() {
                         showDivider: false),
                     buildDetailTransaction(
                         title: 'Sesi (Jam)',
-                        content: '${sesi!.jamMulai} - ${sesi.jamSelesai}',
+                        content: '${sesi.jamMulai} - ${sesi.jamSelesai}',
                         showDivider: false)
                   ],
                 ),

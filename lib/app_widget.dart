@@ -31,6 +31,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider.value(
           value: RatingProvider(),
         ),
+        ChangeNotifierProvider.value(
+          value: ScheduleProvider(),
+        ),
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,

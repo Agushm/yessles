@@ -35,4 +35,5 @@ class API {
   static String cekVoucher = baseURL + '/transaksi/cek-voucher';
   static String getPaket = baseURL + '/paket/all/';
   static String getSchedule = baseURL + '/jadwal/guru/';
+  static String getScheduleUser = baseURL + '/jadwal/user/';
 }

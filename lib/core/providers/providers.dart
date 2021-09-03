@@ -16,3 +16,4 @@ part 'article_provider.dart';
 part 'mapel_provider.dart';
 part 'teacher_provider.dart';
 part 'rating_provider.dart';
+part 'schedule_provider.dart';
