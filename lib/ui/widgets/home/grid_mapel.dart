@@ -5,7 +5,7 @@ class GridMapel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<MapelProvider>(builder: (context, prov, _) {
       if (prov.mapelInit) {
-        prov.getMapel(context);
+        prov.getMapel(context, isRefresh: true);
         return GridView.builder(
           gridDelegate:
               SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
@@ -50,7 +50,8 @@ class GridMapel extends StatelessWidget {
               onTap: () {
                 Get.to(AllMapelPage());
               },
-              child: Container(
+              child: AnimatedContainer(
+                  duration: Duration(milliseconds: 500),
                   width: deviceWidth(context) / 4,
                   child: Column(
                     mainAxisSize: MainAxisSize.max,

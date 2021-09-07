@@ -43,7 +43,8 @@ class _AllMapelPageState extends State<AllMapelPage> {
               onTap: () {
                 Get.to(MapelPage(e));
               },
-              child: Container(
+              child: AnimatedContainer(
+                  duration: Duration(milliseconds: 500),
                   width: deviceWidth(context) / 4,
                   child: Column(
                     mainAxisSize: MainAxisSize.max,

@@ -6,6 +6,17 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  Future<void> _refresh() async {
+    try {
+      Provider.of<UserProvider>(context, listen: false).getUserProfile(context);
+      Provider.of<MapelProvider>(context, listen: false)
+          .getMapel(context, isRefresh: true);
+      Provider.of<ArticleProvider>(context, listen: false).getMore(context);
+    } catch (err) {
+      throw err;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,39 +40,42 @@ class _HomePageState extends State<HomePage> {
                         fontWeight: FontWeight.bold)),
               ],
             )),
-        body: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              PosterBaner(),
-              Container(
-                width: deviceWidth(context),
-                decoration: BoxDecoration(
-                  color: Colors.white,
+        body: RefreshIndicator(
+          onRefresh: _refresh,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                PosterBaner(),
+                Container(
+                  width: deviceWidth(context),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 20),
+                      buildLabelTitle('Mata Pelajaraan'),
+                      SizedBox(height: 20),
+                      GridMapel()
+                    ],
+                  ),
                 ),
-                child: Column(
+                SizedBox(height: 10),
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 20),
-                    buildLabelTitle('Mata Pelajaraan'),
-                    SizedBox(height: 20),
-                    GridMapel()
+                    SizedBox(height: 10),
+                    buildLabelTitle('Ada yang baru nih'),
+                    Container(
+                        width: double.infinity,
+                        height: 300,
+                        child: ListArticleHome()),
                   ],
                 ),
-              ),
-              SizedBox(height: 10),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(height: 10),
-                  buildLabelTitle('Ada yang baru nih'),
-                  Container(
-                      width: double.infinity,
-                      height: 300,
-                      child: ListArticleHome()),
-                ],
-              ),
-            ],
+              ],
+            ),
           ),
         ));
   }

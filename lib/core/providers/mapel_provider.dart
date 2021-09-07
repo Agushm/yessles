@@ -5,7 +5,11 @@ class MapelProvider with ChangeNotifier {
   List<Mapel> get mapel => _mapel;
   bool mapelInit = true;
 
-  Future getMapel(BuildContext context) async {
+  Future getMapel(BuildContext context, {bool isRefresh = false}) async {
+    if (isRefresh) {
+      _mapel = [];
+      mapelInit = true;
+    }
     var res = await MapelServices.instance
         .getAll(context, params: {'page': 1, 'max': 20});
     if (res != null && res['status'] == 'success') {

@@ -36,8 +36,8 @@ class MapelPage extends StatelessWidget {
               itemBuilder: (context, i) {
                 return Container(
                   width: double.infinity,
-                  height: 30,
-                  margin: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                  height: 60,
+                  margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                         begin: Alignment.centerLeft,
@@ -54,7 +54,8 @@ class MapelPage extends StatelessWidget {
             itemCount: prov.schoolLevel.length,
             itemBuilder: (context, i) {
               var _class = prov.schoolLevel[i];
-              return Container(
+              return AnimatedContainer(
+                duration: Duration(milliseconds: 500),
                 padding: EdgeInsets.all(10),
                 margin: EdgeInsets.all(10),
                 decoration: BoxDecoration(

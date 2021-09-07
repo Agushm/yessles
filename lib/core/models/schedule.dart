@@ -5,17 +5,18 @@ Schedule scheduleFromJson(String str) => Schedule.fromJson(json.decode(str));
 String scheduleToJson(Schedule data) => json.encode(data.toJson());
 
 class Schedule {
-  Schedule({
-    this.id,
-    this.guruId,
-    this.hariId,
-    this.day,
-    this.jamMulai,
-    this.jamSelesai,
-    this.status,
-    this.duration,
-    this.mapel,
-  });
+  Schedule(
+      {this.id,
+      this.guruId,
+      this.hariId,
+      this.day,
+      this.jamMulai,
+      this.jamSelesai,
+      this.tanggal,
+      this.status,
+      this.duration,
+      this.mapel,
+      this.guru});
 
   int? id;
   int? guruId;
@@ -23,19 +24,22 @@ class Schedule {
   String? day;
   String? jamMulai;
   String? jamSelesai;
+  String? tanggal;
   String? status;
   int? duration;
   Mapel? mapel;
+  Teacher? guru;
 
   factory Schedule.fromJson(Map<String, dynamic> json) => Schedule(
-        id: json["id"],
-        guruId: json["guruId"],
-        hariId: json["hariId"],
-        day: days[json['hariId'] - 1],
-        jamMulai: json["jamMulai"],
-        jamSelesai: json["jamSelesai"],
-        status: json["status"],
-      );
+      id: json["id"],
+      guruId: json["guruId"],
+      hariId: json["hariId"],
+      day: json['hariId'] == null ? '' : days[json['hariId'] - 1],
+      jamMulai: json["jamMulai"],
+      jamSelesai: json["jamSelesai"],
+      tanggal: json["tanggal"],
+      status: json["status"],
+      guru: Teacher.fromJson(json['guru']));
 
   Map<String, dynamic> toJson() => {
         "id": id,
