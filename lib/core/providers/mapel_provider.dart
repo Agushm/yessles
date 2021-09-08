@@ -30,11 +30,13 @@ class MapelProvider with ChangeNotifier {
     var res = await MapelServices.instance.getAllJenjang(context);
     if (res != null && res['status'] == 'success') {
       var d = res['data'] as List;
+      List<SchoolLevel> _load = [];
       d.forEach((e) {
-        _schoolLevel.add(SchoolLevel.fromJson(e));
+        _load.add(SchoolLevel.fromJson(e));
       });
+      _schoolLevel = _load;
       Provider.of<TransactionProvider>(context, listen: false)
-          .changeSelectedClass(_schoolLevel[0]);
+          .changeSelectedClass(_load[0]);
       notifyListeners();
     }
     schoolLevelInit = false;

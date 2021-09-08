@@ -9,6 +9,7 @@ class _SchedulePageState extends State<SchedulePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ColorBase.grey,
       appBar: AppBar(
           automaticallyImplyLeading: false,
           elevation: 1,
@@ -34,14 +35,21 @@ class _SchedulePageState extends State<SchedulePage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        width: deviceWidth(context),
+                        width: double.infinity,
+                        margin: EdgeInsets.only(right: 20),
                         padding:
                             EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                        decoration: BoxDecoration(),
+                        decoration: BoxDecoration(
+                          color: ColorBase.primary,
+                          borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(20),
+                            bottomRight: Radius.circular(20),
+                          ),
+                        ),
                         child: Text(
-                          '${d.tanggal}',
-                          style: fontBlack.copyWith(
-                              color: Colors.black, fontWeight: FontWeight.w500),
+                          '${tanggal(DateTime.parse(d.tanggal!))}',
+                          style:
+                              fontWhite.copyWith(fontWeight: FontWeight.w500),
                         ),
                       ),
                       InkWell(
@@ -52,53 +60,44 @@ class _SchedulePageState extends State<SchedulePage> {
                         },
                         child: Container(
                           width: deviceWidth(context),
-                          margin: EdgeInsets.fromLTRB(0, 0, 20, 0),
+                          margin: EdgeInsets.fromLTRB(20, 10, 20, 10),
                           padding: EdgeInsets.symmetric(
                               horizontal: 20, vertical: 15),
                           decoration: BoxDecoration(
-                            color: ColorBase.primary,
-                            borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(20),
-                              bottomRight: Radius.circular(20),
-                            ),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(8)),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                              CircleAvatar(
+                                radius: 30,
+                                backgroundImage: NetworkImage(d.guru!.photo!),
+                              ),
+                              SizedBox(width: 20),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Column(
-                                    children: [
-                                      CircleAvatar(
-                                        radius: 30,
-                                        backgroundImage:
-                                            NetworkImage(d.guru!.photo!),
-                                      ),
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                      Container(
-                                        width: 150,
-                                        child: Text(
-                                          '${d.guru!.nama!}',
-                                          maxLines: 1,
-                                          textAlign: TextAlign.center,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: fontBlack.copyWith(
-                                              fontSize: 12,
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.w500),
-                                        ),
-                                      ),
-                                    ],
+                                  Container(
+                                    width: 150,
+                                    child: Text(
+                                      '${d.guru!.nama!}',
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: fontBlack.copyWith(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w500),
+                                    ),
                                   ),
                                   Text('Mapel Name',
                                       style: fontBlack.copyWith(
-                                          fontSize: 18,
-                                          color: Colors.white,
+                                          fontSize: 14,
                                           fontWeight: FontWeight.w500)),
+                                  Text(
+                                      'Sesi ${formatJam(DateTime.parse(d.tanggal! + ' ' + d.jamMulai!))} - ${formatJam(DateTime.parse(d.tanggal! + ' ' + d.jamSelesai!))}',
+                                      style: fontBlack.copyWith(
+                                          color: Colors.black54,
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w300)),
                                 ],
                               ),
                             ],

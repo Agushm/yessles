@@ -39,7 +39,7 @@ class Schedule {
       jamSelesai: json["jamSelesai"],
       tanggal: json["tanggal"],
       status: json["status"],
-      guru: Teacher.fromJson(json['guru']));
+      guru: json['guru'] == null ? null : Teacher.fromJson(json['guru']));
 
   Map<String, dynamic> toJson() => {
         "id": id,

@@ -44,6 +44,12 @@ String formatTimeFromDuration(Duration duration) {
   return "${twoDigits(duration.inHours)}:$twoDigitMinutes:$twoDigitSeconds";
 }
 
+String formatJam(DateTime date) {
+  final fTime = DateFormat('HH:mm');
+  String time = fTime.format(date);
+  return time;
+}
+
 String tanggal(DateTime date,
     {bool shortMonth = false, bool withTime = false, bool withWIB = false}) {
   final fTime = DateFormat('HH:mm');

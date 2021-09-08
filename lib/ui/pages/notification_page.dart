@@ -9,6 +9,7 @@ class _NotificationPageState extends State<NotificationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: ColorBase.grey,
         appBar: AppBar(
             automaticallyImplyLeading: false,
             elevation: 1,
@@ -27,20 +28,11 @@ class _NotificationPageState extends State<NotificationPage> {
                 children: [
                   Container(
                     width: deviceWidth(context),
-                    margin: d['isRead']
-                        ? EdgeInsets.fromLTRB(20, 5, 0, 5)
-                        : EdgeInsets.fromLTRB(0, 5, 20, 5),
+                    margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
                     padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                     decoration: BoxDecoration(
-                      color: d['isRead'] ? Colors.grey[200] : ColorBase.primary,
-                      borderRadius: d['isRead']
-                          ? BorderRadius.only(
-                              topLeft: Radius.circular(10),
-                              bottomLeft: Radius.circular(10))
-                          : BorderRadius.only(
-                              topRight: Radius.circular(10),
-                              bottomRight: Radius.circular(10),
-                            ),
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,18 +41,26 @@ class _NotificationPageState extends State<NotificationPage> {
                           '${d['title']}',
                           style: fontBlack.copyWith(
                               color:
-                                  d['isRead'] ? Colors.black38 : Colors.white,
-                              fontWeight: d['isRead']
-                                  ? FontWeight.w300
-                                  : FontWeight.w500),
+                                  d['isRead'] ? Colors.black38 : Colors.black,
+                              fontWeight: FontWeight.bold),
                         ),
                         Text('${d['message']}',
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
                             style: fontBlack.copyWith(
                                 color:
-                                    d['isRead'] ? Colors.black38 : Colors.white,
+                                    d['isRead'] ? Colors.black38 : Colors.black,
+                                fontSize: 12,
                                 fontWeight: d['isRead']
                                     ? FontWeight.w300
                                     : FontWeight.w500)),
+                        Text(
+                            '${tanggal(DateTime.now(), shortMonth: true, withTime: true)}',
+                            style: fontBlack.copyWith(
+                                color:
+                                    d['isRead'] ? Colors.black38 : Colors.black,
+                                fontSize: 10,
+                                fontWeight: FontWeight.w300)),
                       ],
                     ),
                   ),

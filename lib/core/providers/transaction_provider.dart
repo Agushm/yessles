@@ -12,10 +12,12 @@ class TransactionProvider with ChangeNotifier {
     var res = await TransactionServices.instance.getPaket(context);
     if (res != null && res['status'] == 'success') {
       var d = res['data'] as List;
+      List<Paket> _load = [];
       d.forEach((e) {
-        listPaket.add(Paket.fromJson(e));
+        _load.add(Paket.fromJson(e));
       });
-      selectedPaket = listPaket[0];
+      listPaket = _load;
+      selectedPaket = _load[0];
     }
     paketInit = false;
     notifyListeners();

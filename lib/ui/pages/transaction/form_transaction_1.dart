@@ -22,8 +22,7 @@ class FormTransaction1 extends StatelessWidget {
 }
 
 Widget buildFormSession1() {
-  return Consumer2<TransactionProvider, MapelProvider>(
-      builder: (context, prov, mapel, _) {
+  return Consumer<TransactionProvider>(builder: (context, prov, _) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20),
       child: Column(
@@ -68,7 +67,7 @@ Widget buildFormSession1() {
             );
           }),
           labelTextForm('Jenjang Sekolah'),
-          Builder(builder: (context) {
+          Consumer<MapelProvider>(builder: (context, mapel, _) {
             if (mapel.schoolLevelInit && mapel.schoolLevel.isEmpty) {
               mapel.getSchoolLevel(context);
               return LinearProgressIndicator();
