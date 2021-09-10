@@ -28,14 +28,10 @@ String formatDateTransaction(DateTime tgl, {bool withTime = false}) {
 
 String twoDigits(int n) => n.toString().padLeft(2, "0");
 String formatTime(DateTime date) {
-  if (date != null) {
-    String hour = twoDigits(date.hour);
-    String minute = twoDigits(date.minute);
-    String second = twoDigits(date.second);
-    return '$hour:$minute:$second';
-  } else {
-    return '-';
-  }
+  String hour = twoDigits(date.hour);
+  String minute = twoDigits(date.minute);
+  String second = twoDigits(date.second);
+  return '$hour:$minute:$second';
 }
 
 String formatTimeFromDuration(Duration duration) {

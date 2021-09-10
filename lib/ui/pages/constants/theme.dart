@@ -45,7 +45,19 @@ InputDecoration registerForm = InputDecoration(
   contentPadding: EdgeInsets.all(15), // Added this
   hintStyle: fontBlack.copyWith(fontSize: 12, color: Colors.black54),
 );
+InputDecoration loginInputDecoration = InputDecoration(
+    hintStyle: fontBlack.copyWith(
+        fontSize: 14, color: Colors.black54, fontWeight: FontWeight.w500),
+    fillColor: Colors.white,
+    filled: true,
+    contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+    enabledBorder: loginOutlineBorder,
+    focusedBorder: loginOutlineBorder,
+    border: loginOutlineBorder);
 
+OutlineInputBorder loginOutlineBorder = OutlineInputBorder(
+    borderRadius: BorderRadius.circular(60),
+    borderSide: BorderSide(color: Colors.white, width: 3.0));
 MaterialButton commonButton(
     {String? btnText, Function()? onPressed, Color? btnColor}) {
   return MaterialButton(

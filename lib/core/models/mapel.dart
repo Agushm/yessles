@@ -100,15 +100,5 @@ String mockDesc = '''
    <li>Aliquam tincidunt mauris eu risus.</li>
 </ul>
         ''';
-List _listMapel = [
-  'Matematika',
-  'Bhs.Indonesia',
-  'Bhs.Inggris',
-  'IPA',
-  'Biologi',
-  'Kimia',
-  'Fisika',
-  'Sosiologi',
-  'Geografi',
-];
+
 var random = Random();

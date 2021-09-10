@@ -37,3 +37,4 @@ part 'transaction/detail_transaction_page.dart';
 part 'mapel_page.dart';
 part 'all_mapel_page.dart';
 part 'detail_mentor_page.dart';
+part 'landing_page.dart';

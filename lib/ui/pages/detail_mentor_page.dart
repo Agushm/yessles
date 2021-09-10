@@ -13,7 +13,6 @@ class _DetailMentorPageState extends State<DetailMentorPage> {
   final _key = GlobalKey<ScaffoldState>();
 
   PageController pageController = PageController();
-  int _currentIndex = 0;
   bool isLoading = true;
   @override
   void initState() {

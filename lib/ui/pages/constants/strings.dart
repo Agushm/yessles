@@ -1,5 +1,3 @@
-import 'package:yessles/core/models/models.dart';
-
 final List<Map> listBanner = [
   {
     "id": 1,
