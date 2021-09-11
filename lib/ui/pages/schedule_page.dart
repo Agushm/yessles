@@ -22,93 +22,10 @@ class _SchedulePageState extends State<SchedulePage> {
       body: Consumer<ScheduleProvider>(
         builder: (context, prov, _) {
           if (prov.userSchedulesInit) {
-            prov.getScheduleUser(context);
+            prov.reload(context);
             return Center(child: CircularProgressIndicator());
           } else if (!prov.userSchedulesInit && prov.userSchedules.isNotEmpty) {
-            return ListView.builder(
-              padding: EdgeInsets.only(top: 10),
-              itemCount: prov.userSchedules.length,
-              itemBuilder: (c, i) {
-                var d = prov.userSchedules[i];
-                return Container(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        width: double.infinity,
-                        margin: EdgeInsets.only(right: 20),
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                        decoration: BoxDecoration(
-                          color: ColorBase.primary,
-                          borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(20),
-                            bottomRight: Radius.circular(20),
-                          ),
-                        ),
-                        child: Text(
-                          '${tanggal(DateTime.parse(d.tanggal!))}',
-                          style:
-                              fontWhite.copyWith(fontWeight: FontWeight.w500),
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          Get.to(DetailMentorPage(
-                            teacher: d.guru,
-                          ));
-                        },
-                        child: Container(
-                          width: deviceWidth(context),
-                          margin: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 15),
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(8)),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              CircleAvatar(
-                                radius: 30,
-                                backgroundImage: NetworkImage(d.guru!.photo!),
-                              ),
-                              SizedBox(width: 20),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    width: 150,
-                                    child: Text(
-                                      '${d.guru!.nama!}',
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: fontBlack.copyWith(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                  ),
-                                  Text('Mapel Name',
-                                      style: fontBlack.copyWith(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w500)),
-                                  Text(
-                                      'Sesi ${formatJam(DateTime.parse(d.tanggal! + ' ' + d.jamMulai!))} - ${formatJam(DateTime.parse(d.tanggal! + ' ' + d.jamSelesai!))}',
-                                      style: fontBlack.copyWith(
-                                          color: Colors.black54,
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w300)),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                );
-              },
-            );
+            return ListSchedule();
           } else {
             return Center(child: Text('Belum ada jadwal', style: fontBlack));
           }
@@ -139,6 +56,177 @@ class _SchedulePageState extends State<SchedulePage> {
           }
         },
       ),
+    );
+  }
+}
+
+class ListSchedule extends StatefulWidget {
+  @override
+  _ListScheduleState createState() => _ListScheduleState();
+}
+
+class _ListScheduleState extends State<ListSchedule> {
+  bool isLoadingMore = false;
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<ScheduleProvider>(
+      builder: (context, prov, _) {
+        return Builder(
+          builder: (context) {
+            if (prov.userSchedulesInit && prov.userSchedules.isEmpty) {
+              prov.getUserSchedulesMore(context);
+              return buildLoadingArticle();
+            } else {
+              return RefreshIndicator(
+                onRefresh: () async {
+                  return await prov.reload(context);
+                },
+                child: prov.userSchedulesInit == false &&
+                        prov.userSchedules.isEmpty
+                    ? Center(
+                        child: Text('Nanti berita akan tampil disini'),
+                      )
+                    : NotificationListener<ScrollNotification>(
+                        onNotification: (ScrollNotification scrollInfo) {
+                          if (scrollInfo.metrics.pixels ==
+                              scrollInfo.metrics.maxScrollExtent) {
+                            setState(() {
+                              isLoadingMore = true;
+                            });
+                            prov.getUserSchedulesMore(context).then((_) async {
+                              setState(() {
+                                isLoadingMore = false;
+                              });
+                            });
+                            return true;
+                          }
+                          return false;
+                        },
+                        child: ListView.separated(
+                          separatorBuilder: (context, index) => Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Divider(),
+                          ),
+                          physics: const AlwaysScrollableScrollPhysics(),
+                          itemCount: isLoadingMore
+                              ? prov.userSchedules.length + 1
+                              : prov.userSchedules.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            if (index >= prov.userSchedules.length) {
+                              return Center(
+                                child: Container(
+                                  width: 30,
+                                  height: 30,
+                                  margin: EdgeInsets.only(bottom: 100),
+                                  child: CircularProgressIndicator(),
+                                ),
+                              );
+                            }
+                            var d = prov.userSchedules[index];
+                            return Container(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    width: double.infinity,
+                                    margin: EdgeInsets.only(right: 20),
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 20, vertical: 10),
+                                    decoration: BoxDecoration(
+                                      color: ColorBase.primary,
+                                      borderRadius: BorderRadius.only(
+                                        topRight: Radius.circular(20),
+                                        bottomRight: Radius.circular(20),
+                                      ),
+                                    ),
+                                    child: Text(
+                                      '${tanggal(DateTime.parse(d.tanggal!))}',
+                                      style: fontWhite.copyWith(
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                  InkWell(
+                                    onTap: () {
+                                      Get.to(DetailMentorPage(
+                                        teacher: d.guru,
+                                      ));
+                                    },
+                                    child: Container(
+                                      width: deviceWidth(context),
+                                      margin:
+                                          EdgeInsets.fromLTRB(20, 10, 20, 10),
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 20, vertical: 15),
+                                      decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(8)),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          CircleAvatar(
+                                            radius: 30,
+                                            backgroundImage:
+                                                NetworkImage(d.guru!.photo!),
+                                          ),
+                                          SizedBox(width: 20),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Container(
+                                                width: 150,
+                                                child: Text(
+                                                  '${d.guru!.nama!}',
+                                                  maxLines: 1,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  style: fontBlack.copyWith(
+                                                      fontSize: 14,
+                                                      fontWeight:
+                                                          FontWeight.w500),
+                                                ),
+                                              ),
+                                              Text('Mapel Name',
+                                                  style: fontBlack.copyWith(
+                                                      fontSize: 14,
+                                                      fontWeight:
+                                                          FontWeight.w500)),
+                                              Text(
+                                                  'Sesi ${formatJam(DateTime.parse(d.tanggal! + ' ' + d.jamMulai!))} - ${formatJam(DateTime.parse(d.tanggal! + ' ' + d.jamSelesai!))}',
+                                                  style: fontBlack.copyWith(
+                                                      color: Colors.black54,
+                                                      fontSize: 12,
+                                                      fontWeight:
+                                                          FontWeight.w300)),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+              );
+            }
+          },
+        );
+      },
     );
   }
 }
