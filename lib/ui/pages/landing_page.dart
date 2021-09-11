@@ -18,7 +18,7 @@ class LandingPage extends StatelessWidget {
               onPressed: () {
                 Get.to(LoginPage());
               },
-              child: Text('Phone Login', style: fontWhite),
+              child: Text('Login Dengan Handphone', style: fontWhite),
             ),
           ),
           SizedBox(height: 15),

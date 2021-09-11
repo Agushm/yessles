@@ -30,9 +30,9 @@ class _LoginPageState extends State<LoginPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Phone Login',
+                'Login Dengan Handphone',
                 style: fontBlack.copyWith(
-                    fontSize: 20, fontWeight: FontWeight.bold),
+                    fontSize: 18, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 20),
               Container(

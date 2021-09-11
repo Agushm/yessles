@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
             },
           ),
         ),
-        home: LandingPage(), //SplashPage(),
+        home: SplashPage(),
       ),
     );
   }
