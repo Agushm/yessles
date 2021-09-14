@@ -53,10 +53,7 @@ class _DetailMapelPageState extends State<DetailMapelPage> {
         ),
         title: Text(
           '${widget.mapel!.nama}',
-          style: fontBlack.copyWith(
-              fontSize: 14,
-              color: ColorBase.primary,
-              fontWeight: FontWeight.bold),
+          style: fontAppBarTitle,
         ),
       ),
       body: Column(

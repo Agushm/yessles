@@ -17,6 +17,7 @@ part 'home/grid_mapel.dart';
 part 'home/list_article.dart';
 part 'dialog/loading_dialog.dart';
 part 'dialog/info_dialog.dart';
+part 'dialog/pick_image_dialog.dart';
 part 'loading_widget.dart';
 part 'poster_baner.dart';
 part 'review/review_widget.dart';

@@ -51,10 +51,7 @@ class _DetailMentorPageState extends State<DetailMentorPage> {
             ),
             title: Text(
               '${widget.teacher!.nama}',
-              style: fontBlack.copyWith(
-                  fontSize: 14,
-                  color: ColorBase.primary,
-                  fontWeight: FontWeight.bold),
+              style: fontAppBarTitle,
             ),
           ),
           body: SingleChildScrollView(

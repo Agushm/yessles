@@ -20,10 +20,7 @@ class MapelPage extends StatelessWidget {
         ),
         title: Text(
           'Mata Pelajaran',
-          style: fontBlack.copyWith(
-              fontSize: 14,
-              color: ColorBase.primary,
-              fontWeight: FontWeight.bold),
+          style: fontAppBarTitle,
         ),
       ),
       body: Consumer<MapelProvider>(

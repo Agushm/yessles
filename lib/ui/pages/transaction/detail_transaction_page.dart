@@ -19,8 +19,7 @@ class _DetailTransactionPageState extends State<DetailTransactionPage> {
         backgroundColor: Colors.white,
         title: Text(
           'Detail Order Jadwal',
-          style: fontBlack.copyWith(
-              color: ColorBase.primary, fontWeight: FontWeight.bold),
+          style: fontAppBarTitle,
         ),
         leading: IconButton(
           color: Colors.black,

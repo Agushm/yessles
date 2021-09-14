@@ -16,7 +16,7 @@ class _ArticlePageState extends State<ArticlePage> {
         backgroundColor: Colors.white,
         title: Text(
           '${widget.data.judul}',
-          style: fontBlack,
+          style: fontAppBarTitle,
         ),
         leadingWidth: 30,
         leading: IconButton(

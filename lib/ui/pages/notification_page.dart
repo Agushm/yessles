@@ -11,14 +11,11 @@ class _NotificationPageState extends State<NotificationPage> {
     return Scaffold(
         backgroundColor: ColorBase.grey,
         appBar: AppBar(
-            automaticallyImplyLeading: false,
-            elevation: 1,
-            backgroundColor: Colors.white,
-            title: Text('Informasi',
-                style: fontBlack.copyWith(
-                    fontSize: 20,
-                    color: ColorBase.primary,
-                    fontWeight: FontWeight.bold))),
+          automaticallyImplyLeading: false,
+          elevation: 1,
+          backgroundColor: Colors.white,
+          title: Text('Informasi', style: fontAppBarTitle),
+        ),
         body: ListView.builder(
             padding: EdgeInsets.only(top: 20),
             itemCount: listNotif.length,

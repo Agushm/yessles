@@ -14,11 +14,7 @@ class _SchedulePageState extends State<SchedulePage> {
           automaticallyImplyLeading: false,
           elevation: 1,
           backgroundColor: Colors.white,
-          title: Text('Jadwal',
-              style: fontBlack.copyWith(
-                  fontSize: 20,
-                  color: ColorBase.primary,
-                  fontWeight: FontWeight.bold))),
+          title: Text('Jadwal', style: fontAppBarTitle)),
       body: Consumer<ScheduleProvider>(
         builder: (context, prov, _) {
           if (prov.userSchedulesInit) {
@@ -112,11 +108,8 @@ class _ListScheduleState extends State<ListSchedule> {
                           }
                           return false;
                         },
-                        child: ListView.separated(
-                          separatorBuilder: (context, index) => Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Divider(),
-                          ),
+                        child: ListView.builder(
+                          padding: EdgeInsets.symmetric(vertical: 10),
                           physics: const AlwaysScrollableScrollPhysics(),
                           itemCount: isLoadingMore
                               ? prov.userSchedules.length + 1

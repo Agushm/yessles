@@ -78,13 +78,14 @@ class DialogUtils {
         });
   }
 
-  // Future<String> showGetImageFromDialog(BuildContext context) {
-  //   return showModal(
-  //       context: context,
-  //       configuration:
-  //           FadeScaleTransitionConfiguration(barrierDismissible: false),
-  //       builder: (context) {
-  //         return PickImageDialog();
-  //       });
-  // }
+  Future<dynamic> showGetImageFromDialog(BuildContext context) {
+    return showModal(
+      context: context,
+      configuration:
+          FadeScaleTransitionConfiguration(barrierDismissible: false),
+      builder: (context) {
+        return PickImageDialog();
+      },
+    );
+  }
 }

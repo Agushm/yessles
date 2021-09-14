@@ -14,11 +14,7 @@ class _ProfilePageState extends State<ProfilePage> {
           automaticallyImplyLeading: false,
           elevation: 1,
           backgroundColor: Colors.white,
-          title: Text('Profil',
-              style: fontBlack.copyWith(
-                  fontSize: 20,
-                  color: ColorBase.primary,
-                  fontWeight: FontWeight.bold))),
+          title: Text('Profil', style: fontAppBarTitle)),
       body: SingleChildScrollView(
         child: Consumer<UserProvider>(
           builder: (context, prov, _) {
@@ -48,30 +44,46 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
                 buildLabelTitle('Biodata'),
-                Container(
-                  width: double.infinity,
-                  margin:
-                      EdgeInsets.only(bottom: 30, left: 10, right: 10, top: 20),
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(15)),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      detailItemBio(context,
-                          label: 'Nama', data: prov.user!.namaLengkap),
-                      detailItemBio(context,
-                          label: 'Tanggal Lahir',
-                          data: fDate.format(prov.user!.tanggalLahir!)),
-                      detailItemBio(context,
-                          label: 'Jenis Kelamin', data: prov.user!.kelamin!),
-                      detailItemBio(context,
-                          label: 'Alamat', data: prov.user!.alamat!),
-                      detailItemBio(context,
-                          label: 'Sekolah', data: prov.user!.sekolah!),
-                    ],
-                  ),
+                Stack(
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      margin: EdgeInsets.only(
+                          bottom: 30, left: 10, right: 10, top: 20),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(15)),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          detailItemBio(context,
+                              label: 'Nama', data: prov.user!.namaLengkap),
+                          detailItemBio(context,
+                              label: 'Tanggal Lahir',
+                              data: fDate.format(prov.user!.tanggalLahir!)),
+                          detailItemBio(context,
+                              label: 'Jenis Kelamin',
+                              data: prov.user!.kelamin!),
+                          detailItemBio(context,
+                              label: 'Alamat', data: prov.user!.alamat!),
+                          detailItemBio(context,
+                              label: 'Sekolah', data: prov.user!.sekolah!),
+                        ],
+                      ),
+                    ),
+                    Positioned(
+                      top: 20,
+                      right: 10,
+                      child: IconButton(
+                        color: ColorBase.primary,
+                        onPressed: () =>
+                            Get.to(EditProfilePage(user: prov.user)),
+                        icon: Icon(Icons.settings),
+                      ),
+                    ),
+                  ],
                 ),
                 Center(
                   child: Container(

@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(width: 10),
                 Text('Yessles',
                     style: fontBlack.copyWith(
-                        fontSize: 20,
+                        fontSize: 18,
                         color: ColorBase.primary,
                         fontWeight: FontWeight.bold)),
               ],

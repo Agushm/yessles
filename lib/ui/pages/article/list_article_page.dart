@@ -11,7 +11,7 @@ class ListArticleScreen extends StatelessWidget {
             backgroundColor: Colors.white,
             title: Text(
               'Berita',
-              style: fontBlack,
+              style: fontAppBarTitle,
             ),
           ),
           body: ListArticle(),

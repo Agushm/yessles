@@ -19,13 +19,7 @@ class TransactionPage extends StatelessWidget {
             Get.back();
           },
         ),
-        title: Text(
-          'Order Jadwal',
-          style: fontBlack.copyWith(
-              fontSize: 14,
-              color: ColorBase.primary,
-              fontWeight: FontWeight.bold),
-        ),
+        title: Text('Order Jadwal', style: fontAppBarTitle),
       ),
       body: body,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

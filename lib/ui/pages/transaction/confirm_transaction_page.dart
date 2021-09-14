@@ -25,13 +25,7 @@ class _ConfirmTransactionPageState extends State<ConfirmTransactionPage> {
             Get.back();
           },
         ),
-        title: Text(
-          'Konfirmasi Order Jadwal',
-          style: fontBlack.copyWith(
-              fontSize: 14,
-              color: ColorBase.primary,
-              fontWeight: FontWeight.bold),
-        ),
+        title: Text('Konfirmasi Order Jadwal', style: fontAppBarTitle),
       ),
       body: Consumer<TransactionProvider>(
         builder: (context, prov, _) {

@@ -24,6 +24,9 @@ TextStyle fontWhite = GoogleFonts.poppins(
   fontSize: 15,
 );
 
+TextStyle fontAppBarTitle = fontBlack.copyWith(
+    fontSize: 16, color: ColorBase.primary, fontWeight: FontWeight.bold);
+
 InputDecoration decorationForm = InputDecoration(
   fillColor: Colors.white,
   filled: true,
