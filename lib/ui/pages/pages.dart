@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:ui';
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,7 @@ import 'package:yessles/utils/dialog_utils.dart';
 import 'package:yessles/utils/string_converter.dart';
 import 'constants/theme.dart';
 import 'constants/strings.dart';
+import 'package:image_picker/image_picker.dart';
 
 part 'login_page.dart';
 part 'register_page.dart';

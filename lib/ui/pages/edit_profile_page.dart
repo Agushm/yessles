@@ -109,12 +109,12 @@ class _EditProfilePageState extends State<EditProfilePage> {
                                   ],
                                   shape: BoxShape.circle,
                                   image: DecorationImage(
-                                    fit: BoxFit.cover,
-                                    image: imageFile != null
-                                        ? FileImage(imageFile)
-                                        : NetworkImage(
-                                            widget.user!.photoProfile!),
-                                  ),
+                                      fit: BoxFit.cover,
+                                      image: imageFile == null
+                                          ? NetworkImage(
+                                              widget.user!.photoProfile!)
+                                          : FileImage(imageFile!)
+                                              as ImageProvider),
                                 ),
                               ),
                               Positioned(
@@ -314,6 +314,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
   }
 
   ImagePicker picker = ImagePicker();
+
   void showDialogGetImage() async {
     var from = await DialogUtils.instance.showGetImageFromDialog(context);
     if (from == "gallery") {
