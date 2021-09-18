@@ -11,10 +11,22 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       backgroundColor: ColorBase.grey,
       appBar: AppBar(
-          automaticallyImplyLeading: false,
-          elevation: 1,
-          backgroundColor: Colors.white,
-          title: Text('Profil', style: fontAppBarTitle)),
+        automaticallyImplyLeading: false,
+        elevation: 1,
+        backgroundColor: Colors.white,
+        title: Text('Profil', style: fontAppBarTitle),
+        actions: [
+          IconButton(
+            color: ColorBase.primary,
+            icon: Icon(Icons.menu),
+            iconSize: 25,
+            onPressed: () {
+              Get.to(SideMenuPage(),
+                  transition: Transition.rightToLeftWithFade);
+            },
+          ),
+        ],
+      ),
       body: SingleChildScrollView(
         child: Consumer<UserProvider>(
           builder: (context, prov, _) {
@@ -73,32 +85,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         ],
                       ),
                     ),
-                    Positioned(
-                      top: 20,
-                      right: 10,
-                      child: IconButton(
-                        color: ColorBase.primary,
-                        onPressed: () =>
-                            Get.to(EditProfilePage(user: prov.user)),
-                        icon: Icon(Icons.settings),
-                      ),
-                    ),
                   ],
-                ),
-                Center(
-                  child: Container(
-                      width: 200,
-                      child: commonButton(
-                          btnText: 'Keluar Akun',
-                          onPressed: () async {
-                            var confirm = await DialogUtils.instance
-                                .showConfirmDialog(
-                                    context, 'Konfirmasi Keluar Akun', '');
-                            if (confirm!) {
-                              Provider.of<UserProvider>(context, listen: false)
-                                  .logout(context);
-                            }
-                          })),
                 ),
               ],
             );

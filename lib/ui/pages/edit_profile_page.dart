@@ -233,7 +233,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                             }
                           },
                         ),
-                        SizedBox(height: deviceHeight(context) / 2),
+                        SizedBox(height: 100),
                       ],
                     ),
                   ),
