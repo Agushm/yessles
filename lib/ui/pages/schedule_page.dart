@@ -89,8 +89,17 @@ class _ListScheduleState extends State<ListSchedule> {
                 },
                 child: prov.userSchedulesInit == false &&
                         prov.userSchedules.isEmpty
-                    ? Center(
-                        child: Text('Nanti berita akan tampil disini'),
+                    ? Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(iconsPath + 'soon.png',
+                              width: 100, height: 100),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Text('Nanti jadwal akan tampil disini',
+                              style: fontBlack),
+                        ],
                       )
                     : NotificationListener<ScrollNotification>(
                         onNotification: (ScrollNotification scrollInfo) {

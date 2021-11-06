@@ -84,18 +84,32 @@ class GridMapel extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    CircleAvatar(
-                      radius: 25,
-                      backgroundImage: NetworkImage(e.ikon!),
-                      backgroundColor: ColorBase.primary,
+                    Container(
+                      height: 40,
+                      width: 40,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                        fit: BoxFit.contain,
+                        image: e.ikon == null || e.ikon == ''
+                            ? ExactAssetImage(iconsPath + 'mapel.png')
+                            : NetworkImage(e.ikon!) as ImageProvider,
+                      )),
                     ),
-                    SizedBox(height: 3),
+                    // CircleAvatar(
+                    //   radius: 25,
+
+                    //   backgroundImage: e.ikon == null || e.ikon == ''
+                    //       ? ExactAssetImage(iconsPath + 'mapel.png')
+                    //       : NetworkImage(e.ikon!) as ImageProvider,
+                    //   backgroundColor: Colors.white,
+                    // ),
+                    SizedBox(height: 5),
                     Container(
                       width: (deviceWidth(context) - 40) / 4,
                       child: Text('${e.nama}',
                           textAlign: TextAlign.center,
                           style: fontBlack.copyWith(
-                            fontSize: 9,
+                            fontSize: 10,
                           )),
                     ),
                   ],

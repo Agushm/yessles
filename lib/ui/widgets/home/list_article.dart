@@ -26,8 +26,15 @@ class ListArticleHome extends StatelessWidget {
         );
       }
       if (prov.isArticleInit == false && prov.articles.isEmpty) {
-        return Center(
-          child: Text('Nanti berita akan tampil disini', style: fontBlack),
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(iconsPath + 'soon.png', width: 100, height: 100),
+            SizedBox(
+              height: 5,
+            ),
+            Text('Nanti artikel akan tampil disini', style: fontBlack),
+          ],
         );
       }
       return ListView.builder(

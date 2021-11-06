@@ -53,8 +53,17 @@ class _ListArticleState extends State<ListArticle> {
                   return await prov.reload(context);
                 },
                 child: prov.isArticleInit == false && prov.articles.isEmpty
-                    ? Center(
-                        child: Text('Nanti berita akan tampil disini'),
+                    ? Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(iconsPath + 'soon.png',
+                              width: 100, height: 100),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Text('Nanti artikel akan tampil disini',
+                              style: fontBlack),
+                        ],
                       )
                     : NotificationListener<ScrollNotification>(
                         onNotification: (ScrollNotification scrollInfo) {

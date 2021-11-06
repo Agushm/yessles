@@ -18,13 +18,14 @@ class _ArticlePageState extends State<ArticlePage> {
           '${widget.data.judul}',
           style: fontAppBarTitle,
         ),
-        leadingWidth: 30,
         leading: IconButton(
-            padding: EdgeInsets.symmetric(horizontal: 15),
-            onPressed: () {
-              Get.back();
-            },
-            icon: Icon(Icons.arrow_back_ios, size: 20, color: Colors.black)),
+          color: Colors.black,
+          icon: Icon(Icons.arrow_back_ios_rounded),
+          iconSize: 15,
+          onPressed: () {
+            Get.back();
+          },
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -53,7 +54,7 @@ class _ArticlePageState extends State<ArticlePage> {
                   height: 200,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      fit: BoxFit.cover,
+                      fit: BoxFit.fill,
                       image: NetworkImage(widget.data.thumbnail!),
                     ),
                   ),
