@@ -2,7 +2,17 @@ part of 'providers.dart';
 
 class MapelProvider with ChangeNotifier {
   List<Mapel> _mapel = [];
-  List<Mapel> get mapel => _mapel;
+  List<Mapel> mapel(BuildContext context) {
+    var jenjang = Provider.of<TransactionProvider>(context, listen: false)
+        .selectedClass!
+        .jenjang!;
+    if (jenjang.toLowerCase() == 'sd') {
+      return _mapel.where((e) => e.nama!.toLowerCase() == 'sd').toList();
+    } else {
+      return _mapel;
+    }
+  }
+
   bool mapelInit = true;
 
   Future getMapel(BuildContext context, {bool isRefresh = false}) async {

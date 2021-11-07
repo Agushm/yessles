@@ -1,16 +1,35 @@
 part of '../pages.dart';
 
-class FormTransaction2 extends StatelessWidget {
+class FormTransaction2 extends StatefulWidget {
+  @override
+  State<FormTransaction2> createState() => _FormTransaction2State();
+}
+
+class _FormTransaction2State extends State<FormTransaction2> {
+  int? maxSelected;
+  @override
+  void initState() {
+    String jenjang = Provider.of<TransactionProvider>(context, listen: false)
+        .selectedClass!
+        .jenjang!;
+    if (jenjang.toLowerCase() == 'sd') {
+      maxSelected = 1;
+    } else {
+      maxSelected = 3;
+    }
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return TransactionPage(
-      body: buildForm2(),
+      body: buildForm2(maxSelected),
       floating: Consumer<TransactionProvider>(builder: (context, prov, _) {
         return Container(
           width: double.infinity,
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
           decoration: BoxDecoration(
-            color: Colors.white30,
+            color: Colors.white,
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -18,12 +37,12 @@ class FormTransaction2 extends StatelessWidget {
               Container(
                 width: double.infinity,
                 child: commonButton(
-                  btnColor: prov.selectedMapel.length < 3
+                  btnColor: prov.selectedMapel.length < maxSelected!
                       ? Colors.grey
                       : ColorBase.primary,
                   btnText: 'Selanjutnya',
                   onPressed: () {
-                    if (prov.selectedMapel.length < 3) {
+                    if (prov.selectedMapel.length < maxSelected!) {
                       return;
                     }
                     Get.to(FormTransaction3());
@@ -54,7 +73,7 @@ class FormTransaction2 extends StatelessWidget {
   }
 }
 
-Widget buildForm2() {
+Widget buildForm2(int? maxSelected) {
   return Consumer2<TransactionProvider, MapelProvider>(
       builder: (context, prov, mapel, _) {
     return Container(
@@ -69,7 +88,7 @@ Widget buildForm2() {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                labelTextForm('Pilih 3 Mata Pelajaran'),
+                labelTextForm('Pilih $maxSelected Mata Pelajaran'),
                 Builder(
                   builder: (context) {
                     if (prov.selectedMapel.isNotEmpty) {
@@ -89,7 +108,7 @@ Widget buildForm2() {
             ),
           ),
           Builder(builder: (context) {
-            if (mapel.mapelInit && mapel.mapel.isEmpty) {
+            if (mapel.mapelInit && mapel.mapel(context).isEmpty) {
               mapel.getMapel(context);
               return GridView.count(
                   crossAxisCount: 4,
@@ -113,10 +132,10 @@ Widget buildForm2() {
               physics: NeverScrollableScrollPhysics(),
               mainAxisSpacing: 5,
               crossAxisSpacing: 5,
-              children: mapel.mapel.map((e) {
+              children: mapel.mapel(context).map((e) {
                 return InkWell(
                   onTap: () {
-                    prov.addSelectedMapel(e);
+                    prov.addSelectedMapel(e, maxSelected);
                   },
                   child: Stack(
                     children: [

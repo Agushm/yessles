@@ -66,12 +66,12 @@ class TransactionProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void addSelectedMapel(Mapel data) {
+  void addSelectedMapel(Mapel data, int? maxSelected) {
     if (_selectedMapel.indexOf(data) != -1) {
       print('Memilih Mapel $data');
       return;
-    } else if (_selectedMapel.length == 3) {
-      print('Sudah memilih 3 mapel');
+    } else if (_selectedMapel.length == maxSelected) {
+      print('Sudah memilih $maxSelected mapel');
       return;
     } else {
       _selectedMapel.add(data);

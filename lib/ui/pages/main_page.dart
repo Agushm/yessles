@@ -27,21 +27,23 @@ class _MainPageState extends State<MainPage> {
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Image.asset(iconsPath + 'house.png', width: 20, height: 20),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.schedule_outlined),
+            icon: Image.asset(iconsPath + 'completed-task.png',
+                width: 20, height: 20),
             label: 'Jadwal',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
+            icon: Image.asset(iconsPath + 'notification.png',
+                width: 20, height: 20),
             label: 'Informasi',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
+            icon: Image.asset(iconsPath + 'user.png', width: 20, height: 20),
             label: 'Akun',
           ),
         ],

@@ -15,7 +15,7 @@ class _ArticlePageState extends State<ArticlePage> {
         elevation: 1,
         backgroundColor: Colors.white,
         title: Text(
-          '${widget.data.judul}',
+          'Detail ${widget.data.status.toString().capitalize}',
           style: fontAppBarTitle,
         ),
         leading: IconButton(

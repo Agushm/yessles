@@ -32,9 +32,9 @@ class _AllMapelPageState extends State<AllMapelPage> {
               SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
           shrinkWrap: true,
           physics: NeverScrollableScrollPhysics(),
-          itemCount: prov.mapel.length,
+          itemCount: prov.mapel(context).length,
           itemBuilder: (contex, index) {
-            var e = prov.mapel[index];
+            var e = prov.mapel(context)[index];
 
             return InkWell(
               onTap: () {

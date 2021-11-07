@@ -47,6 +47,7 @@ class ListArticleHome extends StatelessWidget {
           return OpenContainer(
             transitionDuration: 500.milliseconds,
             closedElevation: 0,
+            closedColor: Colors.transparent,
             closedBuilder: (BuildContext c, VoidCallback action) =>
                 AnimatedContainer(
               duration: Duration(milliseconds: 500),

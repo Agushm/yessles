@@ -27,7 +27,6 @@ class BaseServices {
     }
 
     try {
-      print('URL: $url');
       switch (type) {
         case RequestType.GET:
           response = await _dio.get(url,
@@ -64,7 +63,6 @@ class BaseServices {
 
     //* Handling error and status code
     response = json.decode(response.toString());
-    print(response);
     // if (response == null) {
     //   errorToast("Terjadi kesalahan");
     //   return null;
@@ -78,7 +76,7 @@ class BaseServices {
           message: "Silahkan melakukan login ulang",
           btnText: "Halaman Login", onPressed: () async {
         // Provider.of<UserProvider>(context, listen: false).logout(context);
-        Get.offAll(LoginPage());
+        Get.offAll(LandingPage());
       });
       return response;
     }

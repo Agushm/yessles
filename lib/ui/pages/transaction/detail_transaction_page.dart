@@ -296,7 +296,7 @@ class _DetailTransactionPageState extends State<DetailTransactionPage> {
               width: deviceWidth(context),
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               decoration: BoxDecoration(
-                color: Colors.white30,
+                color: Colors.white,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20),
                   topRight: Radius.circular(20),

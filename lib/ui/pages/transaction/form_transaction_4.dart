@@ -9,7 +9,7 @@ class FormTransaction4 extends StatelessWidget {
         width: double.infinity,
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
         decoration: BoxDecoration(
-          color: Colors.white30,
+          color: Colors.white,
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,

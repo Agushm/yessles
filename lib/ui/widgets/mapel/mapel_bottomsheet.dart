@@ -23,7 +23,7 @@ mapelBottomSheet(BuildContext? context) {
             child: ListView.builder(
                 shrinkWrap: true,
                 padding: EdgeInsets.symmetric(horizontal: 10),
-                itemCount: prov.mapel.length,
+                itemCount: prov.mapel(context).length,
                 itemBuilder: (BuildContext ctx, index) {
                   return Container(
                     width: deviceWidth(context),
@@ -37,7 +37,7 @@ mapelBottomSheet(BuildContext? context) {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          prov.mapel[index].nama!,
+                          prov.mapel(context)[index].nama!,
                           style: fontBlack.copyWith(
                               fontSize: 18, fontWeight: FontWeight.bold),
                         ),
