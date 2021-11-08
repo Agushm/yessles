@@ -206,7 +206,7 @@ class _BuildForm3State extends State<BuildForm3> {
                                           .map((e) =>
                                               DropdownMenuItem<Schedule>(
                                                 child: Text(
-                                                    '${e.jamMulai} - ${e.jamMulai}',
+                                                    '${e.jamMulai!.substring(0, 4)} - ${e.jamSelesai!.substring(0, 4)}',
                                                     style: fontBlack.copyWith(
                                                         fontSize: 13,
                                                         fontWeight:

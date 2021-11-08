@@ -42,9 +42,9 @@ class GridMapel extends StatelessWidget {
             SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
         shrinkWrap: true,
         physics: NeverScrollableScrollPhysics(),
-        itemCount: prov.mapel(context).length < 8 ? prov.mapel(context).length : 8,
+        itemCount: prov.mapelHome.length < 8 ? prov.mapelHome.length : 8,
         itemBuilder: (contex, index) {
-          var e = prov.mapel(context)[index];
+          var e = prov.mapelHome[index];
           if (index == (8 - 1)) {
             return InkWell(
               onTap: () {

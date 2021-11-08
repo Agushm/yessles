@@ -14,6 +14,8 @@ class FormTransaction1 extends StatelessWidget {
         child: commonButton(
             btnText: 'Selanjutnya',
             onPressed: () {
+              Provider.of<TransactionProvider>(context, listen: false)
+                  .resetSelectedMapel();
               Get.to(FormTransaction2());
             }),
       ),

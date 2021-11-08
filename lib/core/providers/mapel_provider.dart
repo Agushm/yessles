@@ -2,6 +2,8 @@ part of 'providers.dart';
 
 class MapelProvider with ChangeNotifier {
   List<Mapel> _mapel = [];
+
+  List<Mapel> get mapelHome => _mapel;
   List<Mapel> mapel(BuildContext context) {
     var jenjang = Provider.of<TransactionProvider>(context, listen: false)
         .selectedClass!

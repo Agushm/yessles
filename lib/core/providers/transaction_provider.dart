@@ -66,6 +66,10 @@ class TransactionProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  void resetSelectedMapel() {
+    _selectedMapel = [];
+  }
+
   void addSelectedMapel(Mapel data, int? maxSelected) {
     if (_selectedMapel.indexOf(data) != -1) {
       print('Memilih Mapel $data');

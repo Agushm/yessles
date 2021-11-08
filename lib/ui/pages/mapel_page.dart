@@ -70,7 +70,8 @@ class MapelPage extends StatelessWidget {
                             mapel: mapel, schoolLevel: _class, kelas: e));
                       },
                       child: Container(
-                        margin: EdgeInsets.symmetric(horizontal: 10),
+                        margin:
+                            EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                         padding:
                             EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                         decoration: BoxDecoration(
