@@ -26,10 +26,10 @@ class FormTransaction1 extends StatelessWidget {
 Widget buildFormSession1() {
   return Consumer<TransactionProvider>(builder: (context, prov, _) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20),
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           labelTextForm('Paket Pembelajaran'),
           Builder(builder: (context) {
@@ -37,35 +37,32 @@ Widget buildFormSession1() {
               prov.getPaket(context);
               return LinearProgressIndicator();
             }
-            return Container(
-              height: 60,
-              child: DropdownButtonFormField<Paket>(
-                value: prov.selectedPaket,
-                isExpanded: true,
-                isDense: false,
-                itemHeight: 60,
-                items: prov.listPaket
-                    .map((e) => DropdownMenuItem<Paket>(
-                          child: Column(
-                            children: [
-                              Text('${e.nama!.toUpperCase()}',
-                                  style: fontBlack.copyWith(
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.bold)),
-                              Text('${formatRupiah(e.harga!)}',
-                                  style: fontBlack.copyWith(
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.w500)),
-                            ],
-                          ),
-                          value: e,
-                        ))
-                    .toList(),
-                decoration: decorationForm.copyWith(),
-                onChanged: (value) {
-                  prov.changeSelectedPaket(value!);
-                },
-              ),
+            return DropdownButtonFormField<Paket>(
+              value: prov.selectedPaket,
+              isExpanded: true,
+              isDense: false,
+              items: prov.listPaket
+                  .map((e) => DropdownMenuItem<Paket>(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('${e.nama!.toUpperCase()}',
+                                style: fontBlack.copyWith(
+                                    fontSize: 13, fontWeight: FontWeight.w500)),
+                            Text('${formatRupiah(e.harga!)}',
+                                style: fontBlack.copyWith(
+                                    color: ColorBase.primary,
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.bold)),
+                          ],
+                        ),
+                        value: e,
+                      ))
+                  .toList(),
+              decoration: decorationForm.copyWith(),
+              onChanged: (value) {
+                prov.changeSelectedPaket(value!);
+              },
             );
           }),
           labelTextForm('Jenjang Sekolah'),
