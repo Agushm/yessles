@@ -42,3 +42,4 @@ part 'detail_mentor_page.dart';
 part 'landing_page.dart';
 part 'edit_profile_page.dart';
 part 'side_menu_page.dart';
+part 'cs_page.dart';

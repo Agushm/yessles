@@ -22,24 +22,40 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         backgroundColor: ColorBase.grey,
         appBar: AppBar(
-            automaticallyImplyLeading: false,
-            elevation: 1,
-            backgroundColor: Colors.white,
-            title: Row(
-              children: [
-                Image.asset(
-                  'assets/icons/logo.png',
-                  width: 30,
-                  height: 30,
+          automaticallyImplyLeading: false,
+          elevation: 1,
+          backgroundColor: Colors.white,
+          title: Row(
+            children: [
+              Image.asset(
+                'assets/icons/logo.png',
+                width: 30,
+                height: 30,
+              ),
+              SizedBox(width: 10),
+              Text('Yessles',
+                  style: fontBlack.copyWith(
+                      fontSize: 18,
+                      color: ColorBase.primary,
+                      fontWeight: FontWeight.bold)),
+            ],
+          ),
+          actions: [
+            InkWell(
+              onTap:()=>Get.to(CSPage()),
+                          child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Image.asset(iconsPath + 'cs.png', width: 25, height: 25),
+                    Text('CS', style: fontBlack.copyWith(fontSize: 9))
+                  ],
                 ),
-                SizedBox(width: 10),
-                Text('Yessles',
-                    style: fontBlack.copyWith(
-                        fontSize: 18,
-                        color: ColorBase.primary,
-                        fontWeight: FontWeight.bold)),
-              ],
-            )),
+              ),
+            ),
+          ],
+        ),
         body: RefreshIndicator(
           onRefresh: _refresh,
           child: SingleChildScrollView(
@@ -56,7 +72,7 @@ class _HomePageState extends State<HomePage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(height: 20),
-                      buildLabelTitle('Mata Pelajaraan'),
+                      buildLabelTitle('Kelas'),
                       SizedBox(height: 20),
                       GridMapel()
                     ],

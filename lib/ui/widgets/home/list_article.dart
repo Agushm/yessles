@@ -81,33 +81,19 @@ class ListArticleHome extends StatelessWidget {
                             image: NetworkImage(data.thumbnail!))),
                   )),
                   Container(
-                      alignment: Alignment.centerLeft,
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            '${data.judul}',
-                            style: fontBlack.copyWith(
-                                fontSize: 14, fontWeight: FontWeight.w500),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                          Container(
-                            width: 300,
-                            child: Text(
-                              '${parseHtmlString(data.deskripsi!)}',
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style: fontBlack.copyWith(
-                                color: Colors.black54,
-                                fontSize: 12,
-                              ),
-                            ),
-                          )
-                        ],
-                      )),
+                    constraints: BoxConstraints(
+                      minHeight: 60,
+                    ),
+                    alignment: Alignment.topLeft,
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    child: Text(
+                      '${data.judul}',
+                      style: fontBlack.copyWith(
+                          fontSize: 14, fontWeight: FontWeight.w500),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
                 ],
               ),
             ),
