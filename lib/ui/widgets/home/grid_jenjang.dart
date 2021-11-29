@@ -1,11 +1,11 @@
 part of '../widgets.dart';
 
-class GridMapel extends StatelessWidget {
+class GridJenjang extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<MapelProvider>(builder: (context, prov, _) {
-      if (prov.mapelInit) {
-        prov.getMapel(context, isRefresh: true);
+      if (prov.schoolLevelInit) {
+        prov.getSchoolLevel(context);
         return GridView.builder(
           gridDelegate:
               SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
@@ -42,13 +42,13 @@ class GridMapel extends StatelessWidget {
             SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
         shrinkWrap: true,
         physics: NeverScrollableScrollPhysics(),
-        itemCount: prov.mapelHome.length < 8 ? prov.mapelHome.length : 8,
+        itemCount: prov.schoolLevel.length < 8 ? prov.schoolLevel.length : 8,
         itemBuilder: (contex, index) {
-          var e = prov.mapelHome[index];
+          var e = prov.schoolLevel[index];
           if (index == (8 - 1)) {
             return InkWell(
               onTap: () {
-                Get.to(AllMapelPage());
+                Get.to(AllSchoolLevelPage());
               },
               child: AnimatedContainer(
                   duration: Duration(milliseconds: 500),
@@ -56,19 +56,21 @@ class GridMapel extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      CircleAvatar(
-                        radius: 25,
-                        backgroundColor: ColorBase.primary.withOpacity(0.8),
+                      Container(
+                        height: 40,
+                        width: 40,
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle, color: ColorBase.primary),
                         child: Icon(Icons.more_horiz_rounded,
                             color: Colors.white, size: 35),
                       ),
-                      SizedBox(height: 3),
+                      SizedBox(height: 5),
                       Container(
                         width: (deviceWidth(context) - 40) / 4,
                         child: Text('Lihat Semua',
                             textAlign: TextAlign.center,
                             style: fontBlack.copyWith(
-                              fontSize: 9,
+                              fontSize: 10,
                             )),
                       ),
                     ],
@@ -77,7 +79,7 @@ class GridMapel extends StatelessWidget {
           }
           return InkWell(
             onTap: () {
-              Get.to(MapelPage(e));
+              Get.to(ClassPage(e));
             },
             child: Container(
                 width: deviceWidth(context) / 4,
@@ -88,25 +90,25 @@ class GridMapel extends StatelessWidget {
                       height: 40,
                       width: 40,
                       decoration: BoxDecoration(
-                          image: DecorationImage(
-                        fit: BoxFit.contain,
-                        image: e.ikon == null || e.ikon == ''
-                            ? ExactAssetImage(iconsPath + 'mapel.png')
-                            : NetworkImage(e.ikon!) as ImageProvider,
-                      )),
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                          fit: BoxFit.contain,
+                          colorFilter: e.icon == null
+                              ? ColorFilter.mode(
+                                  Colors.white70,
+                                  BlendMode.saturation,
+                                )
+                              : null,
+                          image: e.icon == null || e.icon == ''
+                              ? ExactAssetImage(iconsPath + 'logo.png')
+                              : NetworkImage(e.icon!) as ImageProvider,
+                        ),
+                      ),
                     ),
-                    // CircleAvatar(
-                    //   radius: 25,
-
-                    //   backgroundImage: e.ikon == null || e.ikon == ''
-                    //       ? ExactAssetImage(iconsPath + 'mapel.png')
-                    //       : NetworkImage(e.ikon!) as ImageProvider,
-                    //   backgroundColor: Colors.white,
-                    // ),
                     SizedBox(height: 5),
                     Container(
                       width: (deviceWidth(context) - 40) / 4,
-                      child: Text('${e.nama}',
+                      child: Text('${e.jenjang}',
                           textAlign: TextAlign.center,
                           style: fontBlack.copyWith(
                             fontSize: 10,

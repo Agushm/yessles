@@ -6,14 +6,16 @@ SchoolLevel schoolLevelFromJson(String str) =>
 String schoolLevelToJson(SchoolLevel data) => json.encode(data.toJson());
 
 class SchoolLevel {
-  SchoolLevel({this.id, this.jenjang, this.kelas});
+  SchoolLevel({this.id, this.jenjang, this.icon, this.kelas});
 
   int? id;
+  String? icon;
   String? jenjang;
   List<Kelas>? kelas;
 
   factory SchoolLevel.fromJson(Map<String, dynamic> json) => SchoolLevel(
         id: json["id"],
+        icon:json['icon'],
         jenjang: json["Jenjang"],
         kelas: List<Kelas>.from(json["kelas"].map((x) => Kelas.fromJson(x))),
       );
@@ -33,6 +35,7 @@ class Kelas {
   });
 
   int? id;
+
   String? kelas;
   int? jenjangId;
 

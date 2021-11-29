@@ -1,8 +1,8 @@
 part of 'pages.dart';
 
 class MapelPage extends StatelessWidget {
-  final Mapel mapel;
-  MapelPage(this.mapel);
+  final Kelas kelas;
+  MapelPage(this.kelas);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,71 +25,73 @@ class MapelPage extends StatelessWidget {
       ),
       body: Consumer<MapelProvider>(
         builder: (context, prov, _) {
-          if (prov.schoolLevelInit && prov.schoolLevel.isEmpty) {
-            prov.getSchoolLevel(context);
-            return ListView.builder(
-              padding: EdgeInsets.symmetric(vertical: 20),
-              itemCount: 4,
-              itemBuilder: (context, i) {
+          if (prov.mapelInit) {
+            prov.getMapel(context, isRefresh: true);
+            return GridView.builder(
+              gridDelegate:
+                  SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: 8,
+              itemBuilder: (contex, index) {
                 return Container(
-                  width: double.infinity,
-                  height: 60,
-                  margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  margin: EdgeInsets.all(5),
+                  alignment: Alignment.center,
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight,
-                        colors: [Colors.black26, Colors.black12]),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
+                      color: Colors.grey[300],
+                      borderRadius: BorderRadius.circular(10)),
                 );
               },
             );
           }
-          return ListView.builder(
-            padding: EdgeInsets.symmetric(vertical: 20),
-            itemCount: prov.schoolLevel.length,
-            itemBuilder: (context, i) {
-              var _class = prov.schoolLevel[i];
-              return AnimatedContainer(
-                duration: Duration(milliseconds: 500),
-                padding: EdgeInsets.all(10),
-                margin: EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10)),
-                child: ExpansionTile(
-                  title: Text(_class.jenjang!,
-                      style: fontBlack.copyWith(fontWeight: FontWeight.bold)),
-                  childrenPadding: EdgeInsets.only(bottom: 10),
-                  iconColor: ColorBase.primary,
-                  children: _class.kelas!.map((e) {
-                    return InkWell(
-                      onTap: () {
-                        Get.to(DetailMapelPage(
-                            mapel: mapel, schoolLevel: _class, kelas: e));
-                      },
-                      child: Container(
-                        margin:
-                            EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                        decoration: BoxDecoration(
-                            color: ColorBase.primary,
-                            borderRadius: BorderRadius.circular(20)),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Icon(Icons.arrow_forward_ios_rounded,
-                                size: 15, color: Colors.white),
-                            SizedBox(width: 20),
-                            Text(e.kelas!, style: fontWhite),
-                          ],
+          return GridView.builder(
+            gridDelegate:
+                SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
+            padding: EdgeInsets.symmetric(vertical: 10),
+            itemCount: prov.mapelHome.length,
+            itemBuilder: (contex, index) {
+              var e = prov.mapelHome[index];
+
+              return InkWell(
+                onTap: () {
+                  Get.to(DetailMapelPage(
+                    kelas: kelas,
+                    mapel: e,
+                  ));
+                },
+                child: Container(
+                    margin: EdgeInsets.all(5),
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                            fit: BoxFit.contain,
+                            image: e.ikon == null || e.ikon == ''
+                                ? ExactAssetImage(iconsPath + 'mapel.png')
+                                : NetworkImage(e.ikon!) as ImageProvider,
+                          )),
                         ),
-                      ),
-                    );
-                  }).toList(),
-                ),
+                        SizedBox(height: 5),
+                        Container(
+                          width: (deviceWidth(context) - 40) / 4,
+                          child: Text('${e.nama}'.toUpperCase(),
+                              overflow: TextOverflow.ellipsis,
+                              textAlign: TextAlign.center,
+                              style: fontBlack.copyWith(
+                                fontSize: 9,
+                              )),
+                        ),
+                      ],
+                    )),
               );
             },
           );

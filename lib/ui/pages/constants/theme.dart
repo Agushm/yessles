@@ -137,3 +137,26 @@ LinearGradient loadingGradient = LinearGradient(
     begin: Alignment.centerLeft,
     end: Alignment.centerRight,
     colors: [Colors.black26, Colors.black12]);
+
+Widget buildLabelTitle(String? title) {
+  return Container(
+    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+    constraints: BoxConstraints(
+      minWidth: 180,
+    ),
+    decoration: BoxDecoration(
+      color: ColorBase.primary,
+      borderRadius: BorderRadius.only(
+        topRight: Radius.circular(20),
+        bottomRight: Radius.circular(20),
+      ),
+    ),
+    child: Text(
+      title!,
+      style: fontWhite.copyWith(
+          letterSpacing: title.length < 10 ? 6 : 1,
+          fontSize: 14,
+          fontWeight: FontWeight.bold),
+    ),
+  );
+}

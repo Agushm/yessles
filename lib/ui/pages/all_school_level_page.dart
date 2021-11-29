@@ -1,11 +1,11 @@
 part of 'pages.dart';
 
-class AllMapelPage extends StatefulWidget {
+class AllSchoolLevelPage extends StatefulWidget {
   @override
-  _AllMapelPageState createState() => new _AllMapelPageState();
+  _AllSchoolLevelPageState createState() => new _AllSchoolLevelPageState();
 }
 
-class _AllMapelPageState extends State<AllMapelPage> {
+class _AllSchoolLevelPageState extends State<AllSchoolLevelPage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -21,7 +21,7 @@ class _AllMapelPageState extends State<AllMapelPage> {
           },
         ),
         title: Text(
-          'Mata Pelajaran',
+          'Jenjang',
           style: fontAppBarTitle,
         ),
       ),
@@ -32,13 +32,13 @@ class _AllMapelPageState extends State<AllMapelPage> {
               SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
           shrinkWrap: true,
           physics: NeverScrollableScrollPhysics(),
-          itemCount: prov.mapel(context).length,
+          itemCount: prov.schoolLevel.length,
           itemBuilder: (contex, index) {
-            var e = prov.mapel(context)[index];
+            var e = prov.schoolLevel[index];
 
             return InkWell(
               onTap: () {
-                Get.to(MapelPage(e));
+                Get.to(ClassPage(e));
               },
               child: AnimatedContainer(
                   duration: Duration(milliseconds: 500),
@@ -46,16 +46,29 @@ class _AllMapelPageState extends State<AllMapelPage> {
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      CircleAvatar(
-                        radius: 26,
-                        backgroundImage: NetworkImage(index % 2 != 0
-                            ? 'https://image.flaticon.com/icons/png/512/2232/2232688.png'
-                            : 'https://image.flaticon.com/icons/png/512/501/501405.png'),
+                      Container(
+                        height: 40,
+                        width: 40,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            fit: BoxFit.contain,
+                            colorFilter: e.icon == null
+                                ? ColorFilter.mode(
+                                    Colors.white70,
+                                    BlendMode.saturation,
+                                  )
+                                : null,
+                            image: e.icon == null || e.icon == ''
+                                ? ExactAssetImage(iconsPath + 'logo.png')
+                                : NetworkImage(e.icon!) as ImageProvider,
+                          ),
+                        ),
                       ),
                       SizedBox(height: 3),
                       Container(
                         width: (deviceWidth(context) - 40) / 4,
-                        child: Text('${e.name}',
+                        child: Text('${e.jenjang}',
                             textAlign: TextAlign.center,
                             style: fontBlack.copyWith(
                               fontSize: 9,

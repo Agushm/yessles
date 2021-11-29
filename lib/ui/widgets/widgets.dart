@@ -13,7 +13,7 @@ import 'package:yessles/ui/pages/pages.dart';
 import 'package:yessles/utils/string_converter.dart';
 import 'package:yessles/utils/url_launcher.dart';
 
-part 'home/grid_mapel.dart';
+part 'home/grid_jenjang.dart';
 part 'home/list_article.dart';
 part 'dialog/loading_dialog.dart';
 part 'dialog/info_dialog.dart';

@@ -55,6 +55,9 @@ class _ProfilePageState extends State<ProfilePage> {
                         )),
                   ),
                 ),
+                SizedBox(
+                  height: 20,
+                ),
                 buildLabelTitle('Biodata'),
                 Stack(
                   children: [

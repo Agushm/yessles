@@ -42,8 +42,8 @@ class _HomePageState extends State<HomePage> {
           ),
           actions: [
             InkWell(
-              onTap:()=>Get.to(CSPage()),
-                          child: Padding(
+              onTap: () => Get.to(CSPage()),
+              child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -72,9 +72,9 @@ class _HomePageState extends State<HomePage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(height: 20),
-                      buildLabelTitle('Kelas'),
+                      buildLabelTitle('Jenjang'),
                       SizedBox(height: 20),
-                      GridMapel()
+                      GridJenjang()
                     ],
                   ),
                 ),
@@ -95,21 +95,4 @@ class _HomePageState extends State<HomePage> {
           ),
         ));
   }
-}
-
-Widget buildLabelTitle(String? title) {
-  return Container(
-    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-    decoration: BoxDecoration(
-      color: ColorBase.primary,
-      borderRadius: BorderRadius.only(
-        topRight: Radius.circular(20),
-        bottomRight: Radius.circular(20),
-      ),
-    ),
-    child: Text(
-      title!,
-      style: fontWhite.copyWith(fontSize: 14, fontWeight: FontWeight.bold),
-    ),
-  );
 }
