@@ -11,7 +11,9 @@ class ColorBase {
 
 String iconsPath = 'assets/icons/';
 
-TextStyle fontBlack = GoogleFonts.poppins(
+TextStyle fontBlack = TextStyle(
+  fontFamily: 'Poppins',
+  fontWeight: FontWeight.w500,
   color: Colors.black,
   fontSize: 15,
 );
@@ -19,7 +21,9 @@ TextStyle fontBlack = GoogleFonts.poppins(
 TextStyle font2Black =
     GoogleFonts.openSans(fontSize: 12, fontWeight: FontWeight.w300);
 
-TextStyle fontWhite = GoogleFonts.poppins(
+TextStyle fontWhite = TextStyle(
+  fontFamily: 'Poppins',
+  fontWeight: FontWeight.w500,
   color: Colors.white,
   fontSize: 15,
 );

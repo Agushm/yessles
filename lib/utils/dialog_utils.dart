@@ -82,7 +82,7 @@ class DialogUtils {
     return showModal(
       context: context,
       configuration:
-          FadeScaleTransitionConfiguration(barrierDismissible: false),
+          FadeScaleTransitionConfiguration(barrierDismissible: true),
       builder: (context) {
         return PickImageDialog();
       },

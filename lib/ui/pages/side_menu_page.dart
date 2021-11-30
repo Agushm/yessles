@@ -25,13 +25,10 @@ class SideMenuPage extends StatelessWidget {
                 width: 120,
                 height: 120,
                 decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey,
-                        offset: Offset(0.0, 1.0), //(x,y)
-                        blurRadius: 6.0,
-                      ),
-                    ],
+                    border: Border.all(
+                      color: Colors.white,
+                      width: 8,
+                    ),
                     shape: BoxShape.circle,
                     image: DecorationImage(
                       fit: BoxFit.cover,
@@ -68,17 +65,23 @@ class SideMenuPage extends StatelessWidget {
                   ),
                   Divider(),
                   menuSetting(
-                    onTap: () async {},
+                    onTap: () async {
+                      Get.to(HistoryOrdersPage());
+                    },
                     label: 'Riwayat Berlangganan',
                   ),
                   Divider(),
                   menuSetting(
-                    onTap: () async {},
+                    onTap: () async {
+                      Get.to(FAQPage(title: 'Syarat & Ketentuan'));
+                    },
                     label: 'Syarat & Ketentuan',
                   ),
                   Divider(),
                   menuSetting(
-                    onTap: () async {},
+                    onTap: () async {
+                      Get.to(FAQPage(title: 'Tentang Yessles'));
+                    },
                     label: 'Tentang Yessles',
                   ),
                   Divider(),

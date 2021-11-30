@@ -71,7 +71,7 @@ class _NotificationPageState extends State<NotificationPage> {
                         } else {
                           return Icon(
                             Icons.star,
-                            color: Colors.blue,
+                            color: ColorBase.primary,
                             size: 15,
                           );
                         }

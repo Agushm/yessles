@@ -90,8 +90,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(height: 20),
-                        buildLabelTitle('Foto Profil'),
                         Center(
                           child: Stack(
                             children: [
@@ -100,13 +98,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
                                 width: 120,
                                 height: 120,
                                 decoration: BoxDecoration(
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey,
-                                      offset: Offset(0.0, 1.0), //(x,y)
-                                      blurRadius: 6.0,
-                                    ),
-                                  ],
+                                  border: Border.all(
+                                    color: Colors.white,
+                                    width: 8,
+                                  ),
                                   shape: BoxShape.circle,
                                   image: DecorationImage(
                                       fit: BoxFit.cover,
@@ -326,7 +321,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
   }
 
   Future getImage(ImageSource source) async {
-    final pickedFile = await picker.getImage(
+    final pickedFile = await picker.pickImage(
         source: source,
         preferredCameraDevice: CameraDevice.front,
         maxHeight: 600,

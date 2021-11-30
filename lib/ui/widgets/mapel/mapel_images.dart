@@ -1,5 +1,6 @@
 part of '../widgets.dart';
 
+// ignore: must_be_immutable
 class MapelImages extends StatefulWidget {
   Mapel? mapel;
   MapelImages(this.mapel);

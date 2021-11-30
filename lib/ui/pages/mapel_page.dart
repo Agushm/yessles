@@ -29,7 +29,7 @@ class MapelPage extends StatelessWidget {
             prov.getMapel(context, isRefresh: true);
             return GridView.builder(
               gridDelegate:
-                  SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
+                  SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
               itemCount: 8,
@@ -46,7 +46,7 @@ class MapelPage extends StatelessWidget {
           }
           return GridView.builder(
             gridDelegate:
-                SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
+                SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
             padding: EdgeInsets.symmetric(vertical: 10),
             itemCount: prov.mapelHome.length,
             itemBuilder: (contex, index) {
@@ -82,12 +82,12 @@ class MapelPage extends StatelessWidget {
                         ),
                         SizedBox(height: 5),
                         Container(
-                          width: (deviceWidth(context) - 40) / 4,
+                          width: (deviceWidth(context) - 40) / 3,
                           child: Text('${e.nama}'.toUpperCase(),
                               overflow: TextOverflow.ellipsis,
                               textAlign: TextAlign.center,
                               style: fontBlack.copyWith(
-                                fontSize: 9,
+                                fontSize: 12,
                               )),
                         ),
                       ],
