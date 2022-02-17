@@ -63,6 +63,8 @@ class BaseServices {
 
     //* Handling error and status code
     response = json.decode(response.toString());
+    print("Body = $data");
+    print("Response = $response");
     // if (response == null) {
     //   errorToast("Terjadi kesalahan");
     //   return null;

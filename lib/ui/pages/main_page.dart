@@ -29,21 +29,23 @@ class _MainPageState extends State<MainPage> {
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Image.asset(iconsPath + 'house.png', width: 20, height: 20),
+            icon: Icon(Icons
+                .home), //Image.asset(iconsPath + 'house.png', width: 20, height: 20),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Image.asset(iconsPath + 'completed-task.png',
-                width: 20, height: 20),
+            icon: Icon(Icons
+                .list_alt_outlined), //Image.asset(iconsPath + 'completed-task.png', width: 20, height: 20),
             label: 'Jadwal',
           ),
           BottomNavigationBarItem(
-            icon: Image.asset(iconsPath + 'notification.png',
-                width: 20, height: 20),
+            icon: Icon(Icons
+                .notifications), //Image.asset(iconsPath + 'notification.png',width: 20, height: 20),
             label: 'Informasi',
           ),
           BottomNavigationBarItem(
-            icon: Image.asset(iconsPath + 'user.png', width: 20, height: 20),
+            icon: Icon(Icons
+                .person), //Image.asset(iconsPath + 'user.png', width: 20, height: 20),
             label: 'Akun',
           ),
         ],
