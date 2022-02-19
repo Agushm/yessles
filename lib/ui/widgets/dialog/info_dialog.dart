@@ -31,7 +31,7 @@ class InfoDialog extends StatelessWidget {
             child: Container(
               margin: EdgeInsets.only(bottom: 20),
               child: Text(
-                title ?? "Title",
+                title ?? "",
                 style: fontBlack.copyWith(fontSize: 16),
               ),
             ),
@@ -39,7 +39,7 @@ class InfoDialog extends StatelessWidget {
           Container(
             margin: EdgeInsets.symmetric(horizontal: 15),
             child: Text(
-              message ?? "Message",
+              message ?? "",
               textAlign: TextAlign.center,
               style: fontBlack.copyWith(fontSize: 12),
             ),

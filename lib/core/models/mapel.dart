@@ -47,38 +47,37 @@ class Mapel {
       };
 }
 
-// class Teacher {
-//   Teacher({
-//     this.teacherName,
-//     this.teacherImage,
-//     this.teacherRating,
-//     this.teacherOnline,
-//     this.teacherAddress,
-//   });
-
-//   String? teacherName;
-//   String? teacherImage;
-//   double? teacherRating;
-//   dynamic teacherOnline;
-//   String? teacherAddress;
-
-//   factory Teacher.fromJson(Map<String, dynamic> json) => Teacher(
-//         teacherName: json["teacher_name"],
-//         teacherImage: json["teacher_image"],
-//         teacherRating: json["teacher_rating"].toDouble(),
-//         teacherOnline: json["teacher_online"],
-//         teacherAddress: json["teacher_address"],
-//       );
-
-//   Map<String, dynamic> toJson() => {
-//         "teacher_name": teacherName,
-//         "teacher_image": teacherImage,
-//         "teacher_rating": teacherRating,
-//         "teacher_online": teacherOnline,
-//         "teacher_address": teacherAddress,
-//       };
-// }
-
+var jsonMapel = {
+  "id": 16,
+  "nama": "TK",
+  "ikon": "",
+  "createdAt": "2022-01-20T03:14:06.000Z",
+  "updatedAt": "2022-01-20T03:14:06.000Z",
+  "deletedAt": null,
+  "guru": [
+    {
+      "id": 27,
+      "nama": "Fitria Anugrahini",
+      "photo": null,
+      "deskripsi": "",
+      "rating": null
+    },
+    {
+      "id": 37,
+      "nama": "Utami Octavianti",
+      "photo": null,
+      "deskripsi": "",
+      "rating": null
+    },
+    {
+      "id": 48,
+      "nama": "Senja Dwi Pradini",
+      "photo": null,
+      "deskripsi": "",
+      "rating": null
+    }
+  ]
+};
 String mockDesc = '''
         <h1>HTML Ipsum Presents</h1>
 

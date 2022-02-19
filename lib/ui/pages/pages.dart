@@ -48,3 +48,4 @@ part 'side_menu_page.dart';
 part 'cs_page.dart';
 part 'faq_page.dart';
 part 'orders/history_orders_page.dart';
+part 'wallet_page.dart';

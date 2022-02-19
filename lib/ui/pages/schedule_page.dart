@@ -11,10 +11,12 @@ class _SchedulePageState extends State<SchedulePage> {
     return Scaffold(
       backgroundColor: ColorBase.grey,
       appBar: AppBar(
-          automaticallyImplyLeading: false,
-          elevation: 1,
-          backgroundColor: Colors.white,
-          title: Text('Jadwal', style: fontAppBarTitle)),
+        automaticallyImplyLeading: false,
+        elevation: 1,
+        backgroundColor: Colors.white,
+        title: Text('Jadwal', style: fontAppBarTitle),
+        actions: [Icon(Icons.history)],
+      ),
       body: Consumer<ScheduleProvider>(
         builder: (context, prov, _) {
           if (prov.userSchedulesInit) {
@@ -180,7 +182,7 @@ class _ListScheduleState extends State<ListSchedule> {
                                           CircleAvatar(
                                             radius: 30,
                                             backgroundImage:
-                                                NetworkImage(d.guru!.photo!),
+                                                NetworkImage(d.guru!.photo),
                                           ),
                                           SizedBox(width: 20),
                                           Column(
@@ -188,10 +190,10 @@ class _ListScheduleState extends State<ListSchedule> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Container(
-                                                width: 150,
+                                                width: deviceWidth(context) / 2,
                                                 child: Text(
-                                                  '${d.guru!.nama!}',
-                                                  maxLines: 1,
+                                                  '${d.guru!.nama}',
+                                                  maxLines: 2,
                                                   overflow:
                                                       TextOverflow.ellipsis,
                                                   style: fontBlack.copyWith(
@@ -200,13 +202,13 @@ class _ListScheduleState extends State<ListSchedule> {
                                                           FontWeight.w500),
                                                 ),
                                               ),
-                                              Text('Mapel Name',
+                                              Text('SMA / X / Matematika',
                                                   style: fontBlack.copyWith(
                                                       fontSize: 14,
                                                       fontWeight:
                                                           FontWeight.w500)),
                                               Text(
-                                                  'Sesi ${formatJam(DateTime.parse(d.tanggal! + ' ' + d.jamMulai!))} - ${formatJam(DateTime.parse(d.tanggal! + ' ' + d.jamSelesai!))}',
+                                                  'Sesi ${d.jamMulai} - ${d.jamSelesai}',
                                                   style: fontBlack.copyWith(
                                                       color: Colors.black54,
                                                       fontSize: 12,

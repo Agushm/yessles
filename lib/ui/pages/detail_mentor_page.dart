@@ -78,7 +78,7 @@ class _DetailMentorPageState extends State<DetailMentorPage> {
                         shape: BoxShape.circle,
                         image: DecorationImage(
                           fit: BoxFit.cover,
-                          image: NetworkImage(widget.teacher!.photo!),
+                          image: NetworkImage(widget.teacher!.photo),
                         )),
                   ),
                 ),

@@ -9,6 +9,7 @@ class _MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
   List<Widget> _widgetOptions = <Widget>[
     HomePage(),
+    WalletPage(),
     SchedulePage(),
     NotificationPage(),
     ProfilePage(),
@@ -32,6 +33,11 @@ class _MainPageState extends State<MainPage> {
             icon: Icon(Icons
                 .home), //Image.asset(iconsPath + 'house.png', width: 20, height: 20),
             label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons
+                .account_balance_wallet), //Image.asset(iconsPath + 'completed-task.png', width: 20, height: 20),
+            label: 'Dompet',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons

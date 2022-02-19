@@ -5,10 +5,23 @@ class ScheduleProvider with ChangeNotifier {
   // List<Schedule> get userSchedules => _userSchedules;
   // bool userSchedulesInit = true;
 
-  List<Schedule> _userSchedules = [];
+  List<Schedule> _userSchedules = [
+    Schedule(
+        day: 'Sabtu',
+        guru: Teacher.fromJson(mockTeacher),
+        duration: 2,
+        guruId: 1,
+        id: 1,
+        hariId: 1,
+        jamMulai: '15.30',
+        jamSelesai: '18.00',
+        mapel: Mapel.fromJson(jsonMapel),
+        status: 'sucess',
+        tanggal: DateTime.now().toString()),
+  ];
   List<Schedule> get userSchedules => _userSchedules;
 
-  bool userSchedulesInit = true;
+  bool userSchedulesInit = false;
 
   int _pageNumberUserSchedules = 1;
   int _maxNumberUserSchedules = 5;
