@@ -1,9 +1,12 @@
 part of 'pages.dart';
 
 class DetailMentorPage extends StatefulWidget {
+  final Mapel? mapel;
+  final Kelas? kelas;
   final Teacher? teacher;
 
-  const DetailMentorPage({Key? key, this.teacher}) : super(key: key);
+  const DetailMentorPage({Key? key, this.mapel, this.kelas, this.teacher})
+      : super(key: key);
 
   @override
   _DetailMentorPageState createState() => _DetailMentorPageState();
@@ -100,6 +103,15 @@ class _DetailMentorPageState extends State<DetailMentorPage> {
                               icon: Icon(Icons.favorite_border)),
                         ],
                       ),
+                      SizedBox(height: 5),
+                      Text(
+                        'SMA / X / Matematika',
+                        style: fontBlack.copyWith(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black54),
+                      ),
+                      SizedBox(height: 10),
                       Row(
                         children: [
                           StarRating(
@@ -114,7 +126,7 @@ class _DetailMentorPageState extends State<DetailMentorPage> {
                         ],
                       ),
                       SizedBox(height: 10),
-                      htmlWidget(widget.teacher!.deskripsi!),
+                      htmlWidget(widget.teacher!.deskripsi),
                       SizedBox(height: 15),
                     ],
                   ),
@@ -166,10 +178,12 @@ class _DetailMentorPageState extends State<DetailMentorPage> {
               ),
               color: ColorBase.primary,
               onPressed: () {
-                sendReviewBottomSheet(context, widget.teacher!);
+                Get.to(BookingTeacherPage(
+                  teacher: widget.teacher,
+                ));
               },
               child: Text(
-                'Review Sekarang',
+                'Pilih Guru',
                 style: fontBlack.copyWith(
                     fontWeight: FontWeight.bold,
                     color: Colors.white,

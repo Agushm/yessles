@@ -54,44 +54,47 @@ class MapelPage extends StatelessWidget {
 
               return InkWell(
                 onTap: () {
-                  Get.to(DetailMapelPage(
-                    kelas: kelas,
-                    mapel: e,
-                  ));
+                  Get.to(
+                    DetailMapelPage(
+                      kelas: kelas,
+                      mapel: e,
+                    ),
+                  );
                 },
                 child: Container(
-                    margin: EdgeInsets.all(5),
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          height: 30,
-                          width: 30,
-                          decoration: BoxDecoration(
-                              image: DecorationImage(
-                            fit: BoxFit.contain,
-                            image: e.ikon == null || e.ikon == ''
-                                ? ExactAssetImage(iconsPath + 'mapel.png')
-                                : NetworkImage(e.ikon!) as ImageProvider,
-                          )),
-                        ),
-                        SizedBox(height: 5),
-                        Container(
-                          width: (deviceWidth(context) - 40) / 3,
-                          child: Text('${e.nama}'.toUpperCase(),
-                              overflow: TextOverflow.ellipsis,
-                              textAlign: TextAlign.center,
-                              style: fontBlack.copyWith(
-                                fontSize: 12,
-                              )),
-                        ),
-                      ],
-                    )),
+                  margin: EdgeInsets.all(5),
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 30,
+                        width: 30,
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                          fit: BoxFit.contain,
+                          image: e.ikon == null || e.ikon == ''
+                              ? ExactAssetImage(iconsPath + 'mapel.png')
+                              : NetworkImage(e.ikon!) as ImageProvider,
+                        )),
+                      ),
+                      SizedBox(height: 5),
+                      Container(
+                        width: (deviceWidth(context) - 40) / 3,
+                        child: Text('${e.nama}'.toUpperCase(),
+                            overflow: TextOverflow.ellipsis,
+                            textAlign: TextAlign.center,
+                            style: fontBlack.copyWith(
+                              fontSize: 12,
+                            )),
+                      ),
+                    ],
+                  ),
+                ),
               );
             },
           );

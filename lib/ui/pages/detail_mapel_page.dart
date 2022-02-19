@@ -17,16 +17,19 @@ class _DetailMapelPageState extends State<DetailMapelPage> {
   @override
   void initState() {
     super.initState();
-    Provider.of<TeacherProvider>(context, listen: false)
-        .getTeacher(context,
-            isRefresh: true,
-            idMapel: widget.mapel!.id.toString(),
-            idJenjang: widget.kelas!.jenjangId.toString(),
-            idKelas: widget.kelas!.id.toString())
-        .then((value) {
-      setState(() {
-        isLoading = false;
-      });
+    // Provider.of<TeacherProvider>(context, listen: false)
+    //     .getTeacher(context,
+    //         isRefresh: true,
+    //         idMapel: widget.mapel!.id.toString(),
+    //         idJenjang: widget.kelas!.jenjangId.toString(),
+    //         idKelas: widget.kelas!.id.toString())
+    //     .then((value) {
+    //   setState(() {
+    //     isLoading = false;
+    //   });
+    // });
+    setState(() {
+      isLoading = false;
     });
   }
 
@@ -58,13 +61,13 @@ class _DetailMapelPageState extends State<DetailMapelPage> {
         builder: (context, prov, _) {
           if (isLoading) {
             return GridView.builder(
-              padding: EdgeInsets.symmetric(horizontal: 10),
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 mainAxisSpacing: 10,
                 crossAxisSpacing: 10,
               ),
-              itemCount: prov.teachers.length,
+              itemCount: 5,
               itemBuilder: (context, index) {
                 return Container(
                   decoration: BoxDecoration(
@@ -87,7 +90,7 @@ class _DetailMapelPageState extends State<DetailMapelPage> {
           //   },
           // );
           return GridView.builder(
-            padding: EdgeInsets.symmetric(horizontal: 10),
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               mainAxisSpacing: 10,
@@ -107,34 +110,32 @@ class _DetailMapelPageState extends State<DetailMapelPage> {
                     children: [
                       Expanded(
                         child: Container(
+                          margin: EdgeInsets.all(5),
                           decoration: BoxDecoration(
                             color: Colors.white,
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(10),
-                              topRight: Radius.circular(10),
-                            ),
+                            shape: BoxShape.circle,
                             image: DecorationImage(
                               fit: BoxFit.cover,
-                              image: NetworkImage(teacher.photo!),
+                              image: NetworkImage(teacher.photo),
                             ),
                           ),
                         ),
                       ),
                       Container(
-                        padding: EdgeInsets.all(10),
+                        padding: EdgeInsets.fromLTRB(10, 0, 10, 5),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text(
-                              teacher.nama!,
-                              maxLines: 1,
+                              teacher.nama,
+                              maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                               style: fontBlack.copyWith(
-                                fontSize: 11,
+                                fontSize: 12,
                               ),
                             ),
                             StarRating(
-                                rating: teacher.totalRating!,
+                                rating: teacher.totalRating,
                                 starCount: 5,
                                 size: 15,
                                 mainAxisAlignment: MainAxisAlignment.center,
