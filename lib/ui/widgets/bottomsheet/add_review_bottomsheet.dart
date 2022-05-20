@@ -75,6 +75,7 @@ class _AddRatingWidgetState extends State<AddRatingWidget> {
               if (value!.isEmpty) {
                 return 'Maaf harus diisi';
               }
+              return null;
             },
           ),
           SizedBox(height: 20),

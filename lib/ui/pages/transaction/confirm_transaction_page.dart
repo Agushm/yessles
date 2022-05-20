@@ -180,6 +180,8 @@ class _ConfirmTransactionPageState extends State<ConfirmTransactionPage> {
                                   if (voucherMessage != null) {
                                     return voucherMessage;
                                   }
+
+                                  return null;
                                 },
                               ),
                             ),

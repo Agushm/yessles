@@ -508,6 +508,7 @@ class _VoucherFormState extends State<VoucherForm> {
                               if (voucherMessage != null) {
                                 return voucherMessage;
                               }
+                              return null;
                             },
                           ),
                         ),

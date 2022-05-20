@@ -117,6 +117,8 @@ class _RegisterPageState extends State<RegisterPage> {
                               if (!value.isNumericOnly) {
                                 return 'Masukan hanya angka saja';
                               }
+
+                              return null;
                             }),
                         SizedBox(height: 15),
                         _buildTextForm(
@@ -142,6 +144,8 @@ class _RegisterPageState extends State<RegisterPage> {
                             if (value!.length < 6) {
                               return 'Password minimal 6 karakter';
                             }
+
+                            return null;
                           },
                         ),
                         SizedBox(height: 15),
@@ -154,6 +158,8 @@ class _RegisterPageState extends State<RegisterPage> {
                                 value != passwordController.text) {
                               return 'Password tidak sama';
                             }
+
+                            return null;
                           },
                         ),
                         SizedBox(height: deviceHeight(context) / 2),
@@ -257,6 +263,8 @@ TextFormField _buildTextForm(
           if (value!.isEmpty) {
             return 'Maaf harus diisi';
           }
+
+          return null;
         },
   );
 }

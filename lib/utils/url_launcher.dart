@@ -2,8 +2,14 @@ import 'dart:io';
 
 import 'package:url_launcher/url_launcher.dart';
 
-void launchURL(String _url) async =>
-    await canLaunch(_url) ? await launch(_url) : throw 'Could not launch $_url';
+void launchURL(String url) async {
+  Uri uri = Uri.parse(url);
+  if (await canLaunchUrl(uri)) {
+    await launchUrl(uri);
+  } else {
+    throw 'Could not launch $uri';
+  }
+}
 
 String urlWA(String phone, String message) {
   if (Platform.isAndroid) {

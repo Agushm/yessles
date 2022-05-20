@@ -187,6 +187,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                               if (!value.isNumericOnly) {
                                 return 'Masukan hanya angka saja';
                               }
+
+                              return null;
                             }),
                         SizedBox(height: 15),
                         _buildEditProfileTextForm(
@@ -214,6 +216,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                             if (value!.length < 6) {
                               return 'Password minimal 6 karakter';
                             }
+
+                            return null;
                           },
                         ),
                         SizedBox(height: 15),
@@ -226,6 +230,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                                 value != passwordController.text) {
                               return 'Password tidak sama';
                             }
+
+                            return null;
                           },
                         ),
                         SizedBox(height: 100),
@@ -365,6 +371,8 @@ Widget _buildEditProfileTextForm(
             if (value!.isEmpty) {
               return 'Maaf harus diisi';
             }
+
+            return null;
           },
     ),
   );

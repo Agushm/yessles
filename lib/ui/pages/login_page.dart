@@ -56,6 +56,8 @@ class _LoginPageState extends State<LoginPage> {
                     if (value!.isEmpty) {
                       return 'Masukan email atau nomor WhatsApp';
                     }
+
+                    return null;
                   },
                 ),
               ),
@@ -82,6 +84,8 @@ class _LoginPageState extends State<LoginPage> {
                     if (value!.length < 6) {
                       return 'Password tidak valid';
                     }
+
+                    return null;
                   },
                 ),
               ),
